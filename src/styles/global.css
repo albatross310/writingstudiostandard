@@ -1,0 +1,439 @@
+/* ─── Design tokens ─────────────────────────────────────────────── */
+:root {
+  --ivory:        #f7f4ef;
+  --ivory-mid:    #ede9e1;
+  --ivory-dark:   #d8d2c8;
+  --charcoal:     #1c1c1e;
+  --charcoal-mid: #3a3a3c;
+  --slate:        #6b7280;
+  --teal:         #3d6b5e;
+  --teal-light:   #5a8a7c;
+  --teal-pale:    #e8f0ee;
+  --white:        #ffffff;
+
+  --font-serif:  'Libre Baskerville', Georgia, serif;
+  --font-sans:   'Inter', system-ui, sans-serif;
+  --font-mono:   'JetBrains Mono', 'Fira Code', monospace;
+
+  --radius:      6px;
+  --shadow-card: 0 1px 4px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.04);
+}
+
+/* ─── Reset ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--ivory);
+  color: var(--charcoal);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); letter-spacing: -0.01em; }
+h3 { font-size: clamp(1.1rem, 2.5vw, 1.4rem); }
+h4 { font-size: 1rem; font-family: var(--font-sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); }
+
+p { color: var(--charcoal-mid); max-width: 68ch; }
+p + p { margin-top: 1em; }
+
+a { color: var(--teal); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code, pre {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+pre {
+  background: var(--charcoal);
+  color: #e8e4db;
+  padding: 1.5rem 1.75rem;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  line-height: 1.65;
+}
+
+code:not(pre code) {
+  background: var(--ivory-mid);
+  color: var(--teal);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  border: 1px solid var(--ivory-dark);
+}
+
+/* ─── Layout ─────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.container--narrow {
+  max-width: 760px;
+}
+
+section {
+  padding: 5rem 0;
+}
+
+section + section {
+  border-top: 1px solid var(--ivory-mid);
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+}
+
+.btn--primary {
+  background: var(--teal);
+  color: var(--white);
+  border: 2px solid var(--teal);
+}
+.btn--primary:hover {
+  background: #325a4e;
+  border-color: #325a4e;
+  text-decoration: none;
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--teal);
+  border: 2px solid var(--teal);
+}
+.btn--outline:hover {
+  background: var(--teal-pale);
+  text-decoration: none;
+}
+
+.btn-group {
+  display: flex;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* ─── Cards ──────────────────────────────────────────────────────── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--ivory-mid);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-card);
+}
+
+.card__label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+  margin-bottom: 0.5rem;
+}
+
+.card__title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 0.625rem;
+}
+
+.card__body {
+  font-size: 0.9375rem;
+  color: var(--slate);
+  line-height: 1.65;
+  max-width: none;
+}
+
+/* ─── Section label ──────────────────────────────────────────────── */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  margin-bottom: 0.875rem;
+}
+
+/* ─── Divider ─────────────────────────────────────────────────────── */
+.divider {
+  width: 3rem;
+  height: 2px;
+  background: var(--teal-light);
+  margin: 1.5rem 0;
+  border: none;
+}
+
+/* ─── Definition trio ────────────────────────────────────────────── */
+.trio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.trio-card {
+  background: var(--white);
+  border: 1px solid var(--ivory-mid);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-card);
+}
+
+.trio-card--highlight {
+  border-color: var(--teal-light);
+  background: linear-gradient(145deg, var(--white), var(--teal-pale));
+}
+
+.trio-card__stores {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--teal);
+  background: var(--ivory-mid);
+  border: 1px solid var(--ivory-dark);
+  border-radius: 4px;
+  padding: 0.3em 0.65em;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+/* ─── Layer stack ────────────────────────────────────────────────── */
+.layer-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  margin-top: 2.5rem;
+}
+
+.layer-card {
+  background: var(--white);
+  border: 1px solid var(--ivory-mid);
+  border-left: 4px solid var(--teal-light);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow-card);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1rem 2rem;
+  align-items: start;
+}
+
+.layer-card__name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--charcoal);
+}
+
+.layer-card__desc {
+  font-size: 0.9375rem;
+  color: var(--slate);
+  max-width: none;
+  line-height: 1.6;
+}
+
+/* ─── File example block ─────────────────────────────────────────── */
+.file-example {
+  margin-top: 2rem;
+}
+
+.file-example__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1rem;
+  background: var(--charcoal-mid);
+  border-radius: var(--radius) var(--radius) 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: #b0a898;
+}
+
+.file-example__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #5a5a5c;
+}
+
+.file-example pre {
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+/* ─── FAQ ────────────────────────────────────────────────────────── */
+.faq-list {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--ivory-mid);
+  padding: 1.75rem 0;
+}
+
+.faq-item:first-child {
+  border-top: 1px solid var(--ivory-mid);
+}
+
+.faq-item__q {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 0.75rem;
+}
+
+.faq-item__a {
+  font-size: 0.9375rem;
+  color: var(--charcoal-mid);
+  max-width: 68ch;
+}
+
+/* ─── Page hero (inner pages) ────────────────────────────────────── */
+.page-hero {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--ivory-mid);
+}
+
+.page-hero__kicker {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  margin-bottom: 0.75rem;
+}
+
+.page-hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+}
+
+.page-hero__lead {
+  font-size: 1.125rem;
+  color: var(--charcoal-mid);
+  max-width: 64ch;
+  line-height: 1.65;
+}
+
+/* ─── Inline tag ─────────────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--teal);
+  background: var(--teal-pale);
+  border: 1px solid #c0d8d2;
+  border-radius: 4px;
+  padding: 0.2em 0.55em;
+  line-height: 1.4;
+}
+
+/* ─── Checklist ──────────────────────────────────────────────────── */
+.checklist {
+  list-style: none;
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.checklist li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  font-size: 0.9375rem;
+  color: var(--charcoal-mid);
+}
+
+.checklist li::before {
+  content: '—';
+  color: var(--teal-light);
+  flex-shrink: 0;
+  font-weight: 400;
+}
+
+/* ─── Implementations box ────────────────────────────────────────── */
+.impl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.impl-card {
+  background: var(--white);
+  border: 1px solid var(--ivory-mid);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+.impl-card__name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+  color: var(--charcoal);
+}
+
+.impl-card__status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--teal-light);
+  margin-bottom: 0.625rem;
+}
+
+.impl-card__desc {
+  font-size: 0.9rem;
+  color: var(--slate);
+  max-width: none;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  section { padding: 3.5rem 0; }
+
+  .layer-card {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .page-hero { padding: 2.5rem 0 2rem; }
+}

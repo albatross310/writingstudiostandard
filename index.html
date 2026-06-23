@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Writing Studio Standard — Open standard for process-aware documents</title>
+    <meta name="description" content="Writing Studio Standard defines Studio Documents: writing files that preserve text, formatting, images, process, provenance, and creative context in a single portable file." />
+    <link rel="canonical" href="https://writingstudiostandard.org/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:site_name"   content="Writing Studio Standard" />
+    <meta property="og:title"       content="Writing Studio Standard — Open standard for process-aware documents" />
+    <meta property="og:description" content="An open standard for documents that remember how they were made." />
+    <meta property="og:url"         content="https://writingstudiostandard.org/" />
+
+    <!-- Twitter / X card -->
+    <meta name="twitter:card"        content="summary" />
+    <meta name="twitter:title"       content="Writing Studio Standard" />
+    <meta name="twitter:description" content="An open standard for documents that remember how they were made." />
+
+    <!-- Google Search Console verification — replace content value after verifying in GSC -->
+    <!-- <meta name="google-site-verification" content="REPLACE_WITH_GSC_CODE" /> -->
+
+    <!-- JSON-LD structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://writingstudiostandard.org/#website",
+          "url": "https://writingstudiostandard.org/",
+          "name": "Writing Studio Standard",
+          "description": "An open standard for process-aware creative writing tools."
+        },
+        {
+          "@type": "TechArticle",
+          "@id": "https://writingstudiostandard.org/standard#article",
+          "headline": "Writing Studio Standard",
+          "description": "Defines Writing Studios, Studio Documents, Studio Text, and Studio PDF — a layered open standard for documents that preserve process, provenance, and creative context.",
+          "url": "https://writingstudiostandard.org/standard",
+          "isPartOf": { "@id": "https://writingstudiostandard.org/#website" },
+          "about": [
+            { "@type": "DefinedTerm", "name": "Writing Studio",    "description": "Software that creates Studio Documents." },
+            { "@type": "DefinedTerm", "name": "Studio Document",   "description": "A document containing content plus its creative and process context." },
+            { "@type": "DefinedTerm", "name": "Studio Text",       "description": "A readable text-first Studio Document, e.g. essay.studio.txt." },
+            { "@type": "DefinedTerm", "name": "Studio PDF",        "description": "A portable rendered Studio Document, e.g. essay.studio.pdf." }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
