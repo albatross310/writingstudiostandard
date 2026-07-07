@@ -83,14 +83,14 @@ code:not(pre code) {
 /* ─── Layout ─────────────────────────────────────────────────────── */
 .container {
   width: 100%;
-  max-width: 1100px;
+  max-width: 880px;   /* narrower → content sits closer to the centre of the window */
   margin: 0 auto;
   padding: 0 2rem;
 }
 
 .container--narrow {
   /* Same left edge as the hero (no centred indent); prose stays readable via per-element max-width. */
-  max-width: 1100px;
+  max-width: 880px;
 }
 
 section {
@@ -532,9 +532,9 @@ section + section {
 .arch-rows { display: flex; flex-direction: column; gap: 1.75rem; }
 .arch-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(400px, 520px);
-  gap: 1.5rem;
-  align-items: start;               /* card + brief top-aligned in each row */
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+  gap: 1.25rem;
+  align-items: stretch;             /* brief matches its card's height */
 }
 .arch-card {
   background: var(--card-bg);
@@ -557,18 +557,21 @@ section + section {
 .arch-brief {
   border-radius: var(--radius); overflow: hidden;
   border: 1px solid #2a2a2e; box-shadow: var(--shadow-card);
-  max-height: 480px; display: flex; flex-direction: column;
+  display: flex; flex-direction: column; min-height: 0;
 }
 .arch-brief__head {
+  flex-shrink: 0;
   padding: 0.6rem 0.9rem; background: #24242a; color: #d9d5cc;
   font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.02em;
 }
 .arch-brief__code {
   margin: 0; padding: 1rem 1.1rem; background: #1c1c1e; color: #c9c6bf;
   font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6;
-  overflow: auto; white-space: pre; flex: 1;
+  /* Vertical scroll only (matches the card's height); long lines wrap — no horizontal scroll. */
+  flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden;
+  white-space: pre-wrap; word-break: break-word;
 }
-@media (max-width: 900px) {
+@media (max-width: 820px) {
   .arch-row { grid-template-columns: 1fr; }
   .arch-brief { max-height: 55vh; }
 }

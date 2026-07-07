@@ -2,7 +2,7 @@
   background: var(--charcoal);
   color: #b0a898;
   padding: 4rem 0;
-  margin-top: 0;
+  margin-top: 2.75rem;   /* breathing room between the last section and the footer */
 }
 
 .footer__inner {
@@ -53,11 +53,9 @@
 }
 
 .footer__copy {
-  grid-column: 1 / -1;
+  grid-column: 2;            /* same top line as the brand (not a full-width row below) */
   font-size: 0.8125rem;
   color: #5a5248;
-  border-top: 1px solid #2e2c28;
-  padding-top: 1.5rem;
   max-width: none;
   line-height: 1.6;
 }
