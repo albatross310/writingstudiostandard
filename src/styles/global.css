@@ -1,8 +1,9 @@
 /* ─── Design tokens ─────────────────────────────────────────────── */
 :root {
-  --ivory:        #f7f4ef;
-  --ivory-mid:    #ede9e1;
-  --ivory-dark:   #d8d2c8;
+  --ivory:        #f1ece2;
+  --ivory-mid:    #e6e1d7;
+  --ivory-dark:   #d3ccc1;
+  --purple:       #4a2b6b;
   --charcoal:     #1c1c1e;
   --charcoal-mid: #3a3a3c;
   --slate:        #6b7280;
@@ -53,7 +54,7 @@ h4 { font-size: 1rem; font-family: var(--font-sans); font-weight: 600; text-tran
 p { color: var(--charcoal-mid); max-width: 68ch; }
 p + p { margin-top: 1em; }
 
-a { color: var(--teal); text-decoration: none; }
+a { color: var(--purple); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 code, pre {
@@ -300,7 +301,7 @@ section + section {
 
 .faq-item {
   border-bottom: 1px solid var(--ivory-mid);
-  padding: 1.75rem 0;
+  padding: 1rem 0;
 }
 
 .faq-item:first-child {

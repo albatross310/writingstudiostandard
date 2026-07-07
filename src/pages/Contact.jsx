@@ -4,10 +4,11 @@ export default function Contact() {
       <section className="hero">
         <div className="container hero__inner">
           <p className="section-label">Contact</p>
-          <h1 className="hero__title">Get in touch</h1>
+          <h1 className="hero__title">Please get in touch</h1>
           <p className="hero__lead">
-            The Writing Studio Standard is a work in progress, and feedback shapes it. Ideas, critiques,
-            implementations, corrections — all welcome.
+            The Writing Studio Standard is a work in progress, and feedback shapes it — we would really
+            appreciate any feedback you can give! Ideas, critiques, implementations, corrections — all
+            very welcome :)
           </p>
           <div className="btn-group">
             <a href="mailto:petergibson127@gmail.com" className="btn btn--primary">Email the developer</a>
@@ -25,11 +26,8 @@ export default function Contact() {
             <a href="mailto:petergibson127@gmail.com">petergibson127@gmail.com</a>.
           </p>
           <p style={{ marginTop: '1.25rem' }}>
-            You can find my other work at{' '}
+            You can find some of my other projects at{' '}
             <a href="https://mnemonicecologies.com" target="_blank" rel="noopener noreferrer">mnemonicecologies.com</a>.
-          </p>
-          <p style={{ marginTop: '1.25rem', color: 'var(--slate)' }}>
-            Please note: the mnemonic-tile layer of the standard is still in development.
           </p>
         </div>
       </section>

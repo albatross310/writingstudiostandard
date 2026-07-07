@@ -10,12 +10,40 @@ const faqs = [
     a: 'No. Provenance is built from signed hashes of the content and of the constraints applied while writing — never keystroke logs, your text, or your identity. Proving authorship does not require surveillance. Not in the day-to-day, free version, though some Writing Studios may choose to record keystrokes for higher levels of provenance detail. If so, it is HIGHLY RECOMMENDED that keystrokes are stored in the document, not kept on a server (and not seen if possible), and encrypted in the document when stored at rest. But for day-to-day purposes and online sharing, the answer is no: a .studio document does not store keystrokes. And no .studio document needs to.',
   },
   {
-    q: 'How can a reader trust the record?',
-    a: 'The provenance layer is a hash-chained set of receipts signed with a private key, with document hashes timestamped to the Bitcoin blockchain. Anyone can verify the chain and the anchor in their own browser, against an independently published key — no account, nothing uploaded.',
-  },
-  {
-    q: 'Can I implement only part of the standard?',
-    a: 'Yes. Past the readable text, every layer is optional. A conformant tool implements the layers it claims, fully, and a reader can check which layers a given file actually carries.',
+    q: 'How does the Bitcoin blockchain work?',
+    a: (
+      <>
+        <p>
+          Bitcoin is a public, append-only ledger maintained by a peer-to-peer network with no central
+          authority. Transactions are grouped into <em>blocks</em>; each block header contains the SHA-256
+          hash of the previous block, so the blocks form a chain in which changing any old block would
+          alter every hash after it. Blocks also commit to their transactions through a <em>Merkle tree</em>
+          {' '}— a binary tree of hashes whose single 32-byte root sits in the header — so one value fixes
+          the entire set of transactions.
+        </p>
+        <p style={{ marginTop: '0.9rem' }}>
+          New blocks are added by <em>proof-of-work</em>. Miners repeatedly hash a candidate block header
+          while varying a nonce, searching for an output below a network-set target. Because SHA-256 is
+          effectively unpredictable, the only way to find such a hash is brute force, and the difficulty
+          auto-adjusts so the network produces roughly one block every ten minutes regardless of total
+          computing power. Rewriting history would mean redoing the proof-of-work for the altered block and
+          every block after it, faster than the rest of the network extends the honest chain — economically
+          infeasible once a block is buried under several confirmations. That is what makes the ledger
+          practically immutable and its ordering trustworthy without trusting any party.
+        </p>
+        <p style={{ marginTop: '0.9rem' }}>
+          Timestamping rides on this. To prove a document existed at a point in time you don't put the
+          document on-chain; you put a <em>hash</em> of it. OpenTimestamps aggregates many such hashes into
+          its own Merkle tree and commits only the root in a single Bitcoin transaction, so millions of
+          documents share one on-chain footprint. The resulting proof links your document's hash → the
+          Merkle path → the Bitcoin block, and anyone can verify it against the public chain with no server
+          and no trust in the timestamper.{' '}
+          <a href="https://en.wikipedia.org/wiki/OpenTimestamps" target="_blank" rel="noopener noreferrer">
+            OpenTimestamps on Wikipedia →
+          </a>
+        </p>
+      </>
+    ),
   },
   {
     q: 'Who controls the standard? Can I build on it?',
@@ -52,7 +80,7 @@ export default function FAQ() {
             {faqs.map(item => (
               <div className="faq-item" key={item.q}>
                 <p className="faq-item__q">{item.q}</p>
-                <p className="faq-item__a">{item.a}</p>
+                <div className="faq-item__a">{item.a}</div>
               </div>
             ))}
           </div>

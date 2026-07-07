@@ -52,8 +52,8 @@
 }
 
 .nav__link--active {
-  color: var(--teal);
-  background: var(--teal-pale);
+  color: var(--purple);
+  background: #ece4f3;
 }
 
 @media (max-width: 700px) {
