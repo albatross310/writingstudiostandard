@@ -12,6 +12,10 @@ export default function Footer() {
           <p className="footer__tagline" style={{ marginTop: '0.6rem', opacity: 0.8 }}>
             The mnemonic-tile layer is still in development.
           </p>
+          <p className="footer__tagline" style={{ marginTop: '0.6rem', fontSize: '0.8125rem', opacity: 0.7, maxWidth: '44ch' }}>
+            Privacy: this site collects nothing — no analytics, no cookies, no tracking.
+            Fonts are served from this domain. Our host (Vercel) keeps standard server request logs.
+          </p>
         </div>
         <p className="footer__copy" style={{ marginLeft: 'auto', textAlign: 'right' }}>
           By Peter Gibson — Philosopher, Creator, and Developer.<br />
