@@ -292,7 +292,7 @@ section + section {
 
 /* ─── FAQ ────────────────────────────────────────────────────────── */
 .faq-list {
-  margin-top: 2.5rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -309,16 +309,16 @@ section + section {
 
 .faq-item__q {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--charcoal);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .faq-item__a {
-  font-size: 0.9375rem;
+  font-size: 1.05rem;
   color: var(--charcoal-mid);
-  max-width: 68ch;
+  max-width: 72ch;
 }
 
 /* ─── Page hero (inner pages) ────────────────────────────────────── */

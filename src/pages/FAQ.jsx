@@ -2,10 +2,6 @@ import { useMeta } from '../useMeta'
 
 const faqs = [
   {
-    q: 'What exactly is a .studio file?',
-    a: 'A single JSON file that opens with a plain-Markdown header holding the document’s entire text. You can read it in any editor without special software; the structured body beneath carries the sources, the signed session record, and everything a Writing Studio adds.',
-  },
-  {
     q: 'Why not just use .docx or PDF?',
     a: 'Those formats store how a document looks, not how it was made — and they’re opaque to read raw. A .studio file keeps the writing legible as plain text, keeps its sources with it, and can carry a verifiable record of the session that produced it. It’s also far easier for a person or a language model to read.',
   },
