@@ -526,3 +526,58 @@ section + section {
   .studio-explorer__file { position: static; }
   .studio-explorer__scroll { max-height: 46vh; }
 }
+
+/* ─── Architecture layer cards + fold-out code brief ─────────────────────── */
+.arch-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; align-items: start; }
+.arch-grid.is-open { grid-template-columns: minmax(0, 1fr) minmax(340px, 460px); }
+.arch-cards { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
+.arch-card {
+  background: var(--white);
+  border: 1px solid var(--ivory-mid);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.6rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.15s ease;
+}
+.arch-card.is-active { box-shadow: 0 0 0 2px var(--purple), var(--shadow-card); }
+.arch-badge {
+  font-family: var(--font-sans); font-size: 0.7rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 0.2em 0.6em; border-radius: 3px; border: 1px solid var(--ivory-dark);
+  color: var(--slate); background: var(--ivory-mid);
+}
+.arch-badge[data-req="1"] { color: var(--teal); background: var(--teal-pale); border-color: #c0d8d2; }
+.arch-sub {
+  font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 0.45rem;
+}
+.arch-brief-btn {
+  margin-left: auto; cursor: pointer;
+  font-family: var(--font-mono); font-size: 0.72rem;
+  padding: 0.28em 0.7em; border-radius: 5px;
+  border: 1px solid var(--purple); color: var(--purple); background: transparent;
+  transition: all 0.14s ease; white-space: nowrap;
+}
+.arch-brief-btn:hover { background: var(--purple); color: #fff; }
+.arch-brief {
+  position: sticky; top: 1.25rem;
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid #2a2a2e; box-shadow: var(--shadow-card);
+  max-height: calc(100vh - 3rem); display: flex; flex-direction: column;
+}
+.arch-brief__head {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+  padding: 0.6rem 0.9rem; background: #24242a; color: #d9d5cc;
+  font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.02em;
+}
+.arch-brief__head button { background: none; border: 0; color: #a9a49a; cursor: pointer; font-size: 1.25rem; line-height: 1; }
+.arch-brief__head button:hover { color: #fff; }
+.arch-brief__code {
+  margin: 0; padding: 1rem 1.1rem; background: #1c1c1e; color: #c9c6bf;
+  font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6;
+  overflow: auto; white-space: pre; flex: 1;
+}
+@media (max-width: 860px) {
+  .arch-grid.is-open { grid-template-columns: 1fr; }
+  .arch-brief { position: static; max-height: 60vh; }
+}
