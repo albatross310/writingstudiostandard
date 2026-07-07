@@ -3,7 +3,7 @@ import { useMeta } from '../useMeta'
 const faqs = [
   {
     q: 'Why not just use .docx or PDF?',
-    a: 'Those formats store how a document looks, not how it was made — and they’re opaque to read raw. A .studio file keeps the writing legible as plain text, keeps its sources with it, and can carry a verifiable record of the session that produced it. It’s also far easier for a person or a language model to read.',
+    a: 'Those formats store how a document looks, not how it was made — and they’re opaque to read raw. A .studio file keeps the writing legible as plain text, keeps its sources with it, and can carry a verifiable record of the session that produced it. It’s also far easier for a person or a language model to read. And because everything lives in one structured file, it can grow: planned work includes mnemonic-tile artwork anchored to specific passages, the ability to dynamically bring up other .studio files from within a document, and dynamically hyperlinked files — so a reader can navigate a document, and the wider body of work and sources around it, as one connected space with ease.',
   },
   {
     q: 'Does it record my keystrokes?',
