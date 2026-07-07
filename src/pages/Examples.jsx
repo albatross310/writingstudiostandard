@@ -225,7 +225,7 @@ leibniz-new-essays, bk. III]
 ` },
 ]
 const REAL_PARTS = [
-  { id: 'rheader', label: 'A real proposal, readable', body: 'This is an excerpt of the author’s actual honours proposal — a revisionary reading of Leibniz on whether a universal constructed language is possible. The whole argument sits in the plain-Markdown header, disclaimer and all, readable with no tooling.' },
+  { id: 'rheader', label: 'A real proposal, readable', body: 'This is an excerpt of the author’s actual honours proposal — a revisionary reading of Leibniz on the precise way he conceived of language in light of his theories of combinatorics, compossibility, and the “petites perceptions.” The whole argument sits in the plain-Markdown header, disclaimer and all, readable with no tooling.' },
   { id: 'rbib', label: 'The reading list, pinpointed', body: 'The real sources travel with the document as CSL records. Leibniz’s New Essays — his reply to Locke — is pinned here to a passage on page 3, tied to the fourth in-text citation occurrence. It’s marked publiclyAvailable, so a "strip public PDFs" export can drop it.' },
   { id: 'rpdf', label: 'One source left embedded', body: 'To keep the file small enough to share, only one source PDF is embedded — Leibniz’s New Essays (the reply to Locke). The rest of the reading list is stripped; the citations and page pins remain, and the PDFs can be re-fetched from their origins.' },
   { id: 'rprov', label: 'Signed and anchored', body: 'The same provenance machinery as the toy file, over real work: hash-chained signed receipts for each writing period, and snapshots whose hashes are timestamped to Bitcoin — so the composition of this proposal can be dated and verified by anyone.' },
