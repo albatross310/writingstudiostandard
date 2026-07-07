@@ -14,9 +14,11 @@ const faqs = [
         not require surveillance, and it is by no means necessary for a Studio Document to record your
         keystrokes. However, in some versions a Writing Studio may choose to record keystrokes for higher
         levels of provenance detail. If so, it is <em>highly recommended</em> that keystrokes are stored in
-        the document, not kept on a server (and not seen if possible), and encrypted in the document when
-        stored at rest. But for day-to-day purposes and online sharing, the answer is no: a .studio document
-        does not store keystrokes. And no .studio document needs to.
+        the document, not kept on a server, and not seen if possible — and encrypted at rest and at all
+        stages apart from verification in the browser (for example at a verification portal such as{' '}
+        <a href="https://iwzero.me/verify" target="_blank" rel="noopener noreferrer">iwzero.me/verify</a>).
+        But for day-to-day purposes and online sharing, the answer is no: a .studio document does not store
+        keystrokes. And no .studio document needs to.
       </>
     ),
   },
