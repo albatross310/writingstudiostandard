@@ -4,7 +4,7 @@ export default function Contact() {
       <section className="hero">
         <div className="container hero__inner">
           <p className="section-label">Contact</p>
-          <h1 className="hero__title">Please get in touch</h1>
+          <h1 className="hero__title">Please do get in touch</h1>
           <p className="hero__lead">
             The Writing Studio Standard is a work in progress, and feedback shapes it — we would really
             appreciate any feedback you can give! Ideas, critiques, implementations, corrections — all
