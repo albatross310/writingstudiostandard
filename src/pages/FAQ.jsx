@@ -17,8 +17,8 @@ const faqs = [
         the document, not kept on a server, and not seen if possible — and encrypted at rest and at all
         stages apart from verification in the browser (for example at a verification portal such as{' '}
         <a href="https://iwzero.me/verify" target="_blank" rel="noopener noreferrer">iwzero.me/verify</a>).
-        But for day-to-day purposes and online sharing, the answer is no: a .studio document does not store
-        keystrokes. And no .studio document needs to.
+        But for day-to-day purposes and online sharing, the answer is no: a .studio document does not need
+        to store keystrokes.
       </>
     ),
   },
