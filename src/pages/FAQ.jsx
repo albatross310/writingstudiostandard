@@ -7,7 +7,7 @@ const faqs = [
   },
   {
     q: 'Does it record my keystrokes?',
-    a: 'No. Provenance is built from signed hashes of the content and of the constraints applied while writing — never keystroke logs, your text, or your identity. Proving authorship does not require surveillance.',
+    a: 'No. Provenance is built from signed hashes of the content and of the constraints applied while writing — never keystroke logs, your text, or your identity. Proving authorship does not require surveillance. Not in the day-to-day, free version, though some Writing Studios may choose to record keystrokes for higher levels of provenance detail. If so, it is HIGHLY RECOMMENDED that keystrokes are stored in the document, not kept on a server (and not seen if possible), and encrypted in the document when stored at rest. But for day-to-day purposes and online sharing, the answer is no: a .studio document does not store keystrokes. And no .studio document needs to.',
   },
   {
     q: 'How can a reader trust the record?',
