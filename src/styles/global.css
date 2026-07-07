@@ -11,8 +11,9 @@
   --teal-pale:    #e8f0ee;
   --white:        #ffffff;
 
-  --font-serif:  'Libre Baskerville', Georgia, serif;
-  --font-sans:   'Inter', system-ui, sans-serif;
+  --font-serif:  'EB Garamond', Garamond, 'Times New Roman', Georgia, serif; /* headings */
+  --font-body:   'Times New Roman', Times, Georgia, serif;                    /* body text */
+  --font-sans:   'Inter', system-ui, sans-serif;                             /* labels/kickers only */
   --font-mono:   'JetBrains Mono', 'Fira Code', monospace;
 
   --radius:      6px;
@@ -31,9 +32,9 @@ html {
 body {
   background: var(--ivory);
   color: var(--charcoal);
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  line-height: 1.7;
+  font-family: var(--font-body);
+  font-size: 1.06rem;
+  line-height: 1.6;
 }
 
 /* ─── Typography ─────────────────────────────────────────────────── */
@@ -44,9 +45,9 @@ h1, h2, h3, h4 {
   color: var(--charcoal);
 }
 
-h1 { font-size: clamp(2rem, 5vw, 3.25rem); letter-spacing: -0.01em; }
-h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); letter-spacing: -0.01em; }
-h3 { font-size: clamp(1.1rem, 2.5vw, 1.4rem); }
+h1 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.3rem, 2.6vw, 1.7rem); letter-spacing: -0.01em; }
+h3 { font-size: clamp(1.05rem, 2vw, 1.25rem); }
 h4 { font-size: 1rem; font-family: var(--font-sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); }
 
 p { color: var(--charcoal-mid); max-width: 68ch; }
@@ -328,9 +329,9 @@ section + section {
 /* The inline .studio tag inside a hero title should read at title scale, not tiny inline-code size. */
 .page-hero__title .tag,
 .hero__title .tag {
-  font-size: 0.5em;
-  vertical-align: 0.12em;
-  padding: 0.15em 0.5em;
+  font-size: 0.62em;
+  vertical-align: 0.1em;
+  padding: 0.18em 0.55em;
 }
 
 .page-hero__kicker {
@@ -345,7 +346,7 @@ section + section {
 
 .page-hero__title {
   font-family: var(--font-serif);
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
   font-weight: 700;
   color: var(--charcoal);
   margin-bottom: 1rem;
