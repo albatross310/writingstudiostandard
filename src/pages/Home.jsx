@@ -93,7 +93,7 @@ export default function Home() {
                 verified by anyone, with no account and nothing uploaded.
               </p>
               <div className="btn-group" style={{ marginTop: '1.5rem' }}>
-                <Link to="/documents" className="btn btn--outline">About Studio Documents</Link>
+                <Link to="/examples" className="btn btn--outline">See a file, annotated</Link>
               </div>
             </div>
             <div className="card">

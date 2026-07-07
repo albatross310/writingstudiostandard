@@ -1,51 +1,25 @@
-import { Link } from 'react-router-dom'
 import { useMeta } from '../useMeta'
 
 const principles = [
-  {
-    n: '01',
-    title: 'Text first',
-    body: 'The readable text of a Studio Document must be accessible without proprietary software. Process and context are additive, never obstructive.',
-  },
-  {
-    n: '02',
-    title: 'Portable by default',
-    body: 'Studio Documents are files, not database records. They can be copied, archived, and opened on any system. The file is the document.',
-  },
-  {
-    n: '03',
-    title: 'Process is not metadata',
-    body: 'Revision history, session data, and authorship signals are first-class citizens — not afterthoughts in a document header.',
-  },
-  {
-    n: '04',
-    title: 'Open and unencumbered',
-    body: 'No licence fee, no certification, no governing body. Implementations may adopt the standard freely and completely.',
-  },
-  {
-    n: '05',
-    title: 'Layered, not monolithic',
-    body: 'A tool need not implement every layer to be a Writing Studio. It must implement the layers it claims.',
-  },
-  {
-    n: '06',
-    title: 'Human-interpretable',
-    body: 'A Studio Document should be legible to a careful reader even if all tooling disappears. Structure follows meaning.',
-  },
+  { n: '01', title: 'Text first', body: 'The full readable text of a document must be legible without any special software. Every other layer is additive, never obstructive.' },
+  { n: '02', title: 'A file, not a record', body: 'A Studio Document is a single file. It can be copied, emailed, archived, and opened anywhere. There is no server it depends on to be read.' },
+  { n: '03', title: 'Process is first-class', body: 'How a document was made — its sessions, revisions, and authorship signals — is part of the document, not metadata bolted onto a header.' },
+  { n: '04', title: 'Provenance without surveillance', body: 'A conformant record proves authorship using signed hashes and public anchoring. It never requires keystroke logging or transmitting the writer’s text or identity.' },
+  { n: '05', title: 'Layered, not monolithic', body: 'A tool need not implement every layer to be a Writing Studio. It must implement, fully, the layers it claims — and a reader can check which ones a file carries.' },
+  { n: '06', title: 'Open and unencumbered', body: 'No licence fee, no certification body, no gatekeeper. Any software may read, write, extend, and verify the format for any purpose.' },
 ]
 
-const defined = [
-  { term: 'Writing Studio',  def: 'Software that creates Studio Documents, implementing at least the Content layer.' },
-  { term: 'Studio Document', def: 'A file conforming to the Writing Studio Standard, containing content and at least one additional layer.' },
-  { term: 'Studio Text',     def: 'A Studio Document in text-first format (.studio.txt). Always human-readable. The canonical source.' },
-  { term: 'Studio PDF',      def: 'A Studio Document rendered as a portable document (.studio.pdf), with embedded provenance and metadata.' },
-  { term: 'Studio JSON',     def: 'An optional machine-readable companion (.studio.json) for tooling and indexing.' },
+const terms = [
+  { term: 'Writing Studio', def: 'Software that produces Studio Documents, implementing at least the readable-text layer.' },
+  { term: 'Studio Document', def: 'A file conforming to this standard — the readable text plus at least one further layer.' },
+  { term: 'The .studio file', def: 'The canonical form: a single JSON file that opens with a human-readable Markdown header carrying the document’s full text. Readable in any editor; verifiable by anyone.' },
+  { term: 'Verifiable record', def: 'The signed, hash-chained session data and its public-blockchain anchor, which let a third party confirm an authentic composition without trusting the vendor.' },
 ]
 
 export default function Standard() {
   useMeta({
     title: 'The Standard',
-    description: 'The Writing Studio Standard defines Writing Studios, Studio Documents, and six guiding principles for process-aware creative writing tools with seven composable layers.',
+    description: 'The Writing Studio Standard defines a Writing Studio, the Studio Document, the .studio file, six principles, and what conformance means.',
     path: '/standard',
   })
   return (
@@ -53,36 +27,29 @@ export default function Standard() {
       <div className="container">
         <div className="page-hero">
           <p className="page-hero__kicker">Specification</p>
-          <h1 className="page-hero__title">Writing Studio Standard</h1>
+          <h1 className="page-hero__title">The Writing Studio Standard</h1>
           <p className="page-hero__lead">
-            A definition of what it means for software to be a Writing Studio,
-            and what a Studio Document must contain.
+            A definition of what it means for software to be a Writing Studio, and of the open file its
+            documents take.
           </p>
         </div>
       </div>
 
       <section>
         <div className="container container--narrow">
-          <p className="section-label">Introduction</p>
-          <h2>What this standard defines</h2>
+          <p className="section-label">Scope</p>
+          <h2>What the standard defines</h2>
           <hr className="divider" />
           <p>
-            The Writing Studio Standard is not a file format. It is a layered
-            model that defines what a writing studio is, what it produces, and
-            what a conformant document must contain.
+            A text editor stores text. A word processor stores how a document looks. A Writing Studio
+            stores the writing together with the sources it rests on and a verifiable record of the session
+            that produced it.
           </p>
           <p>
-            A <strong>text editor</strong> stores text.{' '}
-            A <strong>word processor</strong> stores formatted documents.{' '}
-            A <strong>writing studio</strong> stores text plus process, context,
-            provenance, layout, images, and the creative environment in which
-            the work was made.
-          </p>
-          <p>
-            The standard defines the layers that compose a Studio Document
-            and the minimum conformance requirements for each. It does not
-            prescribe encoding choices, implementation details, or user
-            interface decisions.
+            The standard defines that class of software, the layered document it produces, and the minimum
+            each layer must satisfy to be claimed. It does not prescribe user-interface choices, and it
+            settles on exactly one interchange file — the <code className="tag">.studio</code> file — so
+            documents move between tools without translation.
           </p>
         </div>
       </section>
@@ -92,8 +59,8 @@ export default function Standard() {
           <p className="section-label">Definitions</p>
           <h2>Primary terms</h2>
           <hr className="divider" />
-          <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            {defined.map(d => (
+          <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {terms.map(d => (
               <div key={d.term} className="card">
                 <p className="card__label">{d.term}</p>
                 <p className="card__body">{d.def}</p>
@@ -106,17 +73,15 @@ export default function Standard() {
       <section>
         <div className="container container--narrow">
           <p className="section-label">Principles</p>
-          <h2>Six guiding principles</h2>
+          <h2>Six principles</h2>
           <hr className="divider" />
           <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             {principles.map(p => (
               <div key={p.n} style={{ display: 'grid', gridTemplateColumns: '3rem 1fr', gap: '0 1.25rem', alignItems: 'start' }}>
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8125rem', color: 'var(--teal-light)', paddingTop: '0.15em' }}>{p.n}</span>
                 <div>
-                  <p style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '1rem', color: 'var(--charcoal)', marginBottom: '0.35rem', maxWidth: 'none' }}>
-                    {p.title}
-                  </p>
-                  <p style={{ fontSize: '0.9375rem', color: 'var(--slate)', maxWidth: '56ch' }}>{p.body}</p>
+                  <p style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '1rem', color: 'var(--charcoal)', marginBottom: '0.35rem', maxWidth: 'none' }}>{p.title}</p>
+                  <p style={{ fontSize: '0.9375rem', color: 'var(--slate)', maxWidth: '60ch' }}>{p.body}</p>
                 </div>
               </div>
             ))}
@@ -130,23 +95,18 @@ export default function Standard() {
           <h2>What conformance means</h2>
           <hr className="divider" />
           <p>
-            A <strong>conformant Writing Studio</strong> creates Studio Documents
-            implementing at least the Content layer and one additional layer.
+            A <strong>conformant Writing Studio</strong> produces <code className="tag">.studio</code> files
+            that carry the readable text and at least one further layer.
           </p>
           <p>
-            A <strong>conformant Studio Document</strong> carries readable text,
-            at least one additional layer, and is named according to the
-            <code className="tag" style={{ margin: '0 0.35em' }}>.studio.*</code>
-            convention.
+            A <strong>conformant reader</strong> can open the Markdown header of any <code className="tag">.studio</code> file
+            as plain text, and — where the provenance layer is present — verify the signed chain and public
+            anchor against an independently published key.
           </p>
           <p>
-            Conformance is self-declared. There is no authority that certifies
-            implementations.
+            Conformance is self-declared and self-checkable. There is no authority that certifies
+            implementations, and none is needed: the file carries everything required to be read and proven.
           </p>
-          <div className="btn-group">
-            <Link to="/architecture" className="btn btn--outline">Layer model</Link>
-            <Link to="/documents" className="btn btn--outline">Studio Documents</Link>
-          </div>
         </div>
       </section>
     </main>

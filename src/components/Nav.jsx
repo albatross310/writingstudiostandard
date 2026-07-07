@@ -3,10 +3,10 @@ import './Nav.css'
 
 const links = [
   { to: '/standard',      label: 'Standard'      },
-  { to: '/documents',     label: 'Documents'     },
   { to: '/architecture',  label: 'Architecture'  },
   { to: '/examples',      label: 'Examples'      },
   { to: '/faq',           label: 'FAQ'           },
+  { to: '/contact',       label: 'Contact'       },
 ]
 
 export default function Nav() {

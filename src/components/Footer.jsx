@@ -10,6 +10,9 @@ export default function Footer() {
           <p className="footer__tagline">
             An open standard for documents that remember how they were made.
           </p>
+          <p className="footer__tagline" style={{ marginTop: '0.6rem', opacity: 0.8 }}>
+            The mnemonic-tile layer is still in development.
+          </p>
         </div>
         <nav className="footer__nav" aria-label="Footer">
           <Link to="/standard">Standard</Link>
@@ -17,10 +20,13 @@ export default function Footer() {
           <Link to="/architecture">Architecture</Link>
           <Link to="/examples">Examples</Link>
           <Link to="/faq">FAQ</Link>
+          <Link to="/contact">Contact</Link>
         </nav>
         <p className="footer__copy">
-          Writing Studio Standard is an open specification.<br />
-          Released for public use without restriction.
+          By Peter Gibson —{' '}
+          <a href="mailto:petergibson127@gmail.com" style={{ color: 'inherit' }}>petergibson127@gmail.com</a>.<br />
+          Other projects at <a href="https://mnemonicecologies.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>mnemonicecologies.com</a>.<br />
+          An open specification, released for public use without restriction.
         </p>
       </div>
     </footer>

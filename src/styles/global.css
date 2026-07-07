@@ -437,3 +437,82 @@ section + section {
 
   .page-hero { padding: 2.5rem 0 2rem; }
 }
+
+/* ── Interactive .studio explorer (Examples) ─────────────────────────────── */
+.studio-explorer {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin-top: 1.75rem;
+}
+.studio-explorer__file {
+  border: 1px solid var(--ivory-dark);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  position: sticky;
+  top: 1.5rem;
+}
+.studio-explorer__scroll {
+  max-height: 68vh;
+  overflow-y: auto;
+  background: #1c1c1e;
+  scroll-behavior: smooth;
+}
+.studio-explorer__scroll pre {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+.studio-block {
+  display: block;
+  padding: 0.15rem 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: #c9c6bf;
+  white-space: pre-wrap;
+  border-left: 3px solid transparent;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.studio-block.is-active {
+  background: rgba(90, 138, 124, 0.18);
+  border-left-color: var(--teal-light);
+  color: #eef2f0;
+}
+.studio-explorer__panel { display: flex; flex-direction: column; gap: 1.25rem; }
+.studio-explorer__links { list-style: none; margin: 0.5rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.studio-explorer__link {
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--charcoal-mid);
+  background: var(--white);
+  border: 1px solid var(--ivory-dark);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.studio-explorer__link:hover { border-color: var(--teal-light); color: var(--teal); }
+.studio-explorer__link.is-active {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+}
+.studio-explorer__commentary {
+  background: var(--teal-pale);
+  border: 1px solid #c0d8d2;
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+}
+.studio-explorer__commentary .card__body { max-width: none; }
+@media (max-width: 820px) {
+  .studio-explorer { grid-template-columns: 1fr; }
+  .studio-explorer__file { position: static; }
+  .studio-explorer__scroll { max-height: 46vh; }
+}

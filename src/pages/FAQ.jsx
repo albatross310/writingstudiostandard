@@ -1,53 +1,44 @@
-import { Link } from 'react-router-dom'
 import { useMeta } from '../useMeta'
 
 const faqs = [
   {
-    q: 'Is this a file format?',
-    a: 'Not exactly. It is a model — layered definitions that describe what a writing studio is and what a Studio Document must contain. Implementations choose their own encodings, provided they satisfy the layer requirements.',
+    q: 'What exactly is a .studio file?',
+    a: 'A single JSON file that opens with a plain-Markdown header holding the document’s entire text. You can read it in any editor without special software; the structured body beneath carries the sources, the signed session record, and everything a Writing Studio adds.',
   },
   {
-    q: 'Who controls the standard?',
-    a: 'No one. The Writing Studio Standard is released under CC0 — public domain. There is no governing body, no certification, and no authority that approves implementations.',
+    q: 'Why not just use .docx or PDF?',
+    a: 'Those formats store how a document looks, not how it was made — and they’re opaque to read raw. A .studio file keeps the writing legible as plain text, keeps its sources with it, and can carry a verifiable record of the session that produced it. It’s also far easier for a person or a language model to read.',
+  },
+  {
+    q: 'Does it record my keystrokes?',
+    a: 'No. Provenance is built from signed hashes of the content and of the constraints applied while writing — never keystroke logs, your text, or your identity. Proving authorship does not require surveillance.',
+  },
+  {
+    q: 'How can a reader trust the record?',
+    a: 'The provenance layer is a hash-chained set of receipts signed with a private key, with document hashes timestamped to the Bitcoin blockchain. Anyone can verify the chain and the anchor in their own browser, against an independently published key — no account, nothing uploaded.',
   },
   {
     q: 'Can I implement only part of the standard?',
-    a: 'Yes. Layers are independent. A conformant implementation adopts the layers it claims and implements them fully. Claiming no optional layers is valid.',
+    a: 'Yes. Past the readable text, every layer is optional. A conformant tool implements the layers it claims, fully, and a reader can check which layers a given file actually carries.',
   },
   {
-    q: 'How is a Writing Studio different from a word processor?',
-    a: 'A word processor records appearance — typefaces, margins, styles. A Writing Studio records process and context: revision history, writing sessions, layout intent, tile artwork, and provenance. The name is deliberate: a studio is a place for drafting and artwork together.',
+    q: 'Who controls the standard? Can I build on it?',
+    a: 'No one owns it and there is no certification body. Any software may read, write, extend, and verify the .studio format for any purpose, commercial or otherwise, without permission or fee.',
   },
   {
-    q: 'What does studio.txt actually look like?',
-    a: 'Human-readable prose at the top. A JSON block at the bottom, separated by a horizontal rule, carrying layer data, session records, and provenance. The text is readable in any editor; the JSON is there for software.',
+    q: 'What are the mnemonic tiles I’ve seen mentioned?',
+    a: 'A planned layer that links artwork — mnemonic tiles from an open library — to words and passages in the document, as visual memory anchors. It is still in development and not yet part of a conformant implementation.',
   },
   {
-    q: 'What is a Studio PDF?',
-    a: 'A standard PDF with the source .studio.txt file embedded as an attachment. The rendered view and the full source travel together in one file.',
-  },
-  {
-    q: 'What is keylog data and why is it encrypted?',
-    a: 'Keystroke-level process data — the sequence and timing of individual keystrokes during a writing session. It is sensitive personal data and is stored encrypted by conformant implementations.',
-  },
-  {
-    q: 'What is mnemonic tile artwork?',
-    a: 'Visual tiles used in a writing studio to represent concepts, scenes, or reference material alongside draft text. Part of the Object layer. The word "mnemonic" reflects their function: they are memory and reference aids, not decoration.',
-  },
-  {
-    q: 'Can I use the .studio.txt extension in my own software?',
-    a: 'Yes. The standard is CC0. Use it freely, without permission, attribution, or fee.',
-  },
-  {
-    q: 'What are Inkwave Solo and Inkwave Cubed?',
-    a: 'Early experimental implementations of the Writing Studio Standard. They do not define the standard. Other implementations may differ and remain fully conformant.',
+    q: 'What are Inkwave Zero and Inkwave Cubed?',
+    a: 'Implementations of the standard, not the standard itself. Inkwave Zero is live — a free writing studio that produces, signs, and anchors .studio files. Inkwave Cubed, in development, links verified documents into a network. Other tools may implement the format and remain fully conformant.',
   },
 ]
 
 export default function FAQ() {
   useMeta({
     title: 'FAQ',
-    description: 'Common questions about the Writing Studio Standard — what it defines, how conformance works, and how Studio Documents differ from word processor files.',
+    description: 'Common questions about the Writing Studio Standard — the .studio file, provenance without surveillance, verification, conformance, and building on the format.',
     path: '/faq',
   })
   return (
@@ -68,10 +59,6 @@ export default function FAQ() {
                 <p className="faq-item__a">{item.a}</p>
               </div>
             ))}
-          </div>
-          <div className="btn-group" style={{ marginTop: '3rem' }}>
-            <Link to="/standard" className="btn btn--primary">Read the standard</Link>
-            <Link to="/architecture" className="btn btn--outline">Architecture</Link>
           </div>
         </div>
       </section>
