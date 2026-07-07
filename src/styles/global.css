@@ -86,11 +86,12 @@ code:not(pre code) {
 }
 
 .container--narrow {
-  max-width: 760px;
+  /* Same left edge as the hero (no centred indent); prose stays readable via per-element max-width. */
+  max-width: 1100px;
 }
 
 section {
-  padding: 5rem 0;
+  padding: 2.75rem 0;
 }
 
 section + section {
@@ -321,8 +322,15 @@ section + section {
 
 /* ─── Page hero (inner pages) ────────────────────────────────────── */
 .page-hero {
-  padding: 4rem 0 3rem;
+  padding: 2.5rem 0 1.75rem;
   border-bottom: 1px solid var(--ivory-mid);
+}
+/* The inline .studio tag inside a hero title should read at title scale, not tiny inline-code size. */
+.page-hero__title .tag,
+.hero__title .tag {
+  font-size: 0.5em;
+  vertical-align: 0.12em;
+  padding: 0.15em 0.5em;
 }
 
 .page-hero__kicker {

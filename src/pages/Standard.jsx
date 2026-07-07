@@ -1,14 +1,5 @@
 import { useMeta } from '../useMeta'
 
-const principles = [
-  { n: '01', title: 'Text first', body: 'The full readable text of a document must be legible without any special software. Every other layer is additive, never obstructive.' },
-  { n: '02', title: 'A file, not a record', body: 'A Studio Document is a single file. It can be copied, emailed, archived, and opened anywhere. There is no server it depends on to be read.' },
-  { n: '03', title: 'Process is first-class', body: 'How a document was made — its sessions, revisions, and authorship signals — is part of the document, not metadata bolted onto a header.' },
-  { n: '04', title: 'Provenance without surveillance', body: 'A conformant record proves authorship using signed hashes and public anchoring. It never requires keystroke logging or transmitting the writer’s text or identity.' },
-  { n: '05', title: 'Layered, not monolithic', body: 'A tool need not implement every layer to be a Writing Studio. It must implement, fully, the layers it claims — and a reader can check which ones a file carries.' },
-  { n: '06', title: 'Open and unencumbered', body: 'No licence fee, no certification body, no gatekeeper. Any software may read, write, extend, and verify the format for any purpose.' },
-]
-
 const terms = [
   { term: 'Writing Studio', def: 'Software that produces Studio Documents, implementing at least the readable-text layer.' },
   { term: 'Studio Document', def: 'A file conforming to this standard — the readable text plus at least one further layer.' },
@@ -64,25 +55,6 @@ export default function Standard() {
               <div key={d.term} className="card">
                 <p className="card__label">{d.term}</p>
                 <p className="card__body">{d.def}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div className="container container--narrow">
-          <p className="section-label">Principles</p>
-          <h2>Six principles</h2>
-          <hr className="divider" />
-          <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            {principles.map(p => (
-              <div key={p.n} style={{ display: 'grid', gridTemplateColumns: '3rem 1fr', gap: '0 1.25rem', alignItems: 'start' }}>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8125rem', color: 'var(--teal-light)', paddingTop: '0.15em' }}>{p.n}</span>
-                <div>
-                  <p style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '1rem', color: 'var(--charcoal)', marginBottom: '0.35rem', maxWidth: 'none' }}>{p.title}</p>
-                  <p style={{ fontSize: '0.9375rem', color: 'var(--slate)', maxWidth: '60ch' }}>{p.body}</p>
-                </div>
               </div>
             ))}
           </div>
