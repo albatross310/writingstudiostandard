@@ -47,6 +47,27 @@ export default function Standard() {
 
       <section>
         <div className="container container--narrow">
+          <p className="section-label">Licence</p>
+          <h2>Published under CC BY 4.0</h2>
+          <hr className="divider" />
+          <p>
+            The Writing Studio Standard is hereby published under the{' '}
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
+              Creative Commons Attribution 4.0 International (CC BY 4.0)
+            </a>{' '}
+            licence. Anyone may implement, extend, or build upon it — for any purpose, commercial or
+            otherwise — provided they give appropriate attribution to the author(s) and to the Writing
+            Studio Standard by name.
+          </p>
+          <p style={{ marginTop: '1rem', color: 'var(--slate)', fontSize: '0.95rem' }}>
+            Please note that the terms <em>Studio Document</em>, <em>Writing Studio Standard</em>, and{' '}
+            <em>Inkwave</em> are currently planned trademarks.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div className="container container--narrow">
           <p className="section-label">Definitions</p>
           <h2>Primary terms</h2>
           <hr className="divider" />
