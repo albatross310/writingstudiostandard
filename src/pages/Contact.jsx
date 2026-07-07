@@ -26,7 +26,7 @@ export default function Contact() {
             <a href="mailto:petergibson127@gmail.com">petergibson127@gmail.com</a>.
           </p>
           <p style={{ marginTop: '1.25rem' }}>
-            You can find some of my other projects at{' '}
+            You can find some of his other projects at{' '}
             <a href="https://mnemonicecologies.com" target="_blank" rel="noopener noreferrer">mnemonicecologies.com</a>.
           </p>
         </div>

@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     q: 'What are the mnemonic tiles I’ve seen mentioned?',
-    a: 'A planned layer that links artwork — mnemonic tiles from an open library — to words and passages in the document, as visual memory anchors. It is still in development and not yet part of a conformant implementation.',
+    a: 'A planned layer that links artwork — mnemonic tiles — to words and passages in the document, as visual memory anchors. The underlying word list is planned to be open source, but the tiles themselves must be custom-built by each individual Writing Studio. It is still in development and not yet part of a conformant implementation.',
   },
   {
     q: 'What are Inkwave Zero and Inkwave Cubed?',

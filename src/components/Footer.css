@@ -8,8 +8,8 @@
 .footer__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
   gap: 2.5rem;
+  align-items: start;   /* brand + copy on the same top line */
 }
 
 .footer__brand {

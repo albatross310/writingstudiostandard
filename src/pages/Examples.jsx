@@ -295,6 +295,11 @@ export default function Examples() {
             Scroll each file on the left; select a part on the right to jump to it and read what it does.
             Syntax-highlighted exactly as your editor would show it.
           </p>
+          <p className="page-hero__lead" style={{ marginTop: '0.9rem', fontSize: '0.98rem', color: 'var(--slate)' }}>
+            Both files here are heavily stripped down. In practice, a <code className="tag">.studio</code> made
+            in Inkwave Writing Studio ranges from a few MB to a hundred or so MB unzipped (much less when
+            zipped) — though active engineering work is bringing those sizes down.
+          </p>
         </div>
       </div>
 
@@ -310,7 +315,7 @@ export default function Examples() {
       <section>
         <div className="container">
           <p className="section-label">Example two</p>
-          <h2>A Real Life Example: Leibniz and Constructed Language as Evolution</h2>
+          <h2>A Real Life Example: Leibniz and Universal Constructed Language</h2>
           <hr className="divider" />
           <p style={{ marginBottom: '0.5rem', color: 'var(--slate)', fontSize: '0.95rem', maxWidth: '68ch' }}>
             An excerpt of a real honours proposal, PDF-stripped except one source — Leibniz’s <em>New

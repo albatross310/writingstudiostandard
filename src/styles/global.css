@@ -5,8 +5,9 @@
   --ivory-dark:   #d3ccc1;
   --purple:       #4a2b6b;
   --charcoal:     #1c1c1e;
-  --charcoal-mid: #3a3a3c;
-  --slate:        #6b7280;
+  --charcoal-mid: #2f2f31;
+  --slate:        #4c515a;
+  --card-bg:      #f6f2ea;
   --teal:         #3d6b5e;
   --teal-light:   #5a8a7c;
   --teal-pale:    #e8f0ee;
@@ -17,7 +18,7 @@
   --font-sans:   'Inter', system-ui, sans-serif;                             /* labels/kickers only */
   --font-mono:   'JetBrains Mono', 'Fira Code', monospace;
 
-  --radius:      6px;
+  --radius:      13px;
   --shadow-card: 0 1px 4px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.04);
 }
 
@@ -93,7 +94,7 @@ code:not(pre code) {
 }
 
 section {
-  padding: 2.75rem 0;
+  padding: 1rem 0;
 }
 
 section + section {
@@ -143,7 +144,7 @@ section + section {
 
 /* ─── Cards ──────────────────────────────────────────────────────── */
 .card {
-  background: var(--white);
+  background: var(--card-bg);
   border: 1px solid var(--ivory-mid);
   border-radius: var(--radius);
   padding: 1.75rem;
@@ -152,7 +153,7 @@ section + section {
 
 .card__label {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -178,12 +179,12 @@ section + section {
 /* ─── Section label ──────────────────────────────────────────────── */
 .section-label {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.92rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--teal);
-  margin-bottom: 0.875rem;
+  margin-bottom: 0.75rem;
 }
 
 /* ─── Divider ─────────────────────────────────────────────────────── */
@@ -204,7 +205,7 @@ section + section {
 }
 
 .trio-card {
-  background: var(--white);
+  background: var(--card-bg);
   border: 1px solid var(--ivory-mid);
   border-radius: var(--radius);
   padding: 1.75rem;
@@ -237,7 +238,7 @@ section + section {
 }
 
 .layer-card {
-  background: var(--white);
+  background: var(--card-bg);
   border: 1px solid var(--ivory-mid);
   border-left: 4px solid var(--teal-light);
   border-radius: var(--radius);
@@ -337,12 +338,12 @@ section + section {
 
 .page-hero__kicker {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.92rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--teal);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .page-hero__title {
@@ -406,7 +407,7 @@ section + section {
 }
 
 .impl-card {
-  background: var(--white);
+  background: var(--card-bg);
   border: 1px solid var(--ivory-mid);
   border-radius: var(--radius);
   padding: 1.5rem;
@@ -501,7 +502,7 @@ section + section {
   font-family: var(--font-serif);
   font-size: 0.95rem;
   color: var(--charcoal-mid);
-  background: var(--white);
+  background: var(--card-bg);
   border: 1px solid var(--ivory-dark);
   border-radius: var(--radius);
   padding: 0.55rem 0.85rem;
@@ -527,57 +528,47 @@ section + section {
   .studio-explorer__scroll { max-height: 46vh; }
 }
 
-/* ─── Architecture layer cards + fold-out code brief ─────────────────────── */
-.arch-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; align-items: start; }
-.arch-grid.is-open { grid-template-columns: minmax(0, 1fr) minmax(340px, 460px); }
-.arch-cards { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
+/* ─── Architecture: each layer card beside its static code brief ─────────── */
+.arch-rows { display: flex; flex-direction: column; gap: 1.75rem; }
+.arch-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(400px, 520px);
+  gap: 1.5rem;
+  align-items: start;               /* card + brief top-aligned in each row */
+}
 .arch-card {
-  background: var(--white);
+  background: var(--card-bg);
   border: 1px solid var(--ivory-mid);
   border-radius: var(--radius);
   padding: 1.5rem 1.6rem;
   box-shadow: var(--shadow-card);
-  transition: box-shadow 0.15s ease;
 }
-.arch-card.is-active { box-shadow: 0 0 0 2px var(--purple), var(--shadow-card); }
 .arch-badge {
-  font-family: var(--font-sans); font-size: 0.7rem; font-weight: 600;
+  font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600;
   text-transform: uppercase; letter-spacing: 0.08em;
-  padding: 0.2em 0.6em; border-radius: 3px; border: 1px solid var(--ivory-dark);
+  padding: 0.2em 0.6em; border-radius: 5px; border: 1px solid var(--ivory-dark);
   color: var(--slate); background: var(--ivory-mid);
 }
 .arch-badge[data-req="1"] { color: var(--teal); background: var(--teal-pale); border-color: #c0d8d2; }
 .arch-sub {
-  font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600;
+  font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600;
   text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 0.45rem;
 }
-.arch-brief-btn {
-  margin-left: auto; cursor: pointer;
-  font-family: var(--font-mono); font-size: 0.72rem;
-  padding: 0.28em 0.7em; border-radius: 5px;
-  border: 1px solid var(--purple); color: var(--purple); background: transparent;
-  transition: all 0.14s ease; white-space: nowrap;
-}
-.arch-brief-btn:hover { background: var(--purple); color: #fff; }
 .arch-brief {
-  position: sticky; top: 1.25rem;
   border-radius: var(--radius); overflow: hidden;
   border: 1px solid #2a2a2e; box-shadow: var(--shadow-card);
-  max-height: calc(100vh - 3rem); display: flex; flex-direction: column;
+  max-height: 480px; display: flex; flex-direction: column;
 }
 .arch-brief__head {
-  display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
   padding: 0.6rem 0.9rem; background: #24242a; color: #d9d5cc;
-  font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.02em;
+  font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.02em;
 }
-.arch-brief__head button { background: none; border: 0; color: #a9a49a; cursor: pointer; font-size: 1.25rem; line-height: 1; }
-.arch-brief__head button:hover { color: #fff; }
 .arch-brief__code {
   margin: 0; padding: 1rem 1.1rem; background: #1c1c1e; color: #c9c6bf;
   font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6;
   overflow: auto; white-space: pre; flex: 1;
 }
-@media (max-width: 860px) {
-  .arch-grid.is-open { grid-template-columns: 1fr; }
-  .arch-brief { position: static; max-height: 60vh; }
+@media (max-width: 900px) {
+  .arch-row { grid-template-columns: 1fr; }
+  .arch-brief { max-height: 55vh; }
 }

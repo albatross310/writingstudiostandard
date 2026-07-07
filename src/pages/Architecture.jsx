@@ -1,5 +1,3 @@
-import { useState, useRef, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useMeta } from '../useMeta'
 
 // Each layer carries a `brief`: a terse implementation spec — the shape you'd hand another engineer (or
@@ -149,8 +147,8 @@ viewSettings: { zoom, gappedPages, style, ... }
   },
   {
     index: '07', name: 'Mnemonic tiles', required: false, tagline: 'Artwork linked to text — in development',
-    desc: 'A studio is a place for drafting and artwork together. This planned layer carries mnemonic tiles from an open library, each linkable to words, phrases, or sentences as visual memory anchors. It is still in development and not yet part of a conformant implementation.',
-    contains: ['Tile references from an open library', 'Word / phrase / sentence link targets', 'Placement and attribution records'],
+    desc: 'A studio is a place for drafting and artwork together. This planned layer carries mnemonic tiles, each linkable to words, phrases, or sentences as visual memory anchors. The underlying word list is planned to be open source, but the tiles themselves must be custom-built by each Writing Studio. Still in development and not yet part of a conformant implementation.',
+    contains: ['Tile references (studio-built) keyed to an open word list', 'Word / phrase / sentence link targets', 'Placement and attribution records'],
     conformance: 'Optional, and provisional — the layer is not yet finalised.',
     brief: `// PLANNED — not yet part of a conformant implementation.
 tiles?: {
@@ -173,21 +171,6 @@ export default function Architecture() {
     description: 'The anatomy of a .studio file — a Markdown header over a JSON body — and its layers, each with a fold-out implementation brief: readable text, document model, sources, provenance, anchoring, portability, and the in-development mnemonic tiles.',
     path: '/architecture',
   })
-  const [open, setOpen] = useState(null) // index of the layer whose brief is folded out
-  const wrapRef = useRef(null)
-
-  // Collapse when clicking anywhere outside the layers area.
-  useEffect(() => {
-    if (open === null) return
-    const onDown = (e) => { if (wrapRef.current && !wrapRef.current.contains(e.target)) setOpen(null) }
-    const onKey = (e) => { if (e.key === 'Escape') setOpen(null) }
-    document.addEventListener('mousedown', onDown)
-    document.addEventListener('keydown', onKey)
-    return () => { document.removeEventListener('mousedown', onDown); document.removeEventListener('keydown', onKey) }
-  }, [open])
-
-  const active = open !== null ? layers[open] : null
-
   return (
     <main>
       <div className="container">
@@ -217,9 +200,6 @@ export default function Architecture() {
             for both a person and a language model to read than a <code className="tag">.docx</code> or PDF,
             and it never locks the writing behind proprietary machinery.
           </p>
-          <p style={{ marginTop: '1.25rem' }}>
-            <Link to="/examples">See a full file, annotated →</Link>
-          </p>
         </div>
       </section>
 
@@ -228,28 +208,21 @@ export default function Architecture() {
           <p className="section-label">Layer reference</p>
           <h2>The layers</h2>
           <hr className="divider" />
-          <p style={{ marginBottom: '1.5rem', color: 'var(--slate)', fontSize: '0.95rem' }}>
-            Each layer has a <strong>code brief</strong> — the shape you'd hand an engineer to build it.
-            Open one on the right; click anywhere outside to close.
+          <p style={{ marginBottom: '1.25rem', color: 'var(--slate)', fontSize: '0.98rem' }}>
+            Each layer sits beside its <strong>code brief</strong> — the shape you'd hand an engineer to build it.
           </p>
 
-          <div className={'arch-grid' + (active ? ' is-open' : '')} ref={wrapRef}>
-            <div className="arch-cards">
-              {layers.map((layer, i) => (
-                <div key={layer.name} className={'arch-card' + (open === i ? ' is-active' : '')} style={{
-                  borderLeft: `5px solid hsl(${170 - i * 8}, ${36 - i * 2}%, ${50 - i}%)`,
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.85rem', marginBottom: '0.4rem', flexWrap: 'wrap' }}>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8125rem', color: 'var(--teal-light)' }}>{layer.index}</span>
+          <div className="arch-rows">
+            {layers.map((layer, i) => (
+              <div className="arch-row" key={layer.name}>
+                <div className="arch-card" style={{ borderLeft: `5px solid hsl(${170 - i * 8}, ${36 - i * 2}%, ${50 - i}%)` }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem', marginBottom: '0.4rem', flexWrap: 'wrap' }}>
+                    <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.55rem', fontWeight: 700, color: 'var(--teal-light)', lineHeight: 1 }}>{parseInt(layer.index, 10)}</span>
                     <h3 style={{ margin: 0 }}>{layer.name}</h3>
                     <span className="arch-badge" data-req={layer.required ? '1' : '0'}>{layer.required ? 'Required' : 'Optional'}</span>
-                    <button type="button" className="arch-brief-btn" aria-expanded={open === i}
-                      onClick={() => setOpen(open === i ? null : i)}>
-                      {open === i ? '× close brief' : '⟨ ⟩ code brief'}
-                    </button>
                   </div>
-                  <p style={{ fontStyle: 'italic', color: 'var(--slate)', marginBottom: '0.7rem', fontSize: '0.9rem' }}>{layer.tagline}</p>
-                  <p style={{ fontSize: '0.92rem', color: 'var(--charcoal-mid)', marginBottom: '1rem', maxWidth: '64ch' }}>{layer.desc}</p>
+                  <p style={{ fontStyle: 'italic', color: 'var(--slate)', marginBottom: '0.7rem', fontSize: '0.92rem' }}>{layer.tagline}</p>
+                  <p style={{ fontSize: '0.94rem', color: 'var(--charcoal-mid)', marginBottom: '1rem', maxWidth: '60ch' }}>{layer.desc}</p>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.6rem 1.5rem' }}>
                     <div>
                       <p className="arch-sub">Carries</p>
@@ -263,18 +236,25 @@ export default function Architecture() {
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
 
-            {active && (
-              <aside className="arch-brief" onMouseDown={e => e.stopPropagation()}>
-                <div className="arch-brief__head">
-                  <span>{active.index} · {active.name} — implementation brief</span>
-                  <button type="button" onClick={() => setOpen(null)} aria-label="Close brief">×</button>
-                </div>
-                <pre className="arch-brief__code">{active.brief}</pre>
-              </aside>
-            )}
+                <aside className="arch-brief">
+                  <div className="arch-brief__head">{parseInt(layer.index, 10)} · {layer.name} — implementation brief</div>
+                  <pre className="arch-brief__code">{layer.brief}</pre>
+                </aside>
+              </div>
+            ))}
+          </div>
+
+          <div className="card" style={{ marginTop: '2rem' }}>
+            <p className="card__label">A note on scope</p>
+            <p className="card__body">
+              This site is under active development. A more rigorous standard for precisely how each
+              optional layer of a Studio Document should be structured — to maximise cross-compatibility
+              between tools — is a continually evolving process. We welcome all feedback on how to balance
+              the necessary technical detail against the understandability of the Writing Studio Standard as
+              set out here, and warmly invite you to{' '}
+              <a href="/contact">get in touch</a>.
+            </p>
           </div>
         </div>
       </section>
