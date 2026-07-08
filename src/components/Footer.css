@@ -7,9 +7,9 @@
 
 .footer__inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.7fr 1fr;   /* wider left, narrower right */
   gap: 2.5rem;
-  align-items: start;   /* brand + copy on the same top line */
+  align-items: start;
 }
 
 .footer__brand {

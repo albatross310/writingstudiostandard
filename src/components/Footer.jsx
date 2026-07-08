@@ -17,7 +17,7 @@ export default function Footer() {
             Fonts are served from this domain. Our host (Vercel) keeps standard server request logs.
           </p>
         </div>
-        <p className="footer__copy" style={{ marginLeft: 'auto', textAlign: 'right', marginTop: '100px' }}>
+        <p className="footer__copy" style={{ marginLeft: 'auto', textAlign: 'right', marginTop: '1.7rem', lineHeight: 2.3 }}>
           By Peter Gibson — Philosopher, Creator, and Developer.<br />
           <a href="mailto:petergibson127@gmail.com" style={{ color: 'inherit' }}>petergibson127@gmail.com</a>.<br />
           Other projects at <a href="https://mnemonicecologies.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>mnemonicecologies.com</a>.<br />
