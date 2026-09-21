@@ -1,49 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
+import { SyntaxHighlight } from '../components/SyntaxHighlight'
 import { useMeta } from '../useMeta'
-
-// ── VS Code-style syntax highlighting (Dark+) for the .studio content ──────────────────────────────
-const C = {
-  key: '#d7dadd', str: '#f1f1ef', num: '#b7bbbd', kw: '#e2e4e5',
-  punct: '#a4a8aa', comment: '#7f8588', head: '#ffffff', text: '#cdd0d2',
-}
-function tokenize(src) {
-  const out = []
-  let buf = '', bufC = C.text
-  const flush = () => { if (buf) { out.push([buf, bufC]); buf = '' } }
-  const emit = (t, c) => { flush(); out.push([t, c]) }
-  const add = (ch, c) => { if (c !== bufC) { flush(); bufC = c } buf += ch }
-  let i = 0
-  while (i < src.length) {
-    const two = src.slice(i, i + 2)
-    const four = src.slice(i, i + 4)
-    if (four === '<!--') { const j = src.indexOf('-->', i); const e = j < 0 ? src.length : j + 3; emit(src.slice(i, e), C.comment); i = e; continue }
-    if (two === '/*') { const j = src.indexOf('*/', i); const e = j < 0 ? src.length : j + 2; emit(src.slice(i, e), C.comment); i = e; continue }
-    if (two === '//') { const j = src.indexOf('\n', i); const e = j < 0 ? src.length : j; emit(src.slice(i, e), C.comment); i = e; continue }
-    const ch = src[i]
-    if (ch === '═' || ch === '━') { let j = i; while (j < src.length && (src[j] === '═' || src[j] === '━' || src[j] === ' ')) j++; emit(src.slice(i, j), C.comment); i = j; continue }
-    if (ch === '"') {
-      let j = i + 1
-      while (j < src.length && src[j] !== '"') { if (src[j] === '\\') j++; j++ }
-      j++
-      let k = j; while (k < src.length && /\s/.test(src[k])) k++
-      emit(src.slice(i, Math.min(j, src.length)), src[k] === ':' ? C.key : C.str)
-      i = j; continue
-    }
-    if (/[0-9]/.test(ch) && !/[A-Za-z_]/.test(src[i - 1] || ' ')) {
-      let j = i; while (j < src.length && /[0-9.eE+-]/.test(src[j])) j++
-      emit(src.slice(i, j), C.num); i = j; continue
-    }
-    const kw = src.slice(i).match(/^(true|false|null)\b/)
-    if (kw) { emit(kw[0], C.kw); i += kw[0].length; continue }
-    add(ch, /[{}[\]:,]/.test(ch) ? C.punct : C.text)
-    i++
-  }
-  flush()
-  return out
-}
-function HL({ text }) {
-  return <>{tokenize(text).map(([t, c], i) => <span key={i} style={{ color: c }}>{t}</span>)}</>
-}
 
 // ── Example 1: a toy file ──────────────────────────────────────────────────────────────────────────
 const TOY_BLOCKS = [
@@ -290,7 +247,7 @@ function Explorer({ filename, blocks, parts, firstId }) {
                 className={'studio-block' + (b.id && b.id === active ? ' is-active' : '')}
                 onClick={() => { if (b.id) setActive(b.id) }}
                 disabled={!b.id}>
-                <HL text={b.text} />
+                <SyntaxHighlight text={b.text} />
               </button>
             ))}
           </div>
