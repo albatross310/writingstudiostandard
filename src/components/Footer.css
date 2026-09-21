@@ -84,13 +84,17 @@
 }
 
 .footer__credit,
-.footer__licence { max-width: 36ch; }
+.footer__licence {
+  max-width: 36ch;
+  color: #e2e6e7;
+}
 
 .footer__credit { line-height: 1.55; }
 
 .footer__contact {
   margin-top: auto;
   line-height: 1.8;
+  color: #e2e6e7;
 }
 
 .footer__licence {
