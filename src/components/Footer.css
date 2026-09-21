@@ -35,6 +35,11 @@
   margin-bottom: 0.5rem;
 }
 
+.footer__credit-spacer {
+  visibility: hidden;
+  width: 100%;
+}
+
 .footer__tagline {
   font-size: 0.875rem;
   color: #dce1e2;
