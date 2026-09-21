@@ -1,8 +1,8 @@
 .footer {
-  background: var(--charcoal);
-  color: #b0a898;
-  padding: 4rem 0;
-  margin-top: 2.75rem;   /* breathing room between the last section and the footer */
+  background: var(--purple);
+  color: #d8d3da;
+  padding: 4.5rem 0;
+  margin-top: 0;
 }
 
 .footer__inner {
@@ -17,17 +17,17 @@
 }
 
 .footer__name {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 1rem;
-  color: var(--ivory);
+  font-size: 1.1rem;
+  color: #fff;
   display: block;
   margin-bottom: 0.5rem;
 }
 
 .footer__tagline {
   font-size: 0.875rem;
-  color: #857d72;
+  color: #d8d3da;
   max-width: 36ch;
   line-height: 1.55;
 }
@@ -42,20 +42,20 @@
 
 .footer__nav a {
   font-size: 0.875rem;
-  color: #a09890;
+  color: #d8d3da;
   text-decoration: none;
   transition: color 0.12s;
 }
 
 .footer__nav a:hover {
-  color: var(--ivory);
+  color: #fff;
   text-decoration: none;
 }
 
 .footer__copy {
   grid-column: 2;            /* same top line as the brand (not a full-width row below) */
   font-size: 0.8125rem;
-  color: #5a5248;
+  color: #b9b1bc;
   max-width: none;
   line-height: 1.6;
 }

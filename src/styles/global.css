@@ -1,25 +1,26 @@
 /* ─── Design tokens ─────────────────────────────────────────────── */
 :root {
-  --ivory:        #f1ece2;
-  --ivory-mid:    #e6e1d7;
-  --ivory-dark:   #d3ccc1;
-  --purple:       #4a2b6b;
-  --charcoal:     #1c1c1e;
-  --charcoal-mid: #2f2f31;
-  --slate:        #4c515a;
-  --card-bg:      #f6f2ea;
-  --teal:         #3d6b5e;
-  --teal-light:   #5a8a7c;
-  --teal-pale:    #e8f0ee;
+  --ivory:        #f8f7f2;
+  --ivory-mid:    #e7e3df;
+  --ivory-dark:   #cbc4c6;
+  --purple:       #302438;
+  --charcoal:     #2c2a28;
+  --charcoal-mid: #4c4744;
+  --slate:        #706965;
+  --card-bg:      rgba(255, 255, 255, 0.84);
+  --teal:         #3b6f75;
+  --teal-light:   #5f8587;
+  --teal-pale:    #e4eeee;
+  --lavender-pale:#f1eef5;
   --white:        #ffffff;
 
-  --font-serif:  'EB Garamond', Garamond, 'Times New Roman', Georgia, serif; /* headings */
-  --font-body:   'Times New Roman', Times, Georgia, serif;                    /* body text */
-  --font-sans:   'Inter', system-ui, sans-serif;                             /* labels/kickers only */
+  --font-serif:  'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
+  --font-body:   'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
+  --font-sans:   'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
   --font-mono:   'JetBrains Mono', 'Fira Code', monospace;
 
-  --radius:      13px;
-  --shadow-card: 0 1px 4px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.04);
+  --radius:      16px;
+  --shadow-card: 0 1px 1px rgba(48,36,56,0.06), 0 10px 30px rgba(48,36,56,0.06);
 }
 
 /* ─── Reset ─────────────────────────────────────────────────────── */
@@ -29,33 +30,37 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+  background: var(--purple);
 }
 
 body {
-  background: var(--ivory);
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% -20%, rgba(255,255,255,.98), transparent 36rem),
+    linear-gradient(180deg, #fbfaf7 0%, var(--ivory) 64%, #f1efea 100%);
   color: var(--charcoal);
   font-family: var(--font-body);
-  font-size: 1.06rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.58;
 }
 
 /* ─── Typography ─────────────────────────────────────────────────── */
 h1, h2, h3, h4 {
   font-family: var(--font-serif);
-  line-height: 1.25;
-  font-weight: 700;
-  color: var(--charcoal);
+  line-height: 1.08;
+  font-weight: 650;
+  color: var(--purple);
 }
 
-h1 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); letter-spacing: -0.01em; }
-h2 { font-size: clamp(1.3rem, 2.6vw, 1.7rem); letter-spacing: -0.01em; }
-h3 { font-size: clamp(1.05rem, 2vw, 1.25rem); }
-h4 { font-size: 1rem; font-family: var(--font-sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); }
+h1 { font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -0.035em; }
+h2 { font-size: clamp(1.45rem, 2.8vw, 2.1rem); letter-spacing: -0.025em; }
+h3 { font-size: clamp(1.08rem, 2vw, 1.3rem); letter-spacing: -0.015em; }
+h4 { font-size: 0.78rem; font-family: var(--font-sans); font-weight: 650; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); }
 
 p { color: var(--charcoal-mid); max-width: 68ch; }
 p + p { margin-top: 1em; }
 
-a { color: var(--purple); text-decoration: none; }
+a { color: var(--teal); text-decoration: underline; text-underline-offset: 0.16em; }
 a:hover { text-decoration: underline; }
 
 code, pre {
@@ -83,55 +88,55 @@ code:not(pre code) {
 /* ─── Layout ─────────────────────────────────────────────────────── */
 .container {
   width: 100%;
-  max-width: 880px;   /* narrower → content sits closer to the centre of the window */
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
 }
 
 .container--narrow {
   /* Same left edge as the hero (no centred indent); prose stays readable via per-element max-width. */
-  max-width: 880px;
+  max-width: 840px;
 }
 
 section {
-  padding: 1rem 0;
+  padding: 4.5rem 0;
 }
 
 section + section {
-  border-top: 1px solid var(--ivory-mid);
+  border-top: 1px solid rgba(203,196,198,.68);
 }
 
 /* ─── Buttons ────────────────────────────────────────────────────── */
 .btn {
   display: inline-block;
   padding: 0.7rem 1.6rem;
-  border-radius: var(--radius);
+  border-radius: 999px;
   font-family: var(--font-sans);
   font-size: 0.9375rem;
-  font-weight: 500;
+  font-weight: 620;
   cursor: pointer;
   transition: background 0.15s, color 0.15s, box-shadow 0.15s;
   text-decoration: none;
 }
 
 .btn--primary {
-  background: var(--teal);
+  background: var(--purple);
   color: var(--white);
-  border: 2px solid var(--teal);
+  border: 2px solid var(--purple);
 }
 .btn--primary:hover {
-  background: #325a4e;
-  border-color: #325a4e;
+  background: #46364f;
+  border-color: #46364f;
   text-decoration: none;
 }
 
 .btn--outline {
-  background: transparent;
-  color: var(--teal);
-  border: 2px solid var(--teal);
+  background: rgba(255,255,255,.55);
+  color: var(--purple);
+  border: 1px solid var(--ivory-dark);
 }
 .btn--outline:hover {
-  background: var(--teal-pale);
+  background: var(--lavender-pale);
   text-decoration: none;
 }
 
@@ -145,7 +150,7 @@ section + section {
 /* ─── Cards ──────────────────────────────────────────────────────── */
 .card {
   background: var(--card-bg);
-  border: 1px solid var(--ivory-mid);
+  border: 1px solid rgba(203,196,198,.82);
   border-radius: var(--radius);
   padding: 1.75rem;
   box-shadow: var(--shadow-card);
@@ -154,7 +159,7 @@ section + section {
 .card__label {
   font-family: var(--font-sans);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--teal);
@@ -164,8 +169,8 @@ section + section {
 .card__title {
   font-family: var(--font-serif);
   font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--charcoal);
+  font-weight: 650;
+  color: var(--purple);
   margin-bottom: 0.625rem;
 }
 
@@ -180,7 +185,7 @@ section + section {
 .section-label {
   font-family: var(--font-sans);
   font-size: 0.92rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--teal);
@@ -189,9 +194,9 @@ section + section {
 
 /* ─── Divider ─────────────────────────────────────────────────────── */
 .divider {
-  width: 3rem;
-  height: 2px;
-  background: var(--teal-light);
+  width: 2.5rem;
+  height: 3px;
+  background: var(--purple);
   margin: 1.5rem 0;
   border: none;
 }
@@ -206,22 +211,22 @@ section + section {
 
 .trio-card {
   background: var(--card-bg);
-  border: 1px solid var(--ivory-mid);
+  border: 1px solid rgba(203,196,198,.82);
   border-radius: var(--radius);
   padding: 1.75rem;
   box-shadow: var(--shadow-card);
 }
 
 .trio-card--highlight {
-  border-color: var(--teal-light);
-  background: linear-gradient(145deg, var(--white), var(--teal-pale));
+  border-color: #c5d8d9;
+  background: linear-gradient(145deg, rgba(255,255,255,.96), var(--teal-pale));
 }
 
 .trio-card__stores {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
-  color: var(--teal);
-  background: var(--ivory-mid);
+  color: var(--purple);
+  background: var(--lavender-pale);
   border: 1px solid var(--ivory-dark);
   border-radius: 4px;
   padding: 0.3em 0.65em;
@@ -239,7 +244,7 @@ section + section {
 
 .layer-card {
   background: var(--card-bg);
-  border: 1px solid var(--ivory-mid);
+  border: 1px solid rgba(203,196,198,.82);
   border-left: 4px solid var(--teal-light);
   border-radius: var(--radius);
   padding: 1.5rem 1.75rem;
@@ -252,7 +257,7 @@ section + section {
 
 .layer-card__name {
   font-family: var(--font-serif);
-  font-weight: 700;
+  font-weight: 650;
   font-size: 1rem;
   color: var(--charcoal);
 }
@@ -274,7 +279,7 @@ section + section {
   align-items: center;
   gap: 0.75rem;
   padding: 0.6rem 1rem;
-  background: var(--charcoal-mid);
+  background: var(--purple);
   border-radius: var(--radius) var(--radius) 0 0;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
@@ -302,7 +307,7 @@ section + section {
 
 .faq-item {
   border-bottom: 1px solid var(--ivory-mid);
-  padding: 1rem 0;
+  padding: 1.5rem 0;
 }
 
 .faq-item:first-child {
@@ -311,9 +316,9 @@ section + section {
 
 .faq-item__q {
   font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--charcoal);
+  font-size: 1.3rem;
+  font-weight: 650;
+  color: var(--purple);
   margin-bottom: 0.6rem;
 }
 
@@ -325,8 +330,8 @@ section + section {
 
 /* ─── Page hero (inner pages) ────────────────────────────────────── */
 .page-hero {
-  padding: 2.5rem 0 1.75rem;
-  border-bottom: 1px solid var(--ivory-mid);
+  padding: 5.25rem 0 3rem;
+  border-bottom: 1px solid rgba(203,196,198,.68);
 }
 /* The inline .studio tag inside a hero title should read at title scale, not tiny inline-code size. */
 .page-hero__title .tag,
@@ -348,9 +353,9 @@ section + section {
 
 .page-hero__title {
   font-family: var(--font-serif);
-  font-size: clamp(1.5rem, 3vw, 2.1rem);
-  font-weight: 700;
-  color: var(--charcoal);
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  font-weight: 650;
+  color: var(--purple);
   margin-bottom: 1rem;
 }
 
@@ -366,10 +371,10 @@ section + section {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
-  color: var(--teal);
-  background: var(--teal-pale);
-  border: 1px solid #c0d8d2;
-  border-radius: 4px;
+  color: var(--purple);
+  background: var(--lavender-pale);
+  border: 1px solid #d8d0de;
+  border-radius: 6px;
   padding: 0.2em 0.55em;
   line-height: 1.4;
 }
@@ -392,8 +397,8 @@ section + section {
 }
 
 .checklist li::before {
-  content: '—';
-  color: var(--teal-light);
+  content: '•';
+  color: var(--teal);
   flex-shrink: 0;
   font-weight: 400;
 }
@@ -408,7 +413,7 @@ section + section {
 
 .impl-card {
   background: var(--card-bg);
-  border: 1px solid var(--ivory-mid);
+  border: 1px solid rgba(203,196,198,.82);
   border-radius: var(--radius);
   padding: 1.5rem;
   box-shadow: var(--shadow-card);
@@ -416,7 +421,7 @@ section + section {
 
 .impl-card__name {
   font-family: var(--font-serif);
-  font-weight: 700;
+  font-weight: 650;
   font-size: 1.05rem;
   margin-bottom: 0.5rem;
   color: var(--charcoal);
@@ -439,14 +444,14 @@ section + section {
 
 /* ─── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 700px) {
-  section { padding: 3.5rem 0; }
+  section { padding: 3.25rem 0; }
 
   .layer-card {
     grid-template-columns: 1fr;
     gap: 0.5rem;
   }
 
-  .page-hero { padding: 2.5rem 0 2rem; }
+  .page-hero { padding: 3.5rem 0 2rem; }
 }
 
 /* ── Interactive .studio explorer (Examples) ─────────────────────────────── */
@@ -528,7 +533,7 @@ section + section {
   .studio-explorer__scroll { max-height: 46vh; }
 }
 
-/* ─── Architecture: each layer card beside its static code brief ─────────── */
+/* ─── Architecture capability cards ─────────────────────────────────────── */
 .arch-rows { display: flex; flex-direction: column; gap: 1.75rem; }
 .arch-row {
   display: grid;
@@ -574,4 +579,56 @@ section + section {
 @media (max-width: 820px) {
   .arch-row { grid-template-columns: 1fr; }
   .arch-brief { max-height: 55vh; }
+}
+
+/* The current architecture page is prose-led: each record capability is one full-width card with a
+   clear implementation-status label. */
+.arch-row { display: block; }
+.arch-card {
+  border-left: 4px solid var(--teal);
+  background: rgba(255, 255, 255, 0.76);
+}
+.arch-card__head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.75rem 1rem;
+  align-items: start;
+}
+.arch-card__head h3 { margin: 0; }
+.arch-index {
+  display: inline-grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--lavender-pale);
+  color: var(--purple);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.arch-tagline {
+  margin-top: 0.25rem;
+  color: var(--slate);
+  font-size: 0.93rem;
+}
+.arch-desc { margin-top: 1.15rem; max-width: 72ch; }
+.arch-card .checklist { margin-top: 1rem; }
+.arch-badge {
+  max-width: 18rem;
+  text-align: right;
+  line-height: 1.25;
+  background: var(--teal-pale);
+  border-color: #c5d8d9;
+  color: var(--teal);
+}
+.arch-badge[data-req="0"] {
+  background: var(--lavender-pale);
+  border-color: #ddd5e3;
+  color: var(--purple);
+}
+.studio-code { color: #e9e5e8; }
+
+@media (max-width: 640px) {
+  .arch-card__head { grid-template-columns: auto minmax(0, 1fr); }
+  .arch-badge { grid-column: 1 / -1; max-width: none; text-align: left; justify-self: start; }
 }

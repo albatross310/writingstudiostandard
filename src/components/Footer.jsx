@@ -7,10 +7,10 @@ export default function Footer() {
         <div className="footer__brand">
           <span className="footer__name">Writing Studio Standard</span>
           <p className="footer__tagline">
-            An open standard for documents that remember how they were made.
+            An open standard for documents that carry the work around them.
           </p>
           <p className="footer__tagline" style={{ marginTop: '0.6rem', opacity: 0.8 }}>
-            The mnemonic-tile layer is still in development.
+            Source libraries, voice editions and Verified Capture each state their own implementation status.
           </p>
           <p className="footer__tagline" style={{ marginTop: '0.6rem', fontSize: '0.8125rem', opacity: 0.7, maxWidth: '44ch' }}>
             Privacy: this site collects nothing — no analytics, no cookies, no tracking.
@@ -18,10 +18,10 @@ export default function Footer() {
           </p>
         </div>
         <p className="footer__copy" style={{ marginLeft: 'auto', textAlign: 'right', marginTop: '1.7rem', lineHeight: 2.3 }}>
-          By Peter Gibson — Philosopher, Creator, and Developer.<br />
+          By Peter Gibson — philosopher, creator and developer.<br />
           <a href="mailto:petergibson127@gmail.com" style={{ color: 'inherit' }}>petergibson127@gmail.com</a>.<br />
           Other projects at <a href="https://mnemonicecologies.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>mnemonicecologies.com</a>.<br />
-          An open specification, released for public use without restriction.
+          An open specification, published under CC BY 4.0.
         </p>
       </div>
     </footer>
