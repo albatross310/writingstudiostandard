@@ -225,7 +225,7 @@ const EMAIL_VOICE_PARTS = [
   { id: 'audio', label: 'Audio bytes and timing', body: 'The audio string is an illustrative Base64 placeholder. It demonstrates where a real rendered part, duration and word timings would live without pretending the page contains playable audio.' },
 ]
 
-function Explorer({ filename, blocks, parts, firstId }) {
+function Explorer({ filename, blocks, parts, firstId, fillPanel = false }) {
   const [active, setActive] = useState(firstId)
   const scrollRef = useRef(null)
   const blockRefs = useRef({})
@@ -236,7 +236,7 @@ function Explorer({ filename, blocks, parts, firstId }) {
   const activePart = parts.find(p => p.id === active)
   const lineCount = countLines(blocks.map(block => block.text).join(''))
   return (
-    <div className="studio-explorer">
+    <div className={`studio-explorer${fillPanel ? ' studio-explorer--fill' : ''}`}>
       <div className="studio-explorer__file">
         <CodeBar filename={filename} language="JSON" symbol="{}" lines={lineCount} />
         <div className="studio-explorer__scroll" ref={scrollRef}>
@@ -298,7 +298,7 @@ export default function Examples() {
           <p className="section-label">Example one</p>
           <h2>A Toy Example: Leibniz and His World</h2>
           <hr className="divider" />
-          <Explorer filename="on-artificial-languages.studio" blocks={TOY_BLOCKS} parts={TOY_PARTS} firstId="header" />
+          <Explorer filename="on-artificial-languages.studio" blocks={TOY_BLOCKS} parts={TOY_PARTS} firstId="header" fillPanel />
         </div>
       </section>
 
@@ -325,7 +325,7 @@ export default function Examples() {
             clearly labelled illustrative audio payload. It shows how email and a voice edition stay connected
             without making the audio part of the source email itself.
           </p>
-          <Explorer filename="north-watch-email.studio" blocks={EMAIL_VOICE_BLOCKS} parts={EMAIL_VOICE_PARTS} firstId="eheader" />
+          <Explorer filename="north-watch-email.studio" blocks={EMAIL_VOICE_BLOCKS} parts={EMAIL_VOICE_PARTS} firstId="eheader" fillPanel />
         </div>
       </section>
     </main>

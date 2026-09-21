@@ -523,6 +523,20 @@ section + section {
   position: sticky;
   top: 1.5rem;
 }
+.studio-explorer--fill {
+  align-items: stretch;
+}
+.studio-explorer--fill .studio-explorer__file {
+  display: flex;
+  flex-direction: column;
+  height: 0;
+  min-height: 100%;
+}
+.studio-explorer--fill .studio-explorer__scroll {
+  flex: 1;
+  min-height: 0;
+  max-height: none;
+}
 .studio-explorer__scroll {
   max-height: 68vh;
   overflow-y: auto;
@@ -591,7 +605,9 @@ section + section {
 .studio-explorer__commentary .card__body { max-width: none; }
 @media (max-width: 700px) {
   .studio-explorer { grid-template-columns: 1fr; }
-  .studio-explorer__file { position: static; }
+  .studio-explorer__file,
+  .studio-explorer--fill .studio-explorer__file { position: static; height: auto; }
+  .studio-explorer--fill .studio-explorer__scroll,
   .studio-explorer__scroll { max-height: 46vh; }
 }
 
