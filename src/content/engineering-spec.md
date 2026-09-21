@@ -952,7 +952,7 @@ Targets SHOULD use durable document anchors and MUST declare their coordinate or
 
 ## Appendix B: Complete worked examples (informative)
 
-These are the complete illustrative snippets displayed on the Examples page, concatenated in their displayed order. Comments, shortened hashes, ellipses and fake Base64 strings are deliberate; the examples explain relationships and are not byte-valid conformance fixtures. A production fixture MUST replace every elision with valid data and satisfy the normative rules above.
+These are the complete illustrative snippets displayed on the Examples page, concatenated in their displayed order. Comments, shortened hashes, ellipses and placeholder Base64 strings are deliberate; the examples explain relationships and are not byte-valid conformance fixtures. A production fixture MUST replace every elision with valid data and satisfy the normative rules above.
 
 ### B.1 Toy essay — `on-artificial-languages.studio`
 
@@ -1212,9 +1212,9 @@ The projection places To, From and Subject before the body so the message is ins
 
 The short night-watch script is original and intentionally Hamlet-like without reproducing the play. The edition identifies its source kind, stable source ID and exact revision before naming a cast and script. A source edit changes the revision and requires reuse or invalidation decisions at part granularity.
 
-#### B.3.4 Fake audio bytes and timing
+#### B.3.4 Audio bytes and timing
 
-The Base64 value decodes to fake marker bytes and is deliberately not playable. It demonstrates the location of audio, duration and timing entries. A production record SHOULD use an attachment reference rather than a large inline string, MUST identify media type and integrity, and MUST ensure timing values are monotonic, non-negative and within the part duration.
+The Base64 value decodes to illustrative marker bytes and is deliberately not playable. It demonstrates the location of audio, duration and timing entries. A production record SHOULD use an attachment reference rather than a large inline string, MUST identify media type and integrity, and MUST ensure timing values are monotonic, non-negative and within the part duration.
 
 ## Appendix C: Complete public FAQ (informative)
 
