@@ -202,6 +202,8 @@ Browsing a provider mailbox MUST NOT automatically create Studio Documents, snap
 
 ## 12. Snapshots, receipts and timestamps
 
+A cryptographic hash is a deterministic fixed-length fingerprint calculated from exact content bytes. Identical canonical content MUST produce the same hash; a content change is expected to produce a different hash. Hashes allow a verifier to compare content without sending the document to a signing or timestamp service.
+
 ### 12.1 Snapshots
 
 Snapshots record document states and hashes. A snapshot archive MUST be grow-only. Merge operations MUST union history and MUST NOT silently truncate it. A failed read MUST NOT be interpreted as an empty archive.
@@ -216,13 +218,13 @@ A snapshot MAY carry an OpenTimestamps or Bitcoin-backed proof. The proof demons
 
 ### 12.4 Verification limits
 
-Verification MAY establish whether hashes, signatures, snapshots and timestamp proofs agree. It MUST NOT claim to establish legal identity, eliminate all possible assistance, establish private intention or certify the origin of every idea.
+Verification MAY establish whether hashes, signatures, snapshots and timestamp proofs agree. Where a valid signature or timestamp exists, it MAY establish that the matching content was recorded by the applicable proof boundary and has not subsequently been altered without detection. A hash by itself does not establish who produced the content, how it was entered or whether AI assistance was used. Verification MUST NOT claim to establish legal identity, eliminate all possible assistance, establish private intention or certify the origin of every idea.
 
 ## 13. Verified Capture (Planned)
 
-Verified Capture is a planned desktop-only extension. It is not a current public product claim.
+Inkwave is being expanded into a desktop application for macOS and Windows. Verified Capture is a planned, optional desktop-only extension intended to give readers materially higher confidence that certified portions of a Studio were edited inside the Inkwave surface without AI insertion. It is not a current public product claim.
 
-The proposed Tauri implementation will bind eligible native input to signed capture intervals and classify text as verified, inherited, imported or uncertified. It is intended to raise the cost of routine browser automation, including Playwright, Selenium, DevTools insertion and clipboard bulk insertion.
+The proposed implementation will bind eligible native input to signed capture intervals and classify text as verified, inherited, imported or uncertified. It is intended to restrict ordinary bulk insertion and raise the cost of routine browser automation, including Playwright, Selenium, DevTools insertion and clipboard insertion.
 
 Verified Capture MUST NOT claim to defeat a hostile operating system, custom hardware injector or manual retyping of generated prose.
 
@@ -284,9 +286,13 @@ The current and specified vocabulary includes PDFs, EPUBs, Markdown and text fil
 
 No. Ordinary Inkwave provenance uses content hashes, snapshots and signed receipts rather than a surveillance log of every keypress. Verified Capture is a distinct planned extension with explicit, bounded evidence claims.
 
-### What does verification prove?
+### How do hashes work, and what do they prove?
 
-It can establish technical integrity and bounded dating claims where the relevant fields are present. It cannot establish identity, detect all AI assistance or certify every idea's origin.
+A cryptographic hash is a short fingerprint calculated from exact document content. The same content produces the same hash; an edit produces a different one. Inkwave can hash snapshots, link signed receipts to earlier hashes and optionally timestamp a hash. A verifier can use that evidence to detect alteration and establish bounded dating claims. A hash alone cannot identify the writer, explain how text was entered, detect AI assistance or prove that writing occurred inside Inkwave.
+
+### Can Inkwave show that a Studio was written without AI?
+
+Inkwave is being expanded into a desktop application for macOS and Windows. Its planned optional Verified Capture mode is designed to distinguish eligible native editing in the Inkwave surface from imported or uncertified text, restrict ordinary bulk insertion and browser automation, and sign bounded capture intervals. This is intended to provide materially higher confidence than an ordinary web document that certified portions were written in Inkwave without AI insertion. It cannot guarantee that no AI was used: manual retyping, custom input hardware and a compromised operating system remain outside the proof, and the evidence cannot establish who conceived an idea.
 
 ## Appendix C: Participation and contact (informative)
 
