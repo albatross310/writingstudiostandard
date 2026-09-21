@@ -297,7 +297,6 @@ function Explorer({ filename, blocks, parts, firstId }) {
         </div>
       </div>
       <aside className="studio-explorer__panel">
-        <p className="section-label studio-explorer__label">Interesting parts</p>
         <ul className="studio-explorer__links">
           {parts.map(p => (
             <li key={p.id}>
