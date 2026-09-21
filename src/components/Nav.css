@@ -60,7 +60,7 @@
   box-shadow: inset 0 -2px 0 var(--ink);
 }
 
-@media (min-width: 1001px) {
+@media (min-width: 1200px) {
   .nav__inner {
     display: grid;
     grid-template-columns: max-content minmax(0, 1fr) var(--nav-column);
@@ -75,7 +75,7 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1199px) {
   .nav__inner {
     height: auto;
     min-height: 52px;
@@ -113,7 +113,7 @@
   }
 }
 
-@media (min-width: 1001px) {
+@media (min-width: 1200px) {
   .nav__link:last-child {
     padding-right: 0;
   }
