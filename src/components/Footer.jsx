@@ -20,6 +20,9 @@ export default function Footer() {
           </p>
         </div>
         <div className="footer__copy">
+          <span className="footer__name footer__credit-spacer" aria-hidden="true">
+            Writing Studio Standard
+          </span>
           <p className="footer__credit">
             By Peter Gibson — philosophy student,<br className="footer__credit-break" />
             math graduate, and product designer.
