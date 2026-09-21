@@ -582,9 +582,11 @@ section + section {
   .arch-brief { max-height: 55vh; }
 }
 
-/* The current architecture page is prose-led: each record capability is one full-width card with a
-   clear implementation-status label. */
-.arch-row { display: block; }
+/* Architecture keeps its detailed implementation brief beside each layer on a wide screen. */
+.arch-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+}
 .arch-card {
   border-left: 4px solid var(--teal);
   background: rgba(255, 255, 255, 0.76);
@@ -630,6 +632,7 @@ section + section {
 .studio-code { color: #e9e5e8; }
 
 @media (max-width: 640px) {
+  .arch-row { grid-template-columns: 1fr; }
   .arch-card__head { grid-template-columns: auto minmax(0, 1fr); }
   .arch-badge { grid-column: 1 / -1; max-width: none; text-align: left; justify-self: start; }
 }

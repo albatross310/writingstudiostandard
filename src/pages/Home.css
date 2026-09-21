@@ -52,6 +52,10 @@
 .cta-inner .btn--primary { background: #fff; border-color: #fff; color: var(--purple); }
 .cta-inner .btn--outline { background: transparent; border-color: rgba(255,255,255,.62); color: #fff; }
 
+/* Contact has one primary action and then its detail section. It uses the shared hero treatment
+   without carrying the landing page’s long closing cushion below that action. */
+.contact-hero { padding-bottom: 2.5rem; }
+
 @media (max-width: 700px) {
   .hero { padding: 4rem 0 3.5rem; }
 

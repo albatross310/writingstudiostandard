@@ -1,7 +1,7 @@
 export default function Contact() {
   return (
     <main>
-      <section className="hero">
+      <section className="hero contact-hero">
         <div className="container hero__inner">
           <p className="section-label">Contact</p>
           <h1 className="hero__title">Please do get in touch</h1>
