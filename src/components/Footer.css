@@ -91,7 +91,13 @@
   text-underline-offset: 0.14em;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1100px) {
+  .footer__licence {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 900px) {
   .footer__inner {
     grid-template-columns: 1fr;
   }
@@ -110,10 +116,6 @@
   .footer__copy {
     align-items: flex-start;
     text-align: left;
-  }
-
-  .footer__licence {
-    white-space: normal;
   }
 
 }
