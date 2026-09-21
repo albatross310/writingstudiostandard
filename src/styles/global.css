@@ -53,8 +53,8 @@ h1, h2, h3, h4 {
 }
 
 h1 { font-size: clamp(1.9rem, 3.2vw, 2.65rem); letter-spacing: -0.03em; }
-h2 { font-size: clamp(1.35rem, 2.2vw, 1.8rem); letter-spacing: -0.02em; }
-h3 { font-size: clamp(1.05rem, 1.5vw, 1.18rem); letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.22rem, 1.85vw, 1.58rem); letter-spacing: -0.016em; }
+h3 { font-size: clamp(0.98rem, 1.3vw, 1.1rem); letter-spacing: -0.006em; }
 h4 { font-size: 0.88rem; font-family: var(--font-sans); font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--teal); }
 
 p { color: var(--charcoal-mid); max-width: 68ch; }
@@ -199,7 +199,7 @@ section + section {
 .definition-table dt {
   color: var(--purple);
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 0.94rem;
   font-weight: 700;
   line-height: 1.35;
 }
@@ -286,7 +286,7 @@ section + section {
 .layer-card__name {
   font-family: var(--font-serif);
   font-weight: 650;
-  font-size: 1rem;
+  font-size: 0.94rem;
   color: var(--charcoal);
 }
 
@@ -344,7 +344,7 @@ section + section {
 
 .faq-item__q {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: 1.08rem;
   font-weight: 650;
   color: var(--purple);
   margin-bottom: 0.6rem;
@@ -450,7 +450,7 @@ section + section {
 .impl-card__name {
   font-family: var(--font-serif);
   font-weight: 650;
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   margin-bottom: 0.5rem;
   color: var(--charcoal);
 }
