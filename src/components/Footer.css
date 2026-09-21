@@ -1,6 +1,6 @@
 .footer {
-  background: var(--purple);
-  color: #e7e0e4;
+  background: #222427;
+  color: #e5e8e9;
   padding: 3.25rem 0;
   margin-top: 0;
 }
@@ -35,7 +35,7 @@
 
 .footer__tagline {
   font-size: 0.875rem;
-  color: #e1dadd;
+  color: #dce1e2;
   max-width: 36ch;
   line-height: 1.55;
 }
@@ -45,7 +45,7 @@
 .footer__privacy {
   max-width: 44ch;
   margin-top: auto;
-  color: #d0c7cd;
+  color: #cbd1d3;
   font-size: 0.8125rem;
   line-height: 1.55;
   opacity: 0.8;
@@ -61,7 +61,7 @@
 
 .footer__nav a {
   font-size: 0.875rem;
-  color: #e5dfe3;
+  color: #dfe4e5;
   text-decoration: none;
   transition: color 0.12s;
 }
@@ -78,7 +78,7 @@
   align-items: flex-end;
   height: 226px;
   font-size: 0.8125rem;
-  color: #d4cdd2;
+  color: #cfd5d6;
   max-width: none;
   text-align: right;
 }

@@ -1,17 +1,17 @@
 /* ─── Design tokens ─────────────────────────────────────────────── */
 :root {
-  --ivory:        #f8f7f2;
-  --ivory-mid:    #e7e3df;
-  --ivory-dark:   #cbc4c6;
-  --purple:       #302438;
-  --charcoal:     #2c2a28;
-  --charcoal-mid: #4c4744;
-  --slate:        #706965;
-  --card-bg:      rgba(255, 255, 255, 0.84);
-  --teal:         #3b6f75;
-  --teal-light:   #5f8587;
-  --teal-pale:    #e4eeee;
-  --lavender-pale:#f1eef5;
+  --ivory:        #f2f3f3;
+  --ivory-mid:    #dfe2e3;
+  --ivory-dark:   #c4c9cb;
+  --purple:       #222427;
+  --charcoal:     #282a2d;
+  --charcoal-mid: #464a4d;
+  --slate:        #6c7275;
+  --card-bg:      rgba(255, 255, 255, 0.9);
+  --teal:         #34747b;
+  --teal-light:   #6a8f93;
+  --teal-pale:    #e5eff0;
+  --lavender-pale:#eceff0;
   --white:        #ffffff;
 
   --font-serif:  'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
@@ -30,14 +30,14 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  background: var(--purple);
+  background: #222427;
 }
 
 body {
   min-height: 100vh;
   background:
     radial-gradient(circle at 10% -20%, rgba(255,255,255,.98), transparent 36rem),
-    linear-gradient(180deg, #fbfaf7 0%, var(--ivory) 64%, #f1efea 100%);
+    linear-gradient(180deg, #fafbfb 0%, var(--ivory) 64%, #eaedee 100%);
   color: var(--charcoal);
   font-family: var(--font-body);
   font-size: 1rem;
@@ -70,7 +70,7 @@ code, pre {
 
 pre {
   background: var(--charcoal);
-  color: #e8e4db;
+  color: #e7eaeb;
   padding: 1.5rem 1.75rem;
   border-radius: var(--radius);
   overflow-x: auto;
@@ -126,8 +126,8 @@ section + section {
   border: 2px solid var(--purple);
 }
 .btn--primary:hover {
-  background: #46364f;
-  border-color: #46364f;
+  background: #383b3f;
+  border-color: #383b3f;
   text-decoration: none;
 }
 
@@ -219,7 +219,7 @@ section + section {
 }
 
 .trio-card--highlight {
-  border-color: #c5d8d9;
+  border-color: #c8dbdd;
   background: linear-gradient(145deg, rgba(255,255,255,.96), var(--teal-pale));
 }
 
