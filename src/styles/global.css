@@ -534,7 +534,6 @@ section + section {
   color: #f4f7f8;
 }
 .studio-explorer__panel { display: flex; flex-direction: column; gap: 0.75rem; }
-.studio-explorer__label { margin: 0; }
 .studio-explorer__links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
 .studio-explorer__link {
   width: 100%;
