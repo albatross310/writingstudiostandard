@@ -1,5 +1,5 @@
 .hero {
-  padding: clamp(5rem, 11vw, 8.5rem) 0 clamp(4rem, 9vw, 6.5rem);
+  padding: clamp(3.25rem, 6vw, 4.75rem) 0 clamp(2.25rem, 4vw, 3rem);
   background:
     radial-gradient(circle at 84% 8%, rgba(95,133,135,.24), transparent 24rem),
     linear-gradient(155deg, #faf9f5 0%, #f3f1ed 58%, #e7eeee 100%);
@@ -7,15 +7,15 @@
 }
 
 .hero__inner {
-  max-width: 1080px;
+  max-width: 1200px;
 }
 
 .hero__title {
   margin-top: 0.25rem;
-  margin-bottom: 1.25rem;
-  font-size: clamp(2.8rem, 6.2vw, 5rem);
-  letter-spacing: -0.045em;
-  line-height: 1.02;
+  margin-bottom: 0.85rem;
+  font-size: clamp(2.15rem, 4.2vw, 3.25rem);
+  letter-spacing: -0.035em;
+  line-height: 1.08;
 }
 
 .hero__title em {
@@ -24,7 +24,7 @@
 }
 
 .hero__lead {
-  font-size: clamp(1.08rem, 2.5vw, 1.3rem);
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
   color: var(--charcoal-mid);
   max-width: 56ch;
   line-height: 1.65;
@@ -33,8 +33,8 @@
 .home-doc-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 2.5rem;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
   align-items: start;
 }
 
@@ -43,12 +43,12 @@
 }
 
 .cta-inner {
-  max-width: 1080px;
+  max-width: 1200px;
 }
 
 .cta-inner h2, .cta-inner p { color: #fff; }
 .cta-inner h2 { margin-bottom: 0.75rem; }
-.cta-inner p { font-size: 1.0625rem; }
+.cta-inner p { font-size: 1rem; }
 .cta-inner .btn--primary { background: #fff; border-color: #fff; color: var(--purple); }
 .cta-inner .btn--outline { background: transparent; border-color: rgba(255,255,255,.62); color: #fff; }
 
@@ -57,7 +57,7 @@
 .contact-hero { padding-bottom: 2.5rem; }
 
 @media (max-width: 700px) {
-  .hero { padding: 4rem 0 3.5rem; }
+  .hero { padding: 3rem 0 2.25rem; }
 
   .home-doc-grid {
     grid-template-columns: 1fr;

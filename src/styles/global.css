@@ -40,8 +40,8 @@ body {
     linear-gradient(180deg, #fbfaf7 0%, var(--ivory) 64%, #f1efea 100%);
   color: var(--charcoal);
   font-family: var(--font-body);
-  font-size: 1.05rem;
-  line-height: 1.58;
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
 /* ─── Typography ─────────────────────────────────────────────────── */
@@ -52,10 +52,10 @@ h1, h2, h3, h4 {
   color: var(--purple);
 }
 
-h1 { font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -0.035em; }
-h2 { font-size: clamp(1.45rem, 2.8vw, 2.1rem); letter-spacing: -0.025em; }
-h3 { font-size: clamp(1.08rem, 2vw, 1.3rem); letter-spacing: -0.015em; }
-h4 { font-size: 0.78rem; font-family: var(--font-sans); font-weight: 650; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); }
+h1 { font-size: clamp(1.9rem, 3.2vw, 2.65rem); letter-spacing: -0.03em; }
+h2 { font-size: clamp(1.35rem, 2.2vw, 1.8rem); letter-spacing: -0.02em; }
+h3 { font-size: clamp(1.05rem, 1.5vw, 1.18rem); letter-spacing: -0.01em; }
+h4 { font-size: 0.88rem; font-family: var(--font-sans); font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--teal); }
 
 p { color: var(--charcoal-mid); max-width: 68ch; }
 p + p { margin-top: 1em; }
@@ -88,19 +88,19 @@ code:not(pre code) {
 /* ─── Layout ─────────────────────────────────────────────────────── */
 .container {
   width: 100%;
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  padding: 0 clamp(1rem, 2.5vw, 2rem);
 }
 
 .container--narrow {
   /* Sections share the page gutter. Individual paragraphs can still keep a readable line length
      without the whole section stepping inward from its heading. */
-  max-width: 1080px;
+  max-width: 1200px;
 }
 
 section {
-  padding: 4.5rem 0;
+  padding: clamp(2.75rem, 4.5vw, 3.75rem) 0;
 }
 
 section + section {
@@ -110,10 +110,10 @@ section + section {
 /* ─── Buttons ────────────────────────────────────────────────────── */
 .btn {
   display: inline-block;
-  padding: 0.7rem 1.6rem;
+  padding: 0.58rem 1.2rem;
   border-radius: 999px;
   font-family: var(--font-sans);
-  font-size: 0.9375rem;
+  font-size: 0.9rem;
   font-weight: 620;
   cursor: pointer;
   transition: background 0.15s, color 0.15s, box-shadow 0.15s;
@@ -145,7 +145,7 @@ section + section {
   display: flex;
   gap: 0.875rem;
   flex-wrap: wrap;
-  margin-top: 2rem;
+  margin-top: 1.35rem;
 }
 
 /* ─── Cards ──────────────────────────────────────────────────────── */
@@ -153,13 +153,13 @@ section + section {
   background: var(--card-bg);
   border: 1px solid rgba(203,196,198,.82);
   border-radius: var(--radius);
-  padding: 1.75rem;
+  padding: 1.3rem;
   box-shadow: var(--shadow-card);
 }
 
 .card__label {
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -169,14 +169,14 @@ section + section {
 
 .card__title {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   font-weight: 650;
   color: var(--purple);
   margin-bottom: 0.625rem;
 }
 
 .card__body {
-  font-size: 0.9375rem;
+  font-size: 0.96rem;
   color: var(--slate);
   line-height: 1.65;
   max-width: none;
@@ -185,12 +185,12 @@ section + section {
 /* ─── Section label ──────────────────────────────────────────────── */
 .section-label {
   font-family: var(--font-sans);
-  font-size: 0.92rem;
+  font-size: 0.98rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--teal);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.55rem;
 }
 
 /* ─── Divider ─────────────────────────────────────────────────────── */
@@ -198,7 +198,7 @@ section + section {
   width: 2.5rem;
   height: 3px;
   background: var(--purple);
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   border: none;
 }
 
@@ -206,15 +206,15 @@ section + section {
 .trio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
-  margin-top: 2.5rem;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 .trio-card {
   background: var(--card-bg);
   border: 1px solid rgba(203,196,198,.82);
   border-radius: var(--radius);
-  padding: 1.75rem;
+  padding: 1.3rem;
   box-shadow: var(--shadow-card);
 }
 
@@ -240,7 +240,7 @@ section + section {
   display: flex;
   flex-direction: column;
   gap: 0.875rem;
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
 }
 
 .layer-card {
@@ -248,11 +248,11 @@ section + section {
   border: 1px solid rgba(203,196,198,.82);
   border-left: 4px solid var(--teal-light);
   border-radius: var(--radius);
-  padding: 1.5rem 1.75rem;
+  padding: 1.2rem 1.35rem;
   box-shadow: var(--shadow-card);
   display: grid;
   grid-template-columns: 200px 1fr;
-  gap: 1rem 2rem;
+  gap: 0.8rem 1.25rem;
   align-items: start;
 }
 
@@ -264,7 +264,7 @@ section + section {
 }
 
 .layer-card__desc {
-  font-size: 0.9375rem;
+  font-size: 0.96rem;
   color: var(--slate);
   max-width: none;
   line-height: 1.6;
@@ -272,7 +272,7 @@ section + section {
 
 /* ─── File example block ─────────────────────────────────────────── */
 .file-example {
-  margin-top: 2rem;
+  margin-top: 1.25rem;
 }
 
 .file-example__header {
@@ -308,7 +308,7 @@ section + section {
 
 .faq-item {
   border-bottom: 1px solid var(--ivory-mid);
-  padding: 1.5rem 0;
+  padding: 1.15rem 0;
 }
 
 .faq-item:first-child {
@@ -317,21 +317,21 @@ section + section {
 
 .faq-item__q {
   font-family: var(--font-serif);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 650;
   color: var(--purple);
   margin-bottom: 0.6rem;
 }
 
 .faq-item__a {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--charcoal-mid);
   max-width: 72ch;
 }
 
 /* ─── Page hero (inner pages) ────────────────────────────────────── */
 .page-hero {
-  padding: 5.25rem 0 3rem;
+  padding: clamp(3rem, 5vw, 4rem) 0 2rem;
   border-bottom: 1px solid rgba(203,196,198,.68);
 }
 /* The inline .studio tag inside a hero title should read at title scale, not tiny inline-code size. */
@@ -344,8 +344,8 @@ section + section {
 
 .page-hero__kicker {
   font-family: var(--font-sans);
-  font-size: 0.92rem;
-  font-weight: 600;
+  font-size: 0.98rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--teal);
@@ -354,17 +354,17 @@ section + section {
 
 .page-hero__title {
   font-family: var(--font-serif);
-  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  font-size: clamp(1.9rem, 3vw, 2.55rem);
   font-weight: 650;
   color: var(--purple);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .page-hero__lead {
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: var(--charcoal-mid);
   max-width: 64ch;
-  line-height: 1.65;
+  line-height: 1.58;
 }
 
 /* ─── Inline tag ─────────────────────────────────────────────────── */
@@ -383,17 +383,17 @@ section + section {
 /* ─── Checklist ──────────────────────────────────────────────────── */
 .checklist {
   list-style: none;
-  margin-top: 1.25rem;
+  margin-top: 0.9rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.45rem;
 }
 
 .checklist li {
   display: flex;
   gap: 0.75rem;
   align-items: baseline;
-  font-size: 0.9375rem;
+  font-size: 0.96rem;
   color: var(--charcoal-mid);
 }
 
@@ -408,15 +408,15 @@ section + section {
 .impl-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.25rem;
-  margin-top: 2rem;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 .impl-card {
   background: var(--card-bg);
   border: 1px solid rgba(203,196,198,.82);
   border-radius: var(--radius);
-  padding: 1.5rem;
+  padding: 1.3rem;
   box-shadow: var(--shadow-card);
 }
 
@@ -429,8 +429,8 @@ section + section {
 }
 
 .impl-card__status {
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.88rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--teal-light);
@@ -445,23 +445,23 @@ section + section {
 
 /* ─── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 700px) {
-  section { padding: 3.25rem 0; }
+  section { padding: 2.5rem 0; }
 
   .layer-card {
     grid-template-columns: 1fr;
     gap: 0.5rem;
   }
 
-  .page-hero { padding: 3.5rem 0 2rem; }
+  .page-hero { padding: 2.75rem 0 1.75rem; }
 }
 
 /* ── Interactive .studio explorer (Examples) ─────────────────────────────── */
 .studio-explorer {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  gap: 1.5rem;
+  gap: 1rem;
   align-items: start;
-  margin-top: 1.75rem;
+  margin-top: 1.25rem;
 }
 .studio-explorer__file {
   border: 1px solid var(--ivory-dark);
