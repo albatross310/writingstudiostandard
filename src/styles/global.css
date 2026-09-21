@@ -32,7 +32,6 @@
   --page-gutter:  clamp(2rem, calc(1rem + 4.5vw), 8rem);
   --content-rail: 1180px;
   --nav-column:   22rem;
-  --content-reserve: clamp(0rem, calc(117.333vw - 66rem), var(--nav-column));
 
   --font-serif:  'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
   --font-body:   'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
@@ -116,12 +115,6 @@ code:not(pre code) {
    retained as a semantic hook, but it no longer creates a second, inward alignment system. */
 .container.container--prose {
   max-width: var(--content-rail);
-}
-
-/* The right reserve tapers continuously from the full navigation column to zero. */
-main .container,
-.footer .footer__inner {
-  padding-right: calc(var(--page-gutter) + var(--content-reserve));
 }
 
 section {
