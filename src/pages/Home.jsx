@@ -51,6 +51,66 @@ export default function Home() {
 
       <section>
         <div className="container">
+          <p className="section-label">Storage contract</p>
+          <h2>Two durable copies per use. No hidden third library.</h2>
+          <p style={{ marginTop: '0.75rem' }}>
+            When a source is used in a Studio, it has two durable roles: the reusable master the writer
+            owns, and the frozen subset that lets that one Studio travel and verify itself. Inkwave never
+            creates a separate proprietary master behind either of them.
+          </p>
+          <div className="trio-grid">
+            <article className="card">
+              <p className="card__label">1 · Master library</p>
+              <p className="card__body">The original lives in a folder, OneDrive, Google Drive or another provider the writer chooses. It has one stable ID, revision hash and library category.</p>
+            </article>
+            <article className="card">
+              <p className="card__label">2 · Studio attachment</p>
+              <p className="card__body">A Studio carries the exact source, excerpt or metadata it uses. That copy is frozen: a later master edit cannot quietly change an existing citation, quotation or recording.</p>
+            </article>
+            <article className="card">
+              <p className="card__label">Cache is not a third tier</p>
+              <p className="card__body">Thumbnails, search indexes, waveforms and downloaded payloads on the device are disposable SSD caches. Clearing them never deletes a master item or Studio attachment.</p>
+            </article>
+          </div>
+          <p style={{ marginTop: '1rem', color: 'var(--slate)' }}>
+            Reusing the same source in several Studios creates one intentional frozen attachment in each
+            Studio that uses it. Attaching it twice to the same Studio reuses its existing attachment.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <p className="section-label">Open fast</p>
+          <h2>The writing first; large material on demand.</h2>
+          <div className="home-doc-grid">
+            <div>
+              <p>
+                Inkwave opens the compact document core first: its title, readable text, editable document
+                tree and attachment manifest. Parsing happens away from the main interface, and opening a
+                document does not wait for a cloud library, a PDF, an audiobook or a media file.
+              </p>
+              <p style={{ marginTop: '1rem' }}>
+                The target is that an Inkwave document becomes usable no slower than its writing equivalent
+                in Markdown. The reader, player and source panels request the larger bytes only when the
+                writer opens them.
+              </p>
+            </div>
+            <aside className="card">
+              <p className="card__label">Lazy payload path</p>
+              <ul className="checklist">
+                <li>Reveal the writing and its compact manifest</li>
+                <li>Restore library metadata after the first frame</li>
+                <li>Fetch or read a source only when its module opens</li>
+                <li>Keep downloaded bytes as an evictable SSD cache</li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
           <p className="section-label">The Studio Document</p>
           <h2>One portable record: <code className="tag">.studio</code></h2>
           <div className="home-doc-grid">
