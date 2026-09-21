@@ -224,8 +224,8 @@ section + section {
 
 .definition-table__row {
   display: grid;
-  grid-template-columns: minmax(12rem, 0.72fr) minmax(0, 2fr);
-  gap: 1.5rem;
+  grid-template-columns: minmax(9.5rem, 11.5rem) minmax(0, 1fr);
+  gap: 1.25rem;
   padding: 1rem 0;
   border-bottom: 1px solid var(--rule);
 }
