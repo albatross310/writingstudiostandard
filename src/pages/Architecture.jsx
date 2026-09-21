@@ -240,7 +240,8 @@ export default function Architecture() {
             <p className="card__label">A note on scope</p>
             <p className="card__body">
               Optional-layer schemas remain draft where marked. Compatibility reports and implementation
-              feedback are welcome; <a href="/contact">contact the maintainer</a> with concrete cases.
+              feedback are welcome; email the maintainer at{' '}
+              <a href="mailto:petergibson127@gmail.com">petergibson127@gmail.com</a> with concrete cases.
             </p>
           </div>
         </div>

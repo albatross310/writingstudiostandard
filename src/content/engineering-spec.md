@@ -7,6 +7,14 @@
 **Licence:** Creative Commons Attribution 4.0 International (CC BY 4.0)  
 **Reference implementation:** Inkwave
 
+## Plain-language overview
+
+A Studio Document is a writing file that keeps the work around the words. It always carries readable text and a structured version that compatible software can edit. It can also carry the sources used in the writing, relevant emails or media, and carefully limited evidence about particular document states.
+
+The format is designed to remain useful outside one product. A person should be able to inspect the writing without Inkwave, move the record to another compatible application and discover which optional parts it contains before large attachments are loaded.
+
+The standard does not treat technical evidence as proof of more than it records. A hash can identify exact bytes and detect a later change. A signature or timestamp can add evidence about signing or time. None of these facts alone proves who conceived the words, how they were entered or whether AI was used.
+
 ## 1. Conventions
 
 The key words **MUST**, **MUST NOT**, **REQUIRED**, **SHOULD**, **SHOULD NOT** and **MAY** in this document are to be interpreted as normative requirements.
@@ -17,7 +25,7 @@ Informative examples and answers are included in appendices. They explain the mo
 
 ## 2. Scope
 
-A Writing Studio is software for creating, opening or verifying a Studio Document. The standard defines:
+A Writing Studio is software for creating, opening or verifying Studio Documents. This standard defines the minimum information that makes those documents readable, portable and honest about their contents. It covers:
 
 - the portable Studio Document contract;
 - readable and structured document representations;
@@ -26,7 +34,9 @@ A Writing Studio is software for creating, opening or verifying a Studio Documen
 - optional voice, email, provenance and timestamp capabilities; and
 - conformance and claim boundaries.
 
-The standard does not define a required interface, provider, voice engine, identity system, business model or central service.
+Not every Studio Document carries every optional feature. A simple record may contain only readable text and its editable structure; richer records may add sources, media, voice or provenance. Capability declarations let a reader tell the difference between material that is absent, temporarily unavailable, unsupported or invalid.
+
+The standard does not require one interface, storage provider, voice engine, identity system, business model or central service.
 
 ## 3. Design requirements
 
@@ -775,7 +785,7 @@ This document is bundled into the website and is downloaded by the **Download en
 
 The website-generated download inserts the reader's local download date into the specification header and appends the ISO date to the Markdown filename. The source specification intentionally contains no fixed download date.
 
-The canonical public home page at `/` is the Standard page. The former `/standard` route redirects to `/`; it is not a second copy of the specification or a separate landing page.
+The canonical public page at `/` is a concise, plain-language introduction headed **Specification**. The former `/standard` route redirects to `/`; there is no separate landing page or second summary of the standard. The site header contains no links to supplementary sections, so the introduction and engineering-specification download remain the clear entry point.
 
 A specification revision SHOULD update `Specification version` when it changes a normative requirement, field meaning or conformance profile. Editorial corrections MAY retain the version. Breaking wire changes MUST increment the top-level record version.
 
@@ -1287,7 +1297,8 @@ This matrix prevents the concise website from becoming a second, divergent speci
 
 | Public website subject | Authoritative specification coverage |
 |---|---|
-| Portable writing, sources and provenance | Sections 2–6 |
+| Plain-language explanation of a Studio Document | Plain-language overview and Sections 2–5 |
+| Portable writing, sources and bounded provenance | Sections 2–6 and 12–13 |
 | Rich text, mathematics, tables, images, notes and settings | Sections 5.4, 5.7 and Appendix A.2 |
 | CSL/BibTeX-style metadata, pinpoints and highlights | Section 6 and Appendix A.3 |
 | Emails, readers, media and readalongs as modules | Sections 9–11 |
