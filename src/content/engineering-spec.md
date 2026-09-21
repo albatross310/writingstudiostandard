@@ -1,51 +1,73 @@
 # Writing Studio Standard
 
-## Engineering specification
+## Engineering specification and reference guide
 
-**Status:** living specification companion  
+**Specification status:** living draft
+**Specification version:** 0.1
 **Licence:** Creative Commons Attribution 4.0 International (CC BY 4.0)  
-**Primary implementation:** Inkwave
+**Reference implementation:** Inkwave
 
-## 1. Purpose
+## 1. Conventions
 
-The Writing Studio Standard defines a portable document model for serious writing. A conforming implementation keeps a document's readable text and editable structure, and may preserve the sources, context, media, reading state, snapshots and verification material around that writing.
+The key words **MUST**, **MUST NOT**, **REQUIRED**, **SHOULD**, **SHOULD NOT** and **MAY** in this document are to be interpreted as normative requirements.
 
-The standard is broader than a word processor but narrower than a general-purpose personal database. It is intended to stop useful writing context becoming a collection of unrelated browser tabs, provider-specific records and opaque application state.
+A requirement marked **Current** describes an exported or implemented Inkwave capability. A requirement marked **Planned** defines the intended interoperable extension and is not a claim that every current Studio reader implements it.
 
-The standard does not prescribe a user interface, storage vendor, speech model, identity provider, business model or central service.
+Informative examples and answers are included in appendices. They explain the model but do not add conformance requirements.
 
-## 2. Principles
+## 2. Scope
 
-1. **Readable.** A portable record contains a human-readable text representation of the work.
-2. **Portable.** A document is data that can be copied, inspected, exported and opened elsewhere.
-3. **Source-aware.** References have stable identities, bibliographic metadata and, where required, frozen source material.
-4. **Modular.** Email, source-reader, media and voice surfaces share document context without becoming one monolithic editor screen.
-5. **User-controlled.** Master files live in a location the writer chooses. Application caches do not become an undisclosed authoritative copy.
-6. **Honest.** Provenance describes exactly the technical evidence it contains. It does not claim that a particular person conceived every sentence independently.
+A Writing Studio is software for creating, opening or verifying a Studio Document. The standard defines:
 
-## 3. Terms
+- the portable Studio Document contract;
+- readable and structured document representations;
+- source, citation, attachment and module relationships;
+- user-controlled master libraries and portable Studio attachments;
+- optional voice, email, provenance and timestamp capabilities; and
+- conformance and claim boundaries.
 
-### Writing Studio
+The standard does not define a required interface, provider, voice engine, identity system, business model or central service.
 
-Software that creates, opens or verifies Studio Documents. It preserves the capabilities it understands and clearly declares the capabilities it does not.
+## 3. Design requirements
 
-### Studio Document
+A conforming design MUST satisfy the following principles.
 
-A portable \`.studio\` record with an editable document, a readable representation and zero or more associated capabilities.
+1. **Readable record.** A portable record MUST expose a human-readable projection of the writing.
+2. **Portable record.** A document MUST remain data that can be copied, inspected and opened independently of one account or vendor.
+3. **Source-aware record.** A citation-capable implementation MUST preserve stable source identity and bibliographic metadata.
+4. **Modular context.** Reader, email, media and voice surfaces MAY share one Studio context without creating competing master documents.
+5. **User-controlled storage.** The writer MUST control the location of durable master files.
+6. **Bounded claims.** A provenance implementation MUST state only what its recorded evidence supports.
 
-### Master item
+## 4. Terms
 
-A source, email, document, picture, movie or audio item kept in a writer-controlled library. A Studio Document carries only the frozen reference or payload it needs.
+### 4.1 Writing Studio
 
-### Voice edition
+Software that creates, opens or verifies Studio Documents. It MUST preserve compatible fields it does not interpret whenever safe to do so.
 
-A rendered readalong or user recording linked to a stable source revision. A voice edition is separate from its book, reference or email source.
+### 4.2 Studio Document
 
-### Verified record
+A portable Studio record, normally identified by the .studio extension, containing an editable document, a readable representation and zero or more capability records.
 
-A Studio Document carrying snapshot, signed receipt-chain and/or timestamp evidence. Verification checks the stated evidence; it is not a general AI detector or a certificate of human authorship.
+### 4.3 Master item
 
-## 4. Current portable record
+A reusable source, email, document, picture, movie or audio item held in a writer-controlled library.
+
+### 4.4 Studio attachment
+
+The frozen revision, explicit excerpt or metadata subset of a master item used by one Studio Document.
+
+### 4.5 Voice edition
+
+A rendered readalong or user recording associated with a stable source ID and source revision. A voice edition is separate from the book, reference or email it reads.
+
+### 4.6 Verified record
+
+A Studio Document containing one or more snapshots, signed receipt-chain records or timestamp proofs. This term does not imply that every word was independently conceived by one biological human.
+
+## 5. Portable Studio record
+
+### 5.1 Current export shape
 
 The current Inkwave export is a versioned JSON container. A representative top-level shape is:
 
@@ -57,195 +79,228 @@ The current Inkwave export is a versioned JSON container. A representative top-l
     "title": "Example document",
     "verifyAt": "https://iwzero.me/verify"
   },
-  "text": "A readable plain-text copy of the work…",
+  "text": "Readable plain-text projection",
   "exportedAt": "2026-01-01T00:00:00.000Z",
-  "document": { "contentJson": { "type": "doc", "content": [] } },
+  "document": {
+    "contentJson": { "type": "doc", "content": [] }
+  },
   "snapshots": [],
   "receipts": [],
   "bibliography": []
 }
 ~~~
 
-### 4.1 Summary and readable text
+### 5.2 Summary
 
-\`summary\` is a short human-facing description of the export. It may state title, word count, snapshot and receipt counts, timestamp status, export time and the verifier URL. It is not the cryptographic source of truth.
+A writer MAY include a human-facing summary. A summary MAY state title, word count, snapshot count, receipt count, timestamp status, export time and verifier location. A verifier MUST NOT treat summary fields as the cryptographic source of truth.
 
-\`text\` is a clean plain-text projection of the document. It allows a person to inspect the writing without recreating a rich-text editor. A writer generates it deterministically from the structured document model.
+### 5.3 Readable text projection
 
-### 4.2 Structured document
+A Studio Document MUST contain, or deterministically expose, a readable text projection of its writing. The projection MUST be derived from the editable content rather than edited independently. A reader MUST make the projection available when it cannot render richer document structure.
 
-\`document\` carries the versioned editable representation. Inkwave currently uses a rich-text tree for headings, paragraphs, lists, tables, block quotes, mathematics, inline formatting, links and citation marks. It also carries document metadata, title, creation time, schema version, document type, toolbar configuration, readalong associations and a document-scoped library where available.
+### 5.4 Editable document
 
-The editable tree is the source of truth. Implementations must not permit the readable projection to silently diverge from it.
+The document field MUST contain a versioned editable representation. Current Inkwave records use a rich-text tree for paragraphs, headings, lists, tables, mathematics, block quotes, marks, links and citation nodes.
 
-### 4.3 Extensibility
+An implementation MAY add document type, creation time, schema version, email headers, toolbar configuration, library references and readalong associations. It MUST version such extensions and MUST NOT silently discard them during a normal save.
 
-Unknown forward-versioned or namespaced fields must be retained on normal open-and-save operations when it is safe to do so. An application that cannot show a field must distinguish “unavailable to this reader” from “not present in the record”.
+### 5.5 Forward compatibility
 
-## 5. Sources and citations
+A reader that encounters an unknown compatible field SHOULD retain it exactly when rewriting the record. The interface MUST distinguish unavailable material from absent material and from a failed read.
 
-Bibliographic metadata uses Citation Style Language (CSL) JSON-compatible records. Citation marks refer to stable citekeys and may include locators, prefixes and suffixes.
+## 6. Sources and citations
 
-A source may include page, passage and highlight information. PDF highlights are annotation data rather than permanently burned into publisher PDF bytes. A citation occurrence may be linked to the exact source page and passage it uses.
+### 6.1 Bibliographic data
 
-An export may include selected PDF or other source bytes. This is an explicit portability decision, not a requirement that every \`.studio\` clone the writer's complete library. A source can instead be represented by frozen metadata and a stable identifier.
+Citation records SHOULD use CSL JSON-compatible data. Citation marks MUST refer to stable citekeys and MAY contain a locator, prefix and suffix.
 
-Web references require a user-owned immutable snapshot because a URL can change or disappear. The snapshot is the preserved source; the live URL remains provenance metadata.
+### 6.2 Pinpoints and highlights
 
-## 6. Modules and attachments
+A source record MAY identify a page, passage and highlight. PDF highlights SHOULD be stored as annotation data rather than irreversibly written into publisher PDF bytes. An implementation MAY connect a citation occurrence to the exact source location it supports.
 
-A central Studio can open associated modules while preserving one document context. Modules include:
+### 6.3 Source payloads
+
+A Studio attachment MAY include complete source bytes or an explicit derivative. A writer MUST be able to identify whether an attachment is complete or derivative. An implementation MUST NOT silently replace an original with a truncated clip or excerpt.
+
+### 6.4 Web sources
+
+A web reference that needs stable evidence SHOULD use an immutable writer-owned snapshot. A live URL MAY be retained as provenance metadata but MUST NOT be treated as the durable source itself.
+
+## 7. Storage contract
+
+### 7.1 Two durable tiers
+
+For each Studio use, the system has exactly two product-visible durable tiers:
+
+1. **Master library item.** The reusable original exists in a local folder, OneDrive, Google Drive or another provider chosen by the writer. The master record identifies a stable ID, provider locator, revision token, content hash and metadata.
+2. **Studio attachment.** The current Studio contains the full source, explicit subset or metadata it uses, bound to the master ID and exact revision.
+
+The master and Studio attachment are the two durable roles. If one master item is deliberately used by several Studios, each Studio has its own intentional frozen attachment. Re-attaching an item within the same Studio MUST reuse the existing attachment and MUST NOT duplicate its payload.
+
+### 7.2 No third authoritative store
+
+OPFS, IndexedDB, thumbnails, page images, waveform data, search indexes, transcodes and downloaded source bytes are derived device caches. They MAY be evicted or regenerated. They MUST NOT be represented as an independent authoritative library copy. Clearing a cache MUST NOT delete the only master item or Studio attachment.
+
+### 7.3 Logical library layout
+
+The default logical collections are:
+
+~~~text
+emails/       master email records
+emailVoices/  voice editions keyed to email/message IDs
+books/        references and uncited source documents
+bookVoices/   voice editions keyed to book/source IDs
+~~~
+
+A provider MAY map these logical names to folders, labels, buckets or indexed prefixes. The mapping does not alter stable item IDs.
+
+### 7.4 Classification
+
+A source master MUST have one classification at a time: reference or document. Moving an item between classifications MUST preserve its stable ID and MUST NOT duplicate source bytes. Moving an item to reference SHOULD require a citekey and minimally valid bibliographic metadata.
+
+## 8. Initial open and lazy payload loading
+
+### 8.1 Required open ordering
+
+The initial open path MUST read the compact document core before large attachment payloads. The core consists of the summary, readable text, editable document tree and attachment manifest.
+
+Container parsing SHOULD execute away from the main interaction surface. The writing surface SHOULD appear before library hydration, timestamp work, media decoding or source downloads can block it.
+
+### 8.2 Deferred material
+
+Library metadata MAY restore after the first reveal. A PDF, EPUB, webpage snapshot, movie, isolated audio file or voice edition SHOULD be read from an SSD cache or fetched from its provider only when the associated reader or player is opened.
+
+Large attachment work MUST be attributed to the module requesting it. It MUST NOT be required for an unrelated document's initial open.
+
+### 8.3 Performance target
+
+The target cold-open experience is a usable Studio Document no slower than opening the equivalent writing in Markdown. This target applies to the usable writing surface, not to all optional source or media payloads completing their downloads.
+
+## 9. Modules
+
+A Studio MAY associate the following modules with one document context:
 
 - writing and reference surfaces;
 - email drafts and saved messages;
 - PDF, EPUB, Markdown, text and web readers;
-- pictures, movies and isolated audio;
+- pictures, movies and isolated audio; and
 - Read Along and other voice-reader surfaces.
 
-Opening a module must not manufacture a second master document or silently convert an email into a citation. Module associations carry stable identifiers and usage context.
+Opening a module MUST NOT manufacture a new master document. Opening Voice on an email MUST NOT convert the email to a citation or copy the email body into an email voice store.
 
-## 7. Master library and storage model
+## 10. Voice editions and Read Along
 
-The developing shared-library model separates user-owned master items from each Studio's frozen subset.
+A voice edition MUST identify source kind, source ID and source revision. It SHOULD record model or renderer, voice or cast identity, chapter or passage coverage, timing data and available parts.
 
-### 7.1 The two durable tiers
+Audio bytes, timing data and cast metadata MUST remain independent from source text. Removing optional voice audio MUST NOT remove or rewrite its book or email source. A stale source revision MAY invalidate future rendering, but older takes SHOULD remain recoverable until the writer removes them.
 
-The system has exactly two product-visible durable tiers for a Studio use:
+## 11. Email
 
-1. **Master library item.** The reusable source is kept in a local folder, OneDrive, Google Drive or another provider the writer chooses. Its master record contains a stable ID, provider locator, revision token, content hash and descriptive metadata.
-2. **Studio attachment.** The Studio stores the full source or explicit subset it actually uses, bound to the master ID and exact revision. This frozen record keeps the Studio portable and prevents later master edits from silently changing evidence, citations, quoted email or media.
+An implementation MAY represent email as a first-class Studio document with structured To, Cc, Bcc and Subject fields plus an editable body.
 
-“Two copies” describes these two durable roles for one Studio attachment. If the same master source is deliberately used by three Studios, there is one master and three frozen Studio attachments. Re-attaching a source to the same Studio reuses the existing attachment record and must not duplicate its payload.
+Browsing a provider mailbox MUST NOT automatically create Studio Documents, snapshots or provenance. A Studio record of an email draft MUST NOT be described as proof of sending, delivery or receipt unless independent message evidence establishes that specific claim.
 
-There is no hidden third authoritative Inkwave library. OPFS, IndexedDB, thumbnails, page images, waveforms, search indexes and transcoded renditions are derived device caches. They can deduplicate physical bytes and can be evicted, but clearing them must never delete the only master or Studio copy.
+## 12. Snapshots, receipts and timestamps
 
-### 7.2 Fast first frame and lazy payloads
+### 12.1 Snapshots
 
-The cold-open path reads only the compact Studio core: summary, readable text, editable document tree and attachment manifest. Container parsing runs off the main interface. The writer receives the writing surface before library hydration, timestamp work or large source payloads can block it.
+Snapshots record document states and hashes. A snapshot archive MUST be grow-only. Merge operations MUST union history and MUST NOT silently truncate it. A failed read MUST NOT be interpreted as an empty archive.
 
-The library manifest and lightweight metadata restore after the first reveal. A PDF, EPUB, webpage snapshot, movie, isolated audio file or voice edition is read from SSD cache or fetched from its provider only when the corresponding reader or player opens. Downloaded payloads remain evictable SSD cache data.
+### 12.2 Signed receipts
 
-The design target is that an Inkwave Studio becomes usable no slower than opening the equivalent writing in Markdown. Large attachments must add work only to the module that requests them, not to the document's initial open.
+A receipt chain binds canonical content hashes across writing periods. A signing service MAY receive content hashes but MUST NOT require document text, keystrokes or writer identity. A verifier MUST use an independently published public key rather than blindly trusting a key provided by the file.
 
-~~~text
-emails/       master email records
-emailVoices/  voice editions keyed to stable email/message IDs
-books/        references and uncited PDF, EPUB, Markdown, text and web snapshots
-bookVoices/   voice editions keyed to stable book/source IDs
-~~~
+### 12.3 Timestamp proofs
 
-References and ordinary documents are mutually exclusive classifications of one master item. Moving an item between them changes its classification without duplicating its bytes or changing its stable identifier.
+A snapshot MAY carry an OpenTimestamps or Bitcoin-backed proof. The proof demonstrates that the matching hash existed by the proof boundary; it MUST NOT be represented as publication of document text to a public chain.
 
-The intended providers are a local folder, OneDrive and Google Drive. Local OPFS and IndexedDB data are caches or migration inputs, not an extra hidden source of truth.
+### 12.4 Verification limits
 
-## 8. Voice editions and Read Along
+Verification MAY establish whether hashes, signatures, snapshots and timestamp proofs agree. It MUST NOT claim to establish legal identity, eliminate all possible assistance, establish private intention or certify the origin of every idea.
 
-Voice features use the same source and library identity model as references and email. A voice edition records the source ID and revision, model and cast information, chapter or passage coverage, text mapping, timing and available audio parts.
+## 13. Verified Capture (Planned)
 
-The source text and rendered audio are intentionally independent. A writer can evict, replace or decline to sync a voice edition without rewriting or deleting its book or email source. Implementors may support local, cloud or user-recorded rendering, but must record enough information for a reader to identify the edition it is playing.
+Verified Capture is a planned desktop-only extension. It is not a current public product claim.
 
-## 9. Email
+The proposed Tauri implementation will bind eligible native input to signed capture intervals and classify text as verified, inherited, imported or uncertified. It is intended to raise the cost of routine browser automation, including Playwright, Selenium, DevTools insertion and clipboard bulk insertion.
 
-Email may be represented as a first-class Studio document with structured To, Cc, Bcc and Subject fields plus an editable body. Provider mailbox views are not automatically Studio Documents: browsing an inbox must not create local records, snapshots or provenance by itself.
+Verified Capture MUST NOT claim to defeat a hostile operating system, custom hardware injector or manual retyping of generated prose.
 
-Provider synchronisation and sending are implementation capabilities. A record of an email draft is not proof of sending, delivery or receipt unless separate evidence establishes that claim.
+## 14. Portability and planned visual layer
 
-## 10. Snapshots and provenance
+An implementation MAY export a fixed-layout PDF, a source-stripped Studio copy or a gzip-compressed Studio file. View settings MAY travel with a document but MUST NOT change its readable text or verification record.
 
-### 10.1 Snapshot archive
+Mnemonic tiles are a planned, provisional visual layer. A tile MAY link to a word, phrase or passage as a visual memory anchor. The underlying word list is intended to be open; tile artwork is produced by an implementation. Mnemonic tiles are not yet required for conformance.
 
-Snapshots record document states and hashes. The archive is grow-only: merges union existing history and must not silently truncate it. A failed read is never interpreted as an empty archive.
+## 15. Conformance
 
-### 10.2 Signed receipts
+A conforming writer MUST:
 
-Receipt chains bind canonical content hashes across writing periods. A signing service can receive only hashes, not the document text, keystrokes or writer identity. A verifier must use an independently published public key rather than blindly trusting a key contained in the file.
+1. produce a versioned Studio record with an editable structure and readable text projection;
+2. preserve fields it does not understand whenever safely possible;
+3. avoid silently deleting citations, attachments, provenance or evidence during ordinary saves;
+4. state which optional capabilities it writes; and
+5. keep privacy and provenance claims within the record's available evidence.
 
-### 10.3 Timestamp proofs
+A conforming reader MUST:
 
-Snapshots may be timestamped through OpenTimestamps and Bitcoin. The proof binds a document hash to a public-chain commitment. It demonstrates that the matching hash existed by the proof's timestamp boundary; it does not put the document text on-chain.
+1. identify the record version and available capabilities;
+2. expose readable text even when richer content is unsupported;
+3. distinguish absent, unavailable and failed-to-load material;
+4. preserve unknown compatible fields when re-saving; and
+5. avoid presenting an unverified or incomplete record as verified.
 
-### 10.4 Verification boundaries
+## Appendix A: Worked examples (informative)
 
-Verification can establish whether declared hashes, signatures, snapshots and timestamp proofs agree. It cannot establish legal identity, rule out all assistance, prove a writer's private intentions or determine that every sentence is human-authored.
+### A.1 Toy essay: On Artificial Languages
 
-## 11. Verified Capture status
+The first website example demonstrates readable text, a rich document model, CSL bibliography data, a pinpoint citation, an optional embedded PDF, signed receipts and an anchored snapshot.
 
-Verified Capture is a planned desktop-only extension, not a current public product claim. The proposed Tauri application will bind eligible native input to signed capture intervals and label text as verified, inherited, imported or uncertified.
+### A.2 Honours proposal: Leibniz and universal constructed language
 
-It is intended to raise the cost of routine browser automation such as Playwright, Selenium, DevTools insertion and clipboard bulk insertion. It must never claim to defeat a hostile operating system, custom hardware injector or a writer who manually retypes generated prose.
+The second example is an annotated excerpt from Peter Gibson's honours proposal. It demonstrates a long-form argument, source records, a pinned passage from Leibniz's New Essays on Human Understanding, one deliberately embedded PDF and provenance data. Other source PDFs are stripped for size while their citation data and pinpoints remain.
 
-## 12. Conformance
+### A.3 Email and voice edition: The First Watch
 
-A conforming writer:
+The third example is a fictional email about a north-wall night watch, with structured headers and an editable body. It also contains an original small scene written in the spirit of a Shakespearean watch scene, a voice cast, source revision, part coverage and timing entries.
 
-1. produces a versioned \`.studio\` record with an editable structure and readable text projection;
-2. retains fields it does not understand when safely possible;
-3. does not silently delete citations, attachments, provenance or evidence during ordinary saves;
-4. states which optional capabilities it writes; and
-5. makes privacy and provenance claims no stronger than its record supports.
+Its audio string is intentionally fake Base64 placeholder data. It is not playable and exists only to demonstrate the shape of a rendered audio part.
 
-A conforming reader:
+## Appendix B: Common questions (informative)
 
-1. identifies the record version and available capabilities;
-2. exposes the readable text even when a richer feature is unsupported;
-3. clearly distinguishes absent, unavailable and failed-to-load material;
-4. preserves unknown compatible fields when re-saving; and
-5. does not present an unverified or incomplete record as verified.
+### Why not use DOCX or PDF alone?
 
-## 13. Examples
-
-### 13.1 Toy essay: On Artificial Languages
-
-The first interactive example is a compact essay record. It demonstrates readable document text, a rich document tree, a CSL bibliographic entry, a pinpoint citation, an optional embedded PDF, signed receipt-chain data and a Bitcoin-anchored snapshot.
-
-### 13.2 Honours proposal: Leibniz and universal constructed language
-
-The second example is an annotated excerpt from Peter Gibson's honours proposal. It shows that a real long-form argument can remain readable without Studio software while preserving its source records. The example carries a pinned passage from Leibniz's New Essays on Human Understanding, one deliberately embedded PDF and provenance data. Other source PDFs are intentionally stripped for size; their citation data and pinpoints remain.
-
-### 13.3 Email and voice edition: The First Watch
-
-The third example is a fictional email about a north-wall night watch. It demonstrates structured email headers, an editable email body and an original small scene written in the spirit of a Shakespearean watch scene. The associated voice edition has a stable email source ID and revision, named narrator and character voices, a short script, coverage information, timing entries and one audio part.
-
-The audio string in this example is explicit fake Base64 placeholder data. It is not playable. Its only purpose is to show the shape of a rendered part without pretending the page contains real recording bytes.
-
-## 14. Frequently asked implementation questions
-
-### Why not use only DOCX or PDF?
-
-DOCX focuses on editable presentation and PDF on fixed presentation. A Studio Document can retain the readable projection, editable structure, sources, working context and optional verification evidence together. It can still export a standard PDF when that is the correct delivery format.
+DOCX focuses on editable presentation and PDF on fixed presentation. A Studio Document can retain readable text, editable structure, source information, working context and optional verification evidence together. It can still export a standard PDF for ordinary delivery.
 
 ### Is a Studio file readable without Inkwave?
 
-Yes. It is versioned JSON with a summary and plain-text representation near the beginning. A person can inspect the writing with ordinary tools; a compatible reader can restore the richer document and the capabilities it supports.
+Yes. It is versioned JSON with a summary and plain-text projection near the beginning. A person can inspect the writing with ordinary tools; a compatible reader can restore richer document structure and supported capabilities.
 
-### What source types can it represent?
+### What source types are represented?
 
-The current and specified vocabulary covers PDFs, EPUBs, Markdown and text files, immutable webpage snapshots, email, pictures, movies, isolated audio and readalong editions. Citation records carry standard bibliographic metadata. A master item can move between the reference and document classifications without changing its stable identity.
+The current and specified vocabulary includes PDFs, EPUBs, Markdown and text files, immutable webpage snapshots, email, pictures, movies, isolated audio and readalong editions.
 
 ### Does ordinary provenance record keystrokes?
 
-No. Ordinary Inkwave provenance uses content hashes, snapshots and signed receipts rather than a surveillance log of every keypress. The future Verified Capture mode is separate and must label its specific evidence without claiming that a person conceived every sentence alone.
+No. Ordinary Inkwave provenance uses content hashes, snapshots and signed receipts rather than a surveillance log of every keypress. Verified Capture is a distinct planned extension with explicit, bounded evidence claims.
 
 ### What does verification prove?
 
-Where the relevant fields are present, a verifier can check that content hashes, signed receipts and timestamp proofs agree with the exported record. It can establish technical integrity and bounded dating claims. It cannot establish legal identity, detect every form of AI assistance or certify the origin of every idea.
+It can establish technical integrity and bounded dating claims where the relevant fields are present. It cannot establish identity, detect all AI assistance or certify every idea's origin.
 
-## 15. Portability and planned visual layer
+## Appendix C: Participation and contact (informative)
 
-An implementation may export a fixed-layout PDF, a source-stripped Studio copy, or a gzip-compressed Studio file for transfer. View settings may travel with the document but must not affect the readable text or verification record.
+The Writing Studio Standard develops in public. Feedback on the specification, implementations, compatibility, terminology and corrections is welcome.
 
-Mnemonic tiles are a planned, provisional visual layer. A tile may link to a word, phrase or passage as a visual memory anchor. The underlying word list is intended to be open; the tile artwork itself is made by the implementing Writing Studio. This layer is not yet required for conformance.
+Contact: petergibson127@gmail.com
+Related work: MnemonicEcologies.com
 
-## 16. Participation and contact
-
-The Writing Studio Standard develops in public. Feedback on the specification, implementations, terminology, compatibility and corrections is welcome. Contact Peter Gibson at petergibson127@gmail.com. Related work is published at MnemonicEcologies.com.
-
-## 17. Licensing and naming
+## 16. Licensing and naming
 
 This specification is available under CC BY 4.0. Implementations may build on it for commercial or non-commercial purposes with attribution.
 
-“Writing Studio Standard”, “Studio Document” and “Inkwave” are names used to identify the format and its implementation. An implementation must not use those names in a way that falsely implies compatibility or endorsement.
+Writing Studio Standard, Studio Document and Inkwave are names used to identify the format and its implementation. An implementation MUST NOT use them in a way that falsely implies compatibility or endorsement.
 
-## 18. Maintenance
+## 17. Maintenance
 
-This document is bundled into the website and is downloaded by the **Download engineering spec** button. It is the engineer-facing companion to the public pages. Every change to public terminology, capability status, data-model details, FAQ material, examples, contact information or conformance claims must update this document in the same commit.
+This document is bundled into the website and is downloaded by the **Download engineering spec** button. It is the complete engineer-formatted counterpart to the public pages. Every public terminology, capability, model, FAQ, example, contact or conformance change MUST update this document in the same commit.
