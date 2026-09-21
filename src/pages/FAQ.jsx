@@ -14,5 +14,5 @@ const faqs = [
 
 export default function FAQ() {
   useMeta({ title: 'FAQ', description: 'Common questions about Studio Documents, master libraries, voice editions, provenance and the Writing Studio Standard.', path: '/faq' })
-  return <main><div className="container"><div className="page-hero"><p className="page-hero__kicker">FAQ</p><h1 className="page-hero__title">Frequently asked questions</h1><p className="page-hero__lead">What the standard is for, what it stores, and where its claims stop.</p></div></div><section><div className="container container--narrow"><div className="faq-list">{faqs.map(({ q, a }) => <article className="faq-item" key={q}><h2 className="faq-item__q">{q}</h2><p className="faq-item__a">{a}</p></article>)}</div></div></section></main>
+  return <main><div className="container container--prose"><div className="page-hero"><p className="page-hero__kicker">FAQ</p><h1 className="page-hero__title">Frequently asked questions</h1><p className="page-hero__lead">What the standard is for, what it stores, and where its claims stop.</p></div></div><section><div className="container container--prose"><div className="faq-list">{faqs.map(({ q, a }) => <article className="faq-item" key={q}><h2 className="faq-item__q">{q}</h2><p className="faq-item__a">{a}</p></article>)}</div></div></section></main>
 }
