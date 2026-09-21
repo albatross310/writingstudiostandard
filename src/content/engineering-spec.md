@@ -775,6 +775,8 @@ This document is bundled into the website and is downloaded by the **Download en
 
 The website-generated download inserts the reader's local download date into the specification header and appends the ISO date to the Markdown filename. The source specification intentionally contains no fixed download date.
 
+The canonical public home page at `/` is the Standard page. The former `/standard` route redirects to `/`; it is not a second copy of the specification or a separate landing page.
+
 A specification revision SHOULD update `Specification version` when it changes a normative requirement, field meaning or conformance profile. Editorial corrections MAY retain the version. Breaking wire changes MUST increment the top-level record version.
 
 ## Appendix A: Complete architecture reference (informative)
