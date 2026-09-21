@@ -97,11 +97,13 @@
 }
 
 @media (max-width: 900px) {
-  .contact-form__identity {
-    grid-template-columns: 1fr;
-  }
-
   .contact-form__actions {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 700px) {
+  .contact-form__identity {
+    grid-template-columns: 1fr;
   }
 }
