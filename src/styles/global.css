@@ -576,7 +576,7 @@ section + section {
   padding: 1.1rem 1.25rem;
 }
 .studio-explorer__commentary .card__body { max-width: none; }
-@media (max-width: 1100px) {
+@media (max-width: 700px) {
   .studio-explorer { grid-template-columns: 1fr; }
   .studio-explorer__file { position: static; }
   .studio-explorer__scroll { max-height: 46vh; }
