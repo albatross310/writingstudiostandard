@@ -2,7 +2,7 @@
 // local download date while retaining a normal download anchor rather than a programmatic Blob click.
 import engineeringSpec from '../content/engineering-spec.md?raw'
 
-const VERSION_LINE = '**Specification version:** 0.1\n'
+const VERSION_LINE = '**Specification version:** 0.2\n'
 
 function localIsoDate(date) {
   const year = date.getFullYear()
