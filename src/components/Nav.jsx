@@ -3,7 +3,7 @@ import './Nav.css'
 
 const links = [
   { to: '/standard',      label: 'Standard'      },
-  { to: '/architecture',  label: 'Document'      },
+  { to: '/architecture',  label: 'Architecture'  },
   { to: '/examples',      label: 'Examples'      },
   { to: '/faq',           label: 'FAQ'           },
   { to: '/contact',       label: 'Contact'       },
