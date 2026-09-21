@@ -65,7 +65,7 @@
   }
 
   .nav__links {
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
 }
 
@@ -90,5 +90,11 @@
 
   .nav__links {
     gap: 0.1rem;
+  }
+}
+
+@media (min-width: 701px) {
+  .nav__link:last-child {
+    padding-right: 0;
   }
 }
