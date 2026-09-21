@@ -117,9 +117,16 @@ code:not(pre code) {
   max-width: var(--content-rail);
 }
 
-/* On desktop, main content ends where the header's Specification label begins. */
+/* Main content stops at the navigation column once the two-column header is active. */
 @media (min-width: 701px) {
   main .container {
+    padding-right: calc(var(--page-gutter) + var(--nav-column));
+  }
+}
+
+/* Keep desktop footer endnotes on the same right rail; stacked footers use the full width. */
+@media (min-width: 901px) {
+  .footer .footer__inner {
     padding-right: calc(var(--page-gutter) + var(--nav-column));
   }
 }
