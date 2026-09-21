@@ -339,7 +339,7 @@ export default function Examples() {
       </div>
 
       <section>
-        <div className="container">
+        <div className="container container--prose">
           <p className="section-label">Example one</p>
           <h2>A Toy Example: Leibniz and His World</h2>
           <hr className="divider" />
@@ -348,7 +348,7 @@ export default function Examples() {
       </section>
 
       <section>
-        <div className="container">
+        <div className="container container--prose">
           <p className="section-label">Example two</p>
           <h2>A Real Life Example: Leibniz and Universal Constructed Language</h2>
           <hr className="divider" />
@@ -361,7 +361,7 @@ export default function Examples() {
       </section>
 
       <section>
-        <div className="container">
+        <div className="container container--prose">
           <p className="section-label">Example three</p>
           <h2>A Toy Email and a Voice Recording</h2>
           <hr className="divider" />
