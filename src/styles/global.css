@@ -29,7 +29,7 @@
   --accent-pale:  #e3e4e2;
   --surface-muted:#e9e9e7;
   --white:        #ffffff;
-  --page-gutter:  clamp(0.75rem, calc(0.55rem + 0.75vw), 2rem);
+  --page-gutter:  clamp(1.75rem, calc(0.5rem + 3vw), 6rem);
   --content-rail: 1180px;
   --nav-column:   22rem;
 
