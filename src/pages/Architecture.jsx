@@ -199,7 +199,7 @@ export default function Architecture() {
           <p className="section-label">Layer reference</p>
           <h2>The layers</h2>
           <hr className="divider" />
-          <p style={{ marginBottom: '1.25rem', color: 'var(--slate)', fontSize: '0.98rem' }}>
+          <p style={{ marginBottom: '1.25rem', color: 'var(--quiet)', fontSize: '0.98rem' }}>
             Each layer sits beside a <strong>code brief</strong> — the general shape of that part of the file.
           </p>
 

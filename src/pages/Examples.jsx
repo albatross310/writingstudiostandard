@@ -3,8 +3,8 @@ import { useMeta } from '../useMeta'
 
 // ── VS Code-style syntax highlighting (Dark+) for the .studio content ──────────────────────────────
 const C = {
-  key: '#9cdcfe', str: '#ce9178', num: '#b5cea8', kw: '#569cd6',
-  punct: '#d4d4d4', comment: '#6a9955', head: '#4ec9b0', text: '#d4d4d4',
+  key: '#d7dadd', str: '#f1f1ef', num: '#b7bbbd', kw: '#e2e4e5',
+  punct: '#a4a8aa', comment: '#7f8588', head: '#ffffff', text: '#cdd0d2',
 }
 function tokenize(src) {
   const out = []
@@ -331,7 +331,7 @@ export default function Examples() {
             Inspect each record on the left; select a labelled part on the right to see its role in the
             portable document contract.
           </p>
-          <p className="page-hero__lead" style={{ marginTop: '0.9rem', fontSize: '0.98rem', color: 'var(--slate)' }}>
+          <p className="page-hero__lead" style={{ marginTop: '0.9rem', fontSize: '0.98rem', color: 'var(--quiet)' }}>
             The examples elide large payloads. Indexed implementations reveal the compact document core
             first and load PDF, media and voice bytes only when their modules request them.
           </p>
@@ -352,7 +352,7 @@ export default function Examples() {
           <p className="section-label">Example two</p>
           <h2>A Real Life Example: Leibniz and Universal Constructed Language</h2>
           <hr className="divider" />
-          <p style={{ marginBottom: '0.5rem', color: 'var(--slate)', fontSize: '0.95rem', maxWidth: '68ch' }}>
+          <p style={{ marginBottom: '0.5rem', color: 'var(--quiet)', fontSize: '0.95rem', maxWidth: '68ch' }}>
             An excerpt of a real honours proposal, PDF-stripped except one source — Leibniz’s <em>New
             Essays</em>, his reply to Locke.
           </p>
@@ -365,7 +365,7 @@ export default function Examples() {
           <p className="section-label">Example three</p>
           <h2>A Toy Email and a Voice Recording</h2>
           <hr className="divider" />
-          <p style={{ marginBottom: '0.5rem', color: 'var(--slate)', fontSize: '0.95rem', maxWidth: '68ch' }}>
+          <p style={{ marginBottom: '0.5rem', color: 'var(--quiet)', fontSize: '0.95rem', maxWidth: '68ch' }}>
             A fictional message about a night watch, followed by an original, Hamlet-like scene and a
             clearly labelled fake audio payload. It shows how email and a voice edition stay connected
             without making the audio part of the source email itself.

@@ -71,7 +71,7 @@ export default function Home() {
               <p className="card__body">Thumbnails, search indexes, waveforms and downloaded payloads on the device are disposable SSD caches. Clearing them never deletes a master item or Studio attachment.</p>
             </article>
           </div>
-          <p style={{ marginTop: '1rem', color: 'var(--slate)' }}>
+          <p style={{ marginTop: '1rem', color: 'var(--quiet)' }}>
             Reusing the same source in several Studios creates one intentional frozen attachment in each
             Studio that uses it. Attaching it twice to the same Studio reuses its existing attachment.
           </p>
