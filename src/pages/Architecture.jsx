@@ -163,7 +163,7 @@ export default function Architecture() {
       </div>
 
       <section>
-        <div className="container container--narrow">
+        <div className="container container--prose">
           <p className="section-label">The shape</p>
           <h2>One record, two core representations</h2>
           <hr className="divider" />
@@ -181,7 +181,7 @@ export default function Architecture() {
       </section>
 
       <section>
-        <div className="container">
+        <div className="container container--prose">
           <p className="section-label">Storage and open path</p>
           <h2>Two durable tiers. One fast first frame.</h2>
           <hr className="divider" />
@@ -195,7 +195,7 @@ export default function Architecture() {
       </section>
 
       <section>
-        <div className="container">
+        <div className="container container--prose">
           <p className="section-label">Layer reference</p>
           <h2>The layers</h2>
           <hr className="divider" />
