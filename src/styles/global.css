@@ -182,6 +182,33 @@ section + section {
   max-width: none;
 }
 
+/* Formal term / definition rows: a compact table on wide screens, one readable stack on phones. */
+.definition-table {
+  margin-top: 1rem;
+  border-top: 1px solid var(--ivory-mid);
+}
+
+.definition-table__row {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.72fr) minmax(0, 2fr);
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--ivory-mid);
+}
+
+.definition-table dt {
+  color: var(--purple);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.definition-table dd {
+  color: var(--charcoal-mid);
+  line-height: 1.5;
+}
+
 /* ─── Section label ──────────────────────────────────────────────── */
 .section-label {
   font-family: var(--font-sans);
@@ -453,6 +480,12 @@ section + section {
   }
 
   .page-hero { padding: 2.75rem 0 1.75rem; }
+
+  .definition-table__row {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+    padding: 0.85rem 0;
+  }
 }
 
 /* ── Interactive .studio explorer (Examples) ─────────────────────────────── */
