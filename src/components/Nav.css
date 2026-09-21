@@ -20,7 +20,7 @@
 .nav__wordmark {
   font-family: var(--font-detail);
   font-weight: 700;
-  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
   color: var(--ink);
   text-decoration: none;
   letter-spacing: -0.025em;
@@ -37,7 +37,7 @@
 
 .nav__link {
   font-family: var(--font-sans);
-  font-size: clamp(0.76rem, 1.25vw, 0.9rem);
+  font-size: clamp(0.8rem, 1.3vw, 0.94rem);
   font-weight: 600;
   color: var(--text-muted);
   text-decoration: none;
@@ -98,11 +98,11 @@
 
 @media (max-width: 850px) {
   .nav__wordmark {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
   }
 
   .nav__link {
-    font-size: 0.74rem;
+    font-size: 0.78rem;
     padding: 0.44em 0.52em;
   }
 }
