@@ -1,6 +1,6 @@
 .footer {
-  background: #17232d;
-  color: #e3eaee;
+  background: #181b29;
+  color: #e7e3e8;
   padding: 2rem 0;
   margin-top: 0;
 }
@@ -42,7 +42,7 @@
 
 .footer__tagline {
   font-size: 0.875rem;
-  color: #d7e0e5;
+  color: #ded9df;
   max-width: 36ch;
   line-height: 1.55;
 }
@@ -52,7 +52,7 @@
 .footer__privacy {
   max-width: 44ch;
   margin-top: auto;
-  color: #c5d0d6;
+  color: #cbc5cc;
   font-size: 0.8125rem;
   line-height: 1.55;
   opacity: 0.8;
@@ -67,7 +67,7 @@
   min-height: 170px;
   min-width: 0;
   font-size: 0.8125rem;
-  color: #cad5db;
+  color: #d0cad1;
   text-align: right;
 }
 
@@ -75,7 +75,7 @@
 .footer__licence {
   width: 100%;
   max-width: none;
-  color: #dde5e9;
+  color: #e3dfe4;
 }
 
 .footer__credit {
@@ -89,7 +89,7 @@
   width: 100%;
   margin-top: auto;
   line-height: 1.8;
-  color: #dde5e9;
+  color: #e3dfe4;
   text-align: right;
 }
 
