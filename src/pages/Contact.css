@@ -1,6 +1,6 @@
 .hero {
   padding: clamp(1.25rem, 2vw, 1.7rem) 0 clamp(1rem, 1.5vw, 1.25rem);
-  background: #ebe8eb;
+  background: #f3f3f4;
   border-bottom: 1px solid var(--rule);
 }
 
