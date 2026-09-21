@@ -183,6 +183,20 @@ export default function Architecture() {
 
       <section>
         <div className="container">
+          <p className="section-label">Storage and open path</p>
+          <h2>Two durable tiers. One fast first frame.</h2>
+          <hr className="divider" />
+          <div className="trio-grid">
+            <article className="card"><p className="card__label">Master item</p><p className="card__body">The reusable original remains in a user-chosen local folder or cloud provider. Its stable ID, revision and content hash identify the exact source.</p></article>
+            <article className="card"><p className="card__label">Studio attachment</p><p className="card__body">The current Studio keeps the source bytes or explicit subset it uses, frozen to that master revision. It remains portable without the library being online.</p></article>
+            <article className="card"><p className="card__label">Device cache</p><p className="card__body">Pages, search indexes, waveforms and downloaded media are derived SSD data. They speed later use and may be evicted without changing either durable tier.</p></article>
+          </div>
+          <p style={{ marginTop: '1rem', maxWidth: '72ch' }}>The initial open reads only the compact Studio core and attachment manifest. Parsing happens off the main interface. Library restoration follows the first reveal, while reader and player modules fetch their large payloads only when the writer asks for them. The target is a usable first frame no slower than the corresponding Markdown writing.</p>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
           <p className="section-label">Layer reference</p>
           <h2>The layers</h2>
           <hr className="divider" />

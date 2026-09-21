@@ -108,6 +108,25 @@ Opening a module must not manufacture a second master document or silently conve
 
 The developing shared-library model separates user-owned master items from each Studio's frozen subset.
 
+### 7.1 The two durable tiers
+
+The system has exactly two product-visible durable tiers for a Studio use:
+
+1. **Master library item.** The reusable source is kept in a local folder, OneDrive, Google Drive or another provider the writer chooses. Its master record contains a stable ID, provider locator, revision token, content hash and descriptive metadata.
+2. **Studio attachment.** The Studio stores the full source or explicit subset it actually uses, bound to the master ID and exact revision. This frozen record keeps the Studio portable and prevents later master edits from silently changing evidence, citations, quoted email or media.
+
+“Two copies” describes these two durable roles for one Studio attachment. If the same master source is deliberately used by three Studios, there is one master and three frozen Studio attachments. Re-attaching a source to the same Studio reuses the existing attachment record and must not duplicate its payload.
+
+There is no hidden third authoritative Inkwave library. OPFS, IndexedDB, thumbnails, page images, waveforms, search indexes and transcoded renditions are derived device caches. They can deduplicate physical bytes and can be evicted, but clearing them must never delete the only master or Studio copy.
+
+### 7.2 Fast first frame and lazy payloads
+
+The cold-open path reads only the compact Studio core: summary, readable text, editable document tree and attachment manifest. Container parsing runs off the main interface. The writer receives the writing surface before library hydration, timestamp work or large source payloads can block it.
+
+The library manifest and lightweight metadata restore after the first reveal. A PDF, EPUB, webpage snapshot, movie, isolated audio file or voice edition is read from SSD cache or fetched from its provider only when the corresponding reader or player opens. Downloaded payloads remain evictable SSD cache data.
+
+The design target is that an Inkwave Studio becomes usable no slower than opening the equivalent writing in Markdown. Large attachments must add work only to the module that requests them, not to the document's initial open.
+
 ~~~text
 emails/       master email records
 emailVoices/  voice editions keyed to stable email/message IDs
@@ -186,4 +205,3 @@ This specification is available under CC BY 4.0. Implementations may build on it
 ## 15. Maintenance
 
 This document is bundled into the website and is downloaded by the **Download engineering spec** button. It is the engineer-facing companion to the public pages. Any change to the public model, terminology, capability status or conformance claim must update this document in the same commit.
-
