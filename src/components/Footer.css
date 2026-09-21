@@ -71,7 +71,12 @@
   color: #e2e6e7;
 }
 
-.footer__credit { line-height: 1.55; }
+.footer__credit {
+  width: 50%;
+  align-self: flex-end;
+  text-align: right;
+  line-height: 1.55;
+}
 
 .footer__contact {
   width: 100%;
@@ -115,6 +120,12 @@
 
   .footer__copy {
     align-items: flex-start;
+    text-align: left;
+  }
+
+  .footer__credit {
+    width: 100%;
+    align-self: flex-start;
     text-align: left;
   }
 
