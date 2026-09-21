@@ -7,7 +7,7 @@
 }
 
 .hero__inner {
-  max-width: 820px;
+  max-width: 1080px;
 }
 
 .hero__title {
@@ -43,7 +43,7 @@
 }
 
 .cta-inner {
-  max-width: 680px;
+  max-width: 1080px;
 }
 
 .cta-inner h2, .cta-inner p { color: #fff; }
