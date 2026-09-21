@@ -1,3 +1,4 @@
+import { CodeBar, countLines } from '../components/CodeBar'
 import { SyntaxHighlight } from '../components/SyntaxHighlight'
 import { useMeta } from '../useMeta'
 
@@ -144,6 +145,10 @@ tiles?: {
   },
 ]
 
+function briefFilename(name) {
+  return `${name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}.ts`
+}
+
 export default function Architecture() {
   useMeta({
     title: 'Architecture',
@@ -230,7 +235,12 @@ export default function Architecture() {
                 </div>
 
                 <aside className="arch-brief">
-                  <div className="arch-brief__head">{parseInt(layer.index, 10)} · {layer.name} — implementation brief</div>
+                  <CodeBar
+                    filename={briefFilename(layer.name)}
+                    language="TypeScript"
+                    symbol="TS"
+                    lines={countLines(layer.brief)}
+                  />
                   <pre className="arch-brief__code"><SyntaxHighlight text={layer.brief} /></pre>
                 </aside>
               </div>

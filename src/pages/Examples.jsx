@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
+import { CodeBar, countLines } from '../components/CodeBar'
 import { SyntaxHighlight } from '../components/SyntaxHighlight'
 import { useMeta } from '../useMeta'
 
@@ -233,13 +234,11 @@ function Explorer({ filename, blocks, parts, firstId }) {
     if (el && scroller) scroller.scrollTo({ top: el.offsetTop - 14, behavior: 'smooth' })
   }, [active])
   const activePart = parts.find(p => p.id === active)
+  const lineCount = countLines(blocks.map(block => block.text).join(''))
   return (
     <div className="studio-explorer">
       <div className="studio-explorer__file">
-        <div className="file-example__header">
-          <div className="file-example__dot" /><div className="file-example__dot" /><div className="file-example__dot" />
-          <span style={{ marginLeft: '0.25rem' }}>{filename}</span>
-        </div>
+        <CodeBar filename={filename} language="JSON" symbol="{}" lines={lineCount} />
         <div className="studio-explorer__scroll" ref={scrollRef}>
           <div className="studio-explorer__code">
             {blocks.map((b, i) => (
