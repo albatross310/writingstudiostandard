@@ -298,6 +298,8 @@ Inkwave is being expanded into a desktop application for macOS and Windows. Its 
 
 The Writing Studio Standard develops in public. Feedback on the specification, implementations, compatibility, terminology and corrections is welcome.
 
+The website contact page provides a feedback form delivered through Formspree. Submitting the form sends the visitor's name, email address, message and standard request metadata to Formspree for delivery to the maintainer. The form is optional; direct email remains available.
+
 Contact: petergibson127@gmail.com
 Related work: MnemonicEcologies.com
 
