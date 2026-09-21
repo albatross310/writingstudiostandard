@@ -94,8 +94,9 @@ code:not(pre code) {
 }
 
 .container--narrow {
-  /* Same left edge as the hero (no centred indent); prose stays readable via per-element max-width. */
-  max-width: 840px;
+  /* Sections share the page gutter. Individual paragraphs can still keep a readable line length
+     without the whole section stepping inward from its heading. */
+  max-width: 1080px;
 }
 
 section {
