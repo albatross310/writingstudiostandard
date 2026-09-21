@@ -7,8 +7,8 @@
 
 .footer__inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) var(--nav-column);
-  gap: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2.5rem, 7vw, 6rem);
   align-items: stretch;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .footer__credit {
-  width: 100%;
+  width: 50%;
   align-self: flex-end;
   text-align: right;
   line-height: 1.55;
