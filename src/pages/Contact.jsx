@@ -18,15 +18,12 @@ export default function Contact() {
             Specification development is public. Implementation reports, compatibility questions and
             corrections are welcome.
           </p>
-          <div className="btn-group">
-            <a href="#feedback" className="btn btn--primary">Leave feedback</a>
-          </div>
         </div>
       </section>
 
       <section>
         <div className="container container--prose">
-          <h2 id="feedback">Leave feedback</h2>
+          <h2>Leave feedback</h2>
           <p>
             The standard is written and maintained by <strong>Peter Gibson</strong>. Implementation reports,
             interoperability tests, corrections and questions are welcome.
