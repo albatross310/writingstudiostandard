@@ -194,7 +194,7 @@ A conforming reader:
 
 ## 13. Examples
 
-The website's Examples page includes both a toy file and an annotated excerpt from Peter Gibson's Leibniz honours proposal. They demonstrate readable text, a rich document model, CSL bibliography records, pinpointed source passages, selected embedded PDFs, signed receipts and Bitcoin-anchored snapshots.
+The website's Examples page includes a toy essay, an annotated excerpt from Peter Gibson's Leibniz honours proposal, and a fictional email with an original night-watch scene plus an illustrative multi-voice recording edition. Together they demonstrate readable text, a rich document model, CSL bibliography records, pinpointed source passages, selected embedded PDFs, signed receipts, timestamped snapshots, email metadata, source-linked voice casts, part coverage and word timings. The email example's audio string is explicitly fake placeholder data and is not playable.
 
 ## 14. Licensing and naming
 
