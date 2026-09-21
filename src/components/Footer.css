@@ -14,6 +14,14 @@
 
 .footer__brand {
   grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  height: 226px;
+}
+
+.footer__identity {
+  display: flex;
+  flex-direction: column;
 }
 
 .footer__name {
@@ -30,6 +38,17 @@
   color: #e1dadd;
   max-width: 36ch;
   line-height: 1.55;
+}
+
+.footer__status { margin-top: 0.6rem; opacity: 0.8; }
+
+.footer__privacy {
+  max-width: 44ch;
+  margin-top: auto;
+  color: #d0c7cd;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  opacity: 0.8;
 }
 
 .footer__nav {
@@ -53,16 +72,55 @@
 }
 
 .footer__copy {
-  grid-column: 2;            /* same top line as the brand (not a full-width row below) */
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 226px;
   font-size: 0.8125rem;
   color: #d4cdd2;
   max-width: none;
-  line-height: 1.6;
+  text-align: right;
+}
+
+.footer__credit,
+.footer__licence { max-width: 36ch; }
+
+.footer__credit { line-height: 1.55; }
+
+.footer__contact {
+  margin-top: auto;
+  line-height: 1.8;
+}
+
+.footer__licence {
+  margin-top: 0.35rem;
+  line-height: 1.55;
+}
+
+.footer__copy a {
+  color: inherit;
+  text-underline-offset: 0.14em;
 }
 
 @media (max-width: 600px) {
   .footer__inner {
     grid-template-columns: 1fr;
+  }
+
+  .footer__brand,
+  .footer__copy {
+    height: auto;
+  }
+
+  .footer__privacy,
+  .footer__contact {
+    margin-top: 1.5rem;
+  }
+
+  .footer__copy {
+    align-items: flex-start;
+    text-align: left;
   }
 
   .footer__nav {
