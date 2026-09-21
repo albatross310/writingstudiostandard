@@ -12,18 +12,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 58px;
+  height: 64px;
   gap: clamp(0.5rem, 1.5vw, 1.25rem);
   min-width: 0;
 }
 
 .nav__wordmark {
-  font-family: var(--font-sans);
-  font-weight: 380;
-  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  font-family: 'Inkwave Roman', Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
   color: var(--ink);
   text-decoration: none;
-  letter-spacing: 0.015em;
+  letter-spacing: 0.005em;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -98,7 +98,7 @@
 
 @media (max-width: 850px) {
   .nav__wordmark {
-    font-size: 1.05rem;
+    font-size: 1.2rem;
   }
 
   .nav__link {
