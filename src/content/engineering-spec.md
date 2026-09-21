@@ -785,7 +785,7 @@ This document is bundled into the website and is downloaded by the **Download en
 
 The website-generated download inserts the reader's local download date into the specification header and appends the ISO date to the Markdown filename. The source specification intentionally contains no fixed download date.
 
-The canonical public page at `/` is a concise, plain-language introduction headed **Specification**. The former `/standard` route redirects to `/`; there is no separate landing page or second summary of the standard. The site header contains no links to supplementary sections, so the introduction and engineering-specification download remain the clear entry point.
+The canonical public page at `/` is a concise, plain-language introduction headed **Specification**. The former `/standard` route redirects to `/`; there is no separate landing page or second summary of the standard. The primary navigation links to the supplementary architecture, examples, FAQ and contact pages while keeping Specification as the first item.
 
 A specification revision SHOULD update `Specification version` when it changes a normative requirement, field meaning or conformance profile. Editorial corrections MAY retain the version. Breaking wire changes MUST increment the top-level record version.
 
