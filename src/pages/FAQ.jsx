@@ -1,104 +1,16 @@
 import { useMeta } from '../useMeta'
 
 const faqs = [
-  {
-    q: 'Why not just use .docx or PDF?',
-    a: 'Those formats store how a document looks, not how it was made — and they’re opaque to read raw. A .studio file keeps the writing legible as plain text, keeps its sources with it, and can carry a verifiable record of the session that produced it. It’s also far easier for a person or a language model to read. And because everything lives in one structured file, it can grow: planned work includes mnemonic-tile artwork anchored to specific passages, the ability to dynamically bring up other .studio files from within a document, and dynamically hyperlinked files — so a reader can navigate a document, and the wider body of work and sources around it, as one connected space with ease.',
-  },
-  {
-    q: 'Does it record my keystrokes?',
-    a: (
-      <>
-        For ordinary use, no. Provenance is built from signed hashes of the content and of the constraints
-        applied while writing — never keystroke logs, your text, or your identity. Proving authorship does
-        not require surveillance, and it is by no means necessary for a Studio Document to record your
-        keystrokes. However, in some versions a Writing Studio may choose to record keystrokes for higher
-        levels of provenance detail. If so, it is <em>highly recommended</em> that keystrokes are stored in
-        the document, not kept on a server, and not seen if possible — and encrypted at rest and at all
-        stages apart from verification in the browser (for example at a verification portal such as{' '}
-        <a href="https://iwzero.me/verify" target="_blank" rel="noopener noreferrer">iwzero.me/verify</a>).
-        But for day-to-day purposes and online sharing, the answer is no: a .studio document does not need
-        to store keystrokes.
-      </>
-    ),
-  },
-  {
-    q: 'How does the Bitcoin blockchain work?',
-    a: (
-      <>
-        <p>
-          Bitcoin is a public, append-only ledger maintained by a peer-to-peer network with no central
-          authority. Transactions are grouped into <em>blocks</em>; each block header contains the SHA-256
-          hash of the previous block, so the blocks form a chain in which changing any old block would
-          alter every hash after it. Blocks also commit to their transactions through a <em>Merkle tree</em>
-          {' '}— a binary tree of hashes whose single 32-byte root sits in the header — so one value fixes
-          the entire set of transactions.
-        </p>
-        <p style={{ marginTop: '0.9rem' }}>
-          New blocks are added by <em>proof-of-work</em>. Miners repeatedly hash a candidate block header
-          while varying a nonce, searching for an output below a network-set target. Because SHA-256 is
-          effectively unpredictable, the only way to find such a hash is brute force, and the difficulty
-          auto-adjusts so the network produces roughly one block every ten minutes regardless of total
-          computing power. Rewriting history would mean redoing the proof-of-work for the altered block and
-          every block after it, faster than the rest of the network extends the honest chain — economically
-          infeasible once a block is buried under several confirmations. That is what makes the ledger
-          practically immutable and its ordering trustworthy without trusting any party.
-        </p>
-        <p style={{ marginTop: '0.9rem' }}>
-          Timestamping rides on this. To prove a document existed at a point in time you don't put the
-          document on-chain; you put a <em>hash</em> of it. OpenTimestamps aggregates many such hashes into
-          its own Merkle tree and commits only the root in a single Bitcoin transaction, so millions of
-          documents share one on-chain footprint. The resulting proof links your document's hash → the
-          Merkle path → the Bitcoin block, and anyone can verify it against the public chain with no server
-          and no trust in the timestamper.{' '}
-          <a href="https://en.wikipedia.org/wiki/OpenTimestamps" target="_blank" rel="noopener noreferrer">
-            OpenTimestamps on Wikipedia →
-          </a>
-        </p>
-      </>
-    ),
-  },
-  {
-    q: 'Who controls the standard? Can I build on it?',
-    a: 'No one owns it and there is no certification body. Any software may read, write, extend, and verify the .studio format for any purpose, commercial or otherwise, without permission or fee.',
-  },
-  {
-    q: 'What are the mnemonic tiles I’ve seen mentioned?',
-    a: 'A planned layer that links artwork — mnemonic tiles — to words and passages in the document, as visual memory anchors. The underlying word list is planned to be open source, but the tiles themselves must be custom-built by each individual Writing Studio. It is still in development and not yet part of a conformant implementation.',
-  },
-  {
-    q: 'What are Inkwave Zero and Inkwave Cubed?',
-    a: 'Implementations of the standard, not the standard itself. Inkwave Zero is live — a free writing studio that produces, signs, and anchors .studio files. Inkwave Cubed, in development, links verified documents into a network. Other tools may implement the format and remain fully conformant.',
-  },
+  { q: 'Why not just use .docx or PDF?', a: 'A .docx focuses on editable presentation and a PDF focuses on fixed presentation. A Studio Document can keep a readable text projection, the editable structure, source information, working context and optional verification evidence together. It can still export a normal PDF when a normal PDF is the right thing to send.' },
+  { q: 'Is a .studio file readable without Inkwave?', a: 'Yes. It is versioned JSON with a short summary and plain-text representation near the beginning. A person can inspect the writing with ordinary tools; a compatible reader can reconstruct the rich document and any capabilities it supports.' },
+  { q: 'Does it copy all my books, email and audio into every document?', a: 'No. The developing library model treats those as master items in your chosen storage. A Studio keeps a frozen subset only when it cites, attaches, quotes or otherwise uses an item. Voice audio is stored separately from its book or email source so it can be removed without harming the original.' },
+  { q: 'Which source types can it represent?', a: 'The current and specified vocabulary covers PDFs, EPUBs, Markdown and text files, immutable webpage snapshots, email, pictures, movies, isolated audio and readalong editions. Citation records use standard bibliographic metadata and can be moved between a reference collection and ordinary documents without changing their stable identity.' },
+  { q: 'Does it record my keystrokes?', a: 'Ordinary Inkwave provenance is built from content hashes, snapshots and signed receipts, not a surveillance log of every keystroke. A future desktop-only Verified Capture mode is explicitly separate and will label the precise evidence it has; it will not claim to prove that a person conceived every sentence alone.' },
+  { q: 'What does verification actually prove?', a: 'Where the relevant data is present, a verifier can check that content hashes, signed receipts and timestamp proofs agree with the exported record. It can demonstrate technical integrity and dating claims. It cannot detect all AI assistance, establish a writer’s legal identity or certify the origin of every idea.' },
+  { q: 'Can I build on the format?', a: 'Yes. The standard is published under CC BY 4.0. Implementations should use the name carefully: compatibility means preserving the document contract and being clear about which layers they support.' },
 ]
 
 export default function FAQ() {
-  useMeta({
-    title: 'FAQ',
-    description: 'Common questions about the Writing Studio Standard — the .studio file, provenance without surveillance, verification, conformance, and building on the format.',
-    path: '/faq',
-  })
-  return (
-    <main>
-      <div className="container">
-        <div className="page-hero">
-          <p className="page-hero__kicker">FAQ</p>
-          <h1 className="page-hero__title">Frequently asked questions</h1>
-        </div>
-      </div>
-
-      <section>
-        <div className="container container--narrow">
-          <div className="faq-list">
-            {faqs.map(item => (
-              <div className="faq-item" key={item.q}>
-                <p className="faq-item__q">{item.q}</p>
-                <div className="faq-item__a">{item.a}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </main>
-  )
+  useMeta({ title: 'FAQ', description: 'Common questions about Studio Documents, master libraries, voice editions, provenance and the Writing Studio Standard.', path: '/faq' })
+  return <main><div className="container"><div className="page-hero"><p className="page-hero__kicker">FAQ</p><h1 className="page-hero__title">Frequently asked questions</h1><p className="page-hero__lead">What the standard is for, what it stores, and where its claims stop.</p></div></div><section><div className="container container--narrow"><div className="faq-list">{faqs.map(({ q, a }) => <article className="faq-item" key={q}><h2 className="faq-item__q">{q}</h2><p className="faq-item__a">{a}</p></article>)}</div></div></section></main>
 }

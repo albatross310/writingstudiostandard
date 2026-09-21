@@ -1,107 +1,35 @@
 import { useMeta } from '../useMeta'
 
 const terms = [
-  { term: 'Writing Studio', def: 'Software that produces Studio Documents, implementing at least the readable-text layer.' },
-  { term: 'Studio Document', def: 'A file conforming to this standard — the readable text plus at least one further layer.' },
-  { term: 'The .studio file', def: 'The canonical form: a single JSON file that opens with a human-readable Markdown header carrying the document’s full text. Readable in any editor; verifiable by anyone.' },
-  { term: 'Verifiable record', def: 'The signed, hash-chained session data and its public-blockchain anchor, which let a third party confirm an authentic composition without trusting the vendor.' },
+  { term: 'Writing Studio', def: 'Software that creates, opens or verifies Studio Documents while preserving the parts it understands and declaring the parts it does not.' },
+  { term: 'Studio Document', def: 'A portable .studio record containing an editable document plus its readable representation and any optional associated material.' },
+  { term: 'Master item', def: 'A source, email, document or media item kept in the writer’s own library. A Studio Document carries a frozen reference or payload only when that work needs it.' },
+  { term: 'Voice edition', def: 'A rendered readalong or recording associated with a stable source revision. Audio is separate from its source so it can be retained, re-rendered or omitted without changing the original.' },
+  { term: 'Verified record', def: 'A record with snapshots, signed receipt-chain evidence and, where present, independent timestamp proofs. It verifies the stated technical evidence, not an absolute claim about authorship.' },
 ]
 
 export default function Standard() {
-  useMeta({
-    title: 'The Standard',
-    description: 'The Writing Studio Standard defines a Writing Studio, the Studio Document, the .studio file, six principles, and what conformance means.',
-    path: '/standard',
-  })
+  useMeta({ title: 'The Standard', description: 'The Writing Studio Standard defines portable Studio Documents, source-aware writing, contextual modules and optional provenance.', path: '/standard' })
   return (
     <main>
-      <div className="container">
-        <div className="page-hero">
-          <p className="page-hero__kicker">Specification</p>
-          <h1 className="page-hero__title">The Writing Studio Standard</h1>
-          <p className="page-hero__lead">
-            A definition of what it means for software to be a Writing Studio, and of the open file its
-            documents take.
-          </p>
-        </div>
-      </div>
+      <div className="container"><div className="page-hero"><p className="page-hero__kicker">Specification</p><h1 className="page-hero__title">The Writing Studio Standard</h1><p className="page-hero__lead">A practical definition of a document that can preserve its writing, sources, working context and optional proof without being trapped inside a single product.</p></div></div>
 
-      <section>
-        <div className="container container--narrow">
-          <p className="section-label">Scope</p>
-          <h2>What the standard defines</h2>
-          <hr className="divider" />
-          <p>
-            A text editor stores text. A word processor stores how a document looks. A Writing Studio
-            stores the writing together with the sources it rests on and a verifiable record of the session
-            that produced it.
-          </p>
-          <p>
-            The standard defines that class of software, the layered document it produces, and the minimum
-            each layer must satisfy to be claimed. It does not prescribe user-interface choices, and it
-            settles on exactly one interchange file — the <code className="tag">.studio</code> file — so
-            documents move between tools without translation.
-          </p>
-        </div>
-      </section>
+      <section><div className="container container--narrow"><p className="section-label">Scope</p><h2>What the standard is for</h2><hr className="divider" /><p>A text editor keeps words. A word processor adds presentation. A Writing Studio can keep the surrounding work as well: evidence, reading state, correspondence, media, revisions and a deliberately bounded provenance record.</p><p>The standard defines the portable document contract, its vocabulary and its honesty rules. It does not prescribe one interface, one storage provider, one voice model, or one business model. A conforming implementation makes its supported capabilities visible rather than pretending all Studio Documents contain the same things.</p></div></section>
 
-      <section>
-        <div className="container container--narrow">
-          <p className="section-label">Licence</p>
-          <h2>Published under CC BY 4.0</h2>
-          <hr className="divider" />
-          <p>
-            The Writing Studio Standard is hereby published under the{' '}
-            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
-              Creative Commons Attribution 4.0 International (CC BY 4.0)
-            </a>{' '}
-            licence. Anyone may implement, extend, or build upon it — for any purpose, commercial or
-            otherwise — provided they give appropriate attribution to the author(s) and to the Writing
-            Studio Standard by name.
-          </p>
-          <p style={{ marginTop: '1rem', color: 'var(--slate)', fontSize: '0.95rem' }}>
-            Please note that the terms <em>Studio Document</em>, <em>Writing Studio Standard</em>, and{' '}
-            <em>Inkwave</em> are currently planned trademarks.
-          </p>
-        </div>
-      </section>
+      <section><div className="container container--narrow"><p className="section-label">Principles</p><h2>Six commitments</h2><hr className="divider" /><div className="trio-grid">
+        <article className="card"><p className="card__label">Readable</p><p className="card__body">A reader can find a plain-text representation of the work without reconstructing an editor’s private state.</p></article>
+        <article className="card"><p className="card__label">Portable</p><p className="card__body">The file is data, not a service account. Documents can be exported, copied, inspected and opened elsewhere.</p></article>
+        <article className="card"><p className="card__label">Source-aware</p><p className="card__body">References are real records with stable identifiers, citation metadata and optional frozen source material.</p></article>
+        <article className="card"><p className="card__label">Modular</p><p className="card__body">Email, reader, media and voice surfaces share a document context without being forced into one monolithic page.</p></article>
+        <article className="card"><p className="card__label">User-controlled</p><p className="card__body">Master files may live in a local folder or a cloud provider the writer chooses. Inkwave caches are not a secret fifth copy.</p></article>
+        <article className="card"><p className="card__label">Honest</p><p className="card__body">Provenance states what its evidence supports. It does not turn a cryptographic record into a claim that all prose was independently conceived by one person.</p></article>
+      </div></div></section>
 
-      <section>
-        <div className="container container--narrow">
-          <p className="section-label">Definitions</p>
-          <h2>Primary terms</h2>
-          <hr className="divider" />
-          <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {terms.map(d => (
-              <div key={d.term} className="card">
-                <p className="card__label">{d.term}</p>
-                <p className="card__body">{d.def}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section><div className="container container--narrow"><p className="section-label">Definitions</p><h2>Primary terms</h2><hr className="divider" /><div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>{terms.map(({ term, def }) => <article key={term} className="card"><p className="card__label">{term}</p><p className="card__body">{def}</p></article>)}</div></div></section>
 
-      <section>
-        <div className="container container--narrow">
-          <p className="section-label">Conformance</p>
-          <h2>What conformance means</h2>
-          <hr className="divider" />
-          <p>
-            A <strong>conformant Writing Studio</strong> produces <code className="tag">.studio</code> files
-            that carry the readable text and at least one further layer.
-          </p>
-          <p>
-            A <strong>conformant reader</strong> can open the Markdown header of any <code className="tag">.studio</code> file
-            as plain text, and — where the provenance layer is present — verify the signed chain and public
-            anchor against an independently published key.
-          </p>
-          <p>
-            Conformance is self-declared and self-checkable. There is no authority that certifies
-            implementations, and none is needed: the file carries everything required to be read and proven.
-          </p>
-        </div>
-      </section>
+      <section><div className="container container--narrow"><p className="section-label">Conformance</p><h2>What an implementation must do</h2><hr className="divider" /><p>A conforming writer produces a <code className="tag">.studio</code> record with a versioned, structured document and a readable text representation. It must preserve fields it does not understand whenever it can do so safely, and it must never silently discard provenance, citations or attached evidence during an ordinary open-and-save cycle.</p><p>A conforming reader identifies the capabilities carried by a document and clearly distinguishes unavailable material from absent material. A verifier checks the versioned evidence that is present; it does not infer stronger claims from missing information.</p></div></section>
+
+      <section><div className="container container--narrow"><p className="section-label">Licence</p><h2>Published under CC BY 4.0</h2><hr className="divider" /><p>The Writing Studio Standard is published under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International licence</a>. Anyone may implement, extend or build upon it, provided they attribute the Writing Studio Standard.</p><p style={{ marginTop: '1rem', color: 'var(--slate)', fontSize: '0.95rem' }}>“Writing Studio Standard”, “Studio Document” and “Inkwave” are intended product and standard names. The format remains open; its name should not be used to imply compatibility that an implementation has not earned.</p></div></section>
     </main>
   )
 }

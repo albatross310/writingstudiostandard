@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Writing Studio Standard — Open standard for process-aware documents</title>
-    <meta name="description" content="Writing Studio Standard defines Studio Documents: writing files that preserve text, formatting, images, process, provenance, and creative context in a single portable file." />
+    <title>Writing Studio Standard — Portable writing, sources and proof</title>
+    <meta name="description" content="Writing Studio Standard defines portable .studio documents: readable text, structured writing, sources, modules, voice editions and optional provenance." />
     <link rel="canonical" href="https://writingstudiostandard.org/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -13,14 +13,14 @@
     <!-- Open Graph -->
     <meta property="og:type"        content="website" />
     <meta property="og:site_name"   content="Writing Studio Standard" />
-    <meta property="og:title"       content="Writing Studio Standard — Open standard for process-aware documents" />
-    <meta property="og:description" content="An open standard for documents that remember how they were made." />
+    <meta property="og:title"       content="Writing Studio Standard — Portable writing, sources and proof" />
+    <meta property="og:description" content="An open standard for documents that carry the work around them." />
     <meta property="og:url"         content="https://writingstudiostandard.org/" />
 
     <!-- Twitter / X card -->
     <meta name="twitter:card"        content="summary" />
     <meta name="twitter:title"       content="Writing Studio Standard" />
-    <meta name="twitter:description" content="An open standard for documents that remember how they were made." />
+    <meta name="twitter:description" content="An open standard for documents that carry the work around them." />
 
     <!-- Google Search Console verification — replace content value after verifying in GSC -->
     <!-- <meta name="google-site-verification" content="REPLACE_WITH_GSC_CODE" /> -->
@@ -38,20 +38,20 @@
           "@id": "https://writingstudiostandard.org/#website",
           "url": "https://writingstudiostandard.org/",
           "name": "Writing Studio Standard",
-          "description": "An open standard for process-aware creative writing tools."
+          "description": "An open standard for portable, source-aware writing tools."
         },
         {
           "@type": "TechArticle",
           "@id": "https://writingstudiostandard.org/standard#article",
           "headline": "Writing Studio Standard",
-          "description": "Defines Writing Studios, Studio Documents, Studio Text, and Studio PDF — a layered open standard for documents that preserve process, provenance, and creative context.",
+          "description": "Defines Writing Studios and Studio Documents — a layered open standard for readable writing, sources, modules, voice editions and optional provenance.",
           "url": "https://writingstudiostandard.org/standard",
           "isPartOf": { "@id": "https://writingstudiostandard.org/#website" },
           "about": [
             { "@type": "DefinedTerm", "name": "Writing Studio",    "description": "Software that creates Studio Documents." },
             { "@type": "DefinedTerm", "name": "Studio Document",   "description": "A document containing content plus its creative and process context." },
-            { "@type": "DefinedTerm", "name": "Studio Text",       "description": "A readable text-first Studio Document, e.g. essay.studio.txt." },
-            { "@type": "DefinedTerm", "name": "Studio PDF",        "description": "A portable rendered Studio Document, e.g. essay.studio.pdf." }
+            { "@type": "DefinedTerm", "name": "Voice edition",     "description": "A readalong or recording associated with a stable source revision." },
+            { "@type": "DefinedTerm", "name": "Verified record",   "description": "A Studio Document carrying stated snapshot and provenance evidence." }
           ]
         }
       ]
@@ -59,9 +59,6 @@
     </script>
 
     <!-- Fonts are self-hosted (see /public/fonts) — no requests leave this domain. -->
-    <link rel="preload" as="font" type="font/woff2" href="/fonts/eb-garamond-400-700-normal-latin.woff2" crossorigin />
-    <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-300-600-normal-latin.woff2" crossorigin />
-    <link rel="stylesheet" href="/fonts/fonts.css" />
   </head>
   <body>
     <div id="root"></div>
