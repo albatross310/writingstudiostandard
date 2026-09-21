@@ -26,8 +26,6 @@
   white-space: nowrap;
   flex-shrink: 0;
 }
-.nav__wordmark:hover { text-decoration: none; }
-
 .nav__links {
   display: flex;
   align-items: center;
