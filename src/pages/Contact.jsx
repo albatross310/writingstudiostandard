@@ -10,7 +10,7 @@ export default function Contact() {
   return (
     <main>
       <section className="hero contact-hero">
-        <div className="container hero__inner">
+        <div className="container container--prose hero__inner">
           <p className="section-label">Contact</p>
           <h1 className="hero__title">Contact and participation</h1>
           <p className="hero__lead">
@@ -24,7 +24,7 @@ export default function Contact() {
       </section>
 
       <section>
-        <div className="container">
+        <div className="container container--prose">
           <h2>Feedback welcome</h2>
           <p>
             The standard is written and maintained by <strong>Peter Gibson</strong>. If you are implementing
