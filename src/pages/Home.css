@@ -50,11 +50,93 @@
    without carrying the landing page’s long closing cushion below that action. */
 .contact-hero { padding-bottom: 1.25rem; }
 
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 1.25rem;
+}
+
+.contact-form__identity {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.45;
+  padding: 0.65rem 0.75rem;
+  text-transform: none;
+}
+
+.contact-form textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--ink);
+  outline: 2px solid rgba(29, 30, 31, 0.14);
+  outline-offset: 1px;
+}
+
+.contact-form__actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.contact-form__actions .btn {
+  flex: 0 0 auto;
+}
+
+.contact-form__privacy {
+  max-width: 58ch;
+  color: var(--quiet);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.contact-alternative {
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+}
+
 @media (max-width: 700px) {
   .hero { padding: 1.6rem 0 1.15rem; }
 
   .home-doc-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .contact-form__identity {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form__actions {
+    flex-direction: column;
   }
 }

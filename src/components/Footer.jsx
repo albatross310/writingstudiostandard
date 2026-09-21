@@ -15,8 +15,9 @@ export default function Footer() {
             </p>
           </div>
           <p className="footer__privacy">
-            Privacy: this site collects nothing — no analytics, no cookies, no tracking.
-            Fonts are served from this domain. Our host (Vercel) keeps standard server request logs.
+            Privacy: this site uses no analytics, cookies or advertising trackers. Feedback submissions are
+            processed by Formspree only when you send them. Fonts are served from this domain; Vercel keeps
+            standard server request logs.
           </p>
         </div>
         <div className="footer__copy">
