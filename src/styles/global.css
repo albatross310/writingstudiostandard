@@ -3,9 +3,10 @@
   --paper:        #f5f4f3;
   --rule:         #dcd7da;
   --rule-strong:  #b9b0b6;
-  --ink:          #181d2b;
-  --text:         #333541;
-  --text-muted:   #585963;
+  --black:        #0c0d10;
+  --ink:          #24252b;
+  --text:         #3a393f;
+  --text-muted:   #5f5b62;
   --quiet:        #716c73;
   --panel:        #ffffff;
   --accent:       #50394f;
@@ -34,7 +35,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  background: #181b29;
+  background: #24252b;
 }
 
 body {
@@ -221,8 +222,8 @@ section + section {
 /* ─── Divider ─────────────────────────────────────────────────────── */
 .divider {
   width: 2rem;
-  height: 2px;
-  background: var(--ink);
+  height: 3px;
+  background: var(--black);
   margin: 1rem 0;
   border: none;
 }
@@ -270,7 +271,8 @@ section + section {
 
 .trio-card--highlight {
   border-color: var(--accent-light);
-  border-left-width: 3px;
+  border-left-color: var(--black);
+  border-left-width: 4px;
   background: var(--panel);
 }
 
