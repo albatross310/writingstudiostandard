@@ -117,7 +117,7 @@ code:not(pre code) {
   max-width: var(--content-rail);
 }
 
-/* On desktop, main content ends where the navigation-link column begins. */
+/* On desktop, main content ends where the header's Specification label begins. */
 @media (min-width: 701px) {
   main .container {
     padding-right: calc(var(--page-gutter) + var(--nav-column));
