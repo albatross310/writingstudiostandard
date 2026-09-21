@@ -30,6 +30,7 @@
   --surface-muted:#e9e9e7;
   --white:        #ffffff;
   --page-gutter:  clamp(0.75rem, calc(0.55rem + 0.75vw), 2rem);
+  --content-rail: 1180px;
 
   --font-serif:  'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
   --font-body:   'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
@@ -104,41 +105,15 @@ code:not(pre code) {
 /* ─── Layout ─────────────────────────────────────────────────────── */
 .container {
   width: 100%;
-  max-width: 1180px;
+  max-width: var(--content-rail);
   margin: 0 auto;
   padding-inline: var(--page-gutter);
 }
 
-.container--narrow {
-  /* Sections share the page gutter. Individual paragraphs can still keep a readable line length
-     without the whole section stepping inward from its heading. */
-  max-width: 1180px;
-}
-
-/* Prose centring is deliberately progressive. Small windows keep almost all available width;
-   the inset grows gently through medium widths, then more quickly before settling at its final
-   readable measure. This avoids premature title, navigation and footer wrapping. */
+/* Every page uses the same two vertical rails as the navigation and footer. The prose modifier is
+   retained as a semantic hook, but it no longer creates a second, inward alignment system. */
 .container.container--prose {
-  max-width: none;
-}
-
-@media (min-width: 48rem) {
-  .container.container--prose {
-    padding-inline: calc(var(--page-gutter) + 10vw - 4.8rem);
-  }
-}
-
-@media (min-width: 60rem) {
-  .container.container--prose {
-    padding-inline: calc(var(--page-gutter) + 45vw - 25.8rem);
-  }
-}
-
-@media (min-width: 72rem) {
-  .container.container--prose {
-    max-width: calc(56.6rem + var(--page-gutter) + var(--page-gutter));
-    padding-inline: var(--page-gutter);
-  }
+  max-width: var(--content-rail);
 }
 
 section {
@@ -269,6 +244,22 @@ section + section {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 0.75rem;
   margin-top: 1rem;
+}
+
+.trio-grid--principles {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .trio-grid--principles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .trio-grid--principles {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Storage cards need room for technical prose; move the third card down before it becomes cramped. */
@@ -590,7 +581,7 @@ section + section {
 .arch-rows { display: flex; flex-direction: column; gap: 0.85rem; }
 .arch-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.8rem;
   align-items: stretch;             /* brief matches its card's height */
 }
