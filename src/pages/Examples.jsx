@@ -323,7 +323,7 @@ export default function Examples() {
   })
   return (
     <main>
-      <div className="container">
+      <div className="container container--prose">
         <div className="page-hero">
           <p className="page-hero__kicker">Worked examples</p>
           <h1 className="page-hero__title">Three <code className="tag">.studio</code> files, annotated</h1>

@@ -151,7 +151,7 @@ export default function Architecture() {
   })
   return (
     <main>
-      <div className="container">
+      <div className="container container--prose">
         <div className="page-hero">
           <p className="page-hero__kicker">The file</p>
           <h1 className="page-hero__title">Anatomy of a <code className="tag">.studio</code> file</h1>
