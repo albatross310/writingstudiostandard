@@ -88,6 +88,16 @@ code:not(pre code) {
   border: 1px solid var(--rule-strong);
 }
 
+/* Shared syntax palette for every rendered code surface. */
+.syntax-token--key { color: #91c1e8; }
+.syntax-token--string { color: #d1a5c9; }
+.syntax-token--number { color: #d6b36d; }
+.syntax-token--keyword { color: #bda0e1; font-weight: 600; }
+.syntax-token--function { color: #8fb4d0; }
+.syntax-token--punctuation { color: #a2a8b4; }
+.syntax-token--comment { color: #8b94a0; font-style: italic; }
+.syntax-token--text { color: #d7d7de; }
+
 /* ─── Layout ─────────────────────────────────────────────────────── */
 .container {
   width: 100%;

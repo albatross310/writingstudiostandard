@@ -1,3 +1,4 @@
+import { SyntaxHighlight } from '../components/SyntaxHighlight'
 import { useMeta } from '../useMeta'
 
 // The briefs describe the STANDARD (the shape a conformant file takes), not any one implementation's
@@ -230,7 +231,7 @@ export default function Architecture() {
 
                 <aside className="arch-brief">
                   <div className="arch-brief__head">{parseInt(layer.index, 10)} · {layer.name} — implementation brief</div>
-                  <pre className="arch-brief__code">{layer.brief}</pre>
+                  <pre className="arch-brief__code"><SyntaxHighlight text={layer.brief} /></pre>
                 </aside>
               </div>
             ))}
