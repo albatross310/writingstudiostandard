@@ -6,16 +6,17 @@
 }
 
 .footer__inner {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(2.5rem, 7vw, 6rem);
+  display: flex;
+  flex-wrap: nowrap;
+  gap: clamp(1rem, 4vw, 4rem);
   align-items: stretch;
 }
 
 .footer__brand {
-  grid-column: 1;
   display: flex;
   flex-direction: column;
+  flex: 1 1 0;
+  width: 0;
   min-height: 170px;
   min-width: 0;
 }
@@ -53,9 +54,10 @@
 }
 
 .footer__copy {
-  grid-column: 2;
   display: flex;
   flex-direction: column;
+  flex: 1 1 0;
+  width: 0;
   align-items: flex-end;
   min-height: 170px;
   min-width: 0;
@@ -72,7 +74,7 @@
 }
 
 .footer__credit {
-  width: 50%;
+  width: 100%;
   align-self: flex-end;
   text-align: right;
   line-height: 1.55;
@@ -95,6 +97,7 @@
 .footer__copy a {
   color: inherit;
   text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 1100px) {
