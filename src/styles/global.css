@@ -29,6 +29,7 @@
   --accent-pale:  #e3e4e2;
   --surface-muted:#e9e9e7;
   --white:        #ffffff;
+  --page-gutter:  clamp(0.75rem, calc(0.55rem + 0.75vw), 2rem);
 
   --font-serif:  'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
   --font-body:   'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
@@ -105,7 +106,7 @@ code:not(pre code) {
   width: 100%;
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0 clamp(1rem, 2.5vw, 2rem);
+  padding-inline: var(--page-gutter);
 }
 
 .container--narrow {
@@ -114,9 +115,30 @@ code:not(pre code) {
   max-width: 1180px;
 }
 
-/* Prose-only pages keep one readable column centred inside wider viewports. */
+/* Prose centring is deliberately progressive. Small windows keep almost all available width;
+   the inset grows gently through medium widths, then more quickly before settling at its final
+   readable measure. This avoids premature title, navigation and footer wrapping. */
 .container.container--prose {
-  max-width: 48rem;
+  max-width: none;
+}
+
+@media (min-width: 48rem) {
+  .container.container--prose {
+    padding-inline: calc(var(--page-gutter) + 10vw - 4.8rem);
+  }
+}
+
+@media (min-width: 60rem) {
+  .container.container--prose {
+    padding-inline: calc(var(--page-gutter) + 45vw - 25.8rem);
+  }
+}
+
+@media (min-width: 72rem) {
+  .container.container--prose {
+    max-width: calc(56.6rem + var(--page-gutter) + var(--page-gutter));
+    padding-inline: var(--page-gutter);
+  }
 }
 
 section {
