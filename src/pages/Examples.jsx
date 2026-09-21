@@ -318,7 +318,7 @@ export default function Examples() {
             An excerpt of a real honours proposal, PDF-stripped except one source — Leibniz’s <em>New
             Essays</em>, his reply to Locke.
           </p>
-          <Explorer filename="honours-proposal.studio" blocks={REAL_BLOCKS} parts={REAL_PARTS} firstId="rheader" />
+          <Explorer filename="honours-proposal.studio" blocks={REAL_BLOCKS} parts={REAL_PARTS} firstId="rheader" fillPanel />
         </div>
       </section>
 
