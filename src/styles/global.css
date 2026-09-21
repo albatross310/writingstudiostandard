@@ -681,7 +681,10 @@ section + section {
   border: 1px solid #2a2d3f; box-shadow: var(--shadow-card);
   display: flex; flex-direction: column; min-height: 0;
 }
-.arch-brief .code-bar { flex-shrink: 0; }
+.arch-brief .code-bar {
+  flex-shrink: 0;
+  padding-top: 1.14rem;
+}
 .arch-brief__code {
   margin: 0; padding: 0.9rem 1rem; border-radius: 0; background: #121521; color: #dedbe1;
   font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.55;
@@ -692,6 +695,7 @@ section + section {
 @media (max-width: 700px) {
   .arch-row { grid-template-columns: 1fr; }
   .arch-brief { max-height: 55vh; }
+  .arch-brief .code-bar { padding-top: 0.42rem; }
 }
 
 .arch-card .checklist { margin-top: 1rem; }
