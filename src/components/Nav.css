@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(250, 249, 245, 0.88);
+  background: rgba(244, 245, 245, 0.96);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(203,196,198,.72);
@@ -12,14 +12,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 68px;
+  height: 54px;
   gap: clamp(0.5rem, 1.5vw, 1.25rem);
 }
 
 .nav__wordmark {
-  font-family: var(--font-sans);
+  font-family: var(--font-detail);
   font-weight: 700;
-  font-size: clamp(0.94rem, 1.55vw, 1.1rem);
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
   color: var(--purple);
   text-decoration: none;
   letter-spacing: -0.025em;
@@ -41,22 +41,23 @@
   font-weight: 600;
   color: var(--charcoal-mid);
   text-decoration: none;
-  padding: 0.46em 0.68em;
-  border-radius: 999px;
+  padding: 0.42em 0.55em;
+  border-radius: 2px;
   line-height: 1.1;
   white-space: nowrap;
   transition: background 0.12s, color 0.12s;
 }
 
 .nav__link:hover {
-  background: var(--lavender-pale);
+  background: #e8eaea;
   color: var(--purple);
   text-decoration: none;
 }
 
 .nav__link--active {
   color: var(--purple);
-  background: var(--lavender-pale);
+  background: transparent;
+  box-shadow: inset 0 -2px 0 var(--teal);
 }
 
 @media (max-width: 850px) {
@@ -72,7 +73,7 @@
 
 @media (max-width: 520px) {
   .nav__inner {
-    height: 58px;
+    height: 52px;
     overflow-x: auto;
     scrollbar-width: none;
   }

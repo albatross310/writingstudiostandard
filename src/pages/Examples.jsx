@@ -45,50 +45,34 @@ function HL({ text }) {
   return <>{tokenize(text).map(([t, c], i) => <span key={i} style={{ color: c }}>{t}</span>)}</>
 }
 
-const DIVIDER = `
-═══════════════════════════════════════════════════
-══════ INKWAVE RECORD · verify at iwzero.me/verify ══════
-Everything below is the structured record that proves the
-writing above. You don't need to read it — open this file at
-iwzero.me/verify to check it.
-═══════════════════════════════════════════════════
-`
-
 // ── Example 1: a toy file ──────────────────────────────────────────────────────────────────────────
 const TOY_BLOCKS = [
-  { id: 'header', text: `# On Artificial Languages
-
-*Ada Lindqvist · draft · 11 March 2026 · v1.3*
-
-The dream of a perfect language is old. Leibniz imagined a
-*characteristica universalis* in which disputes might be settled
-not by rhetoric but by calculation — calculemus, "let us compute."
-Later constructed languages traded that ambition for something
-humbler: to be spoken.
-
-This essay asks a smaller question. What does a made language keep
-that a natural one lets slip? [see: leibniz1666, p. 12]
-
-...` },
-  { text: DIVIDER },
-  { text: `{
-  "studio": 1,
-  "id": "b1fa2bad-9c04-4e7a-88d1-3f0a12c4e5d6",
-  "title": "On Artificial Languages",
-  "markdownHeader": true,` },
+  { id: 'header', text: `{
+  "v": 1,
+  "summary": {
+    "title": "On Artificial Languages",
+    "words": 312,
+    "verifyAt": "https://iwzero.me/verify"
+  },
+  "text": "On Artificial Languages\\n\\nAda Lindqvist — draft\\n\\nThe dream of a perfect language is old. Leibniz imagined a characteristica universalis in which disputes might be settled by calculation. This essay asks what a made language keeps that a natural one lets slip. (leibniz1666, p. 12)",` },
   { id: 'content', text: `
-  "content": {
-    "type": "doc",
-    "content": [
-      { "type": "heading", "attrs": { "level": 1 },
-        "content": [{ "type": "text", "text": "On Artificial Languages" }] },
-      { "type": "paragraph", "content": [
-        { "type": "text", "text": "The dream of a perfect language is old. " },
-        { "type": "text", "marks": [{ "type": "em" }],
-          "text": "characteristica universalis" }
-      ] }
-      /* …the full editable document tree… */
-    ]
+  "document": {
+    "id": "b1fa2bad-9c04-4e7a-88d1-3f0a12c4e5d6",
+    "title": "On Artificial Languages",
+    "contentJson": {
+      "type": "doc",
+      "content": [
+        { "type": "heading", "attrs": { "level": 1 },
+          "content": [{ "type": "text",
+            "text": "On Artificial Languages" }] },
+        { "type": "paragraph", "content": [
+          { "type": "text",
+            "text": "The dream of a perfect language is old. " },
+          { "type": "text", "marks": [{ "type": "em" }],
+            "text": "characteristica universalis" }
+        ] }
+      ]
+    }
   },` },
   { id: 'bibliography', text: `
   "bibliography": [
@@ -140,8 +124,8 @@ that a natural one lets slip? [see: leibniz1666, p. 12]
 ` },
 ]
 const TOY_PARTS = [
-  { id: 'header', label: 'The readable text', body: 'Every .studio file opens with a plain-Markdown header holding the whole document. Open it in any text editor — or hand it to a language model — and you can read it straight through, no Studio software required.' },
-  { id: 'content', label: 'The document model', body: 'Below the header, the same prose is stored as a structured tree: headings, paragraphs, marks such as emphasis, tables, mathematics. The Markdown header is generated from it, so the two never disagree.' },
+  { id: 'header', label: 'Summary and readable text', body: 'The versioned record begins with a compact summary and deterministic plain-text projection. A person or language model can inspect the writing without rebuilding the editor.' },
+  { id: 'content', label: 'The document model', body: 'The document field holds the editable structured tree: headings, paragraphs, marks, tables and mathematics. The readable text is generated from this source of truth.' },
   { id: 'bibliography', label: 'A pinpointed citation', body: 'Sources are real bibliographic records. Here a citation is pinned to page 12 of Leibniz’s 1666 book and to a highlighted passage, by its rectangle on the page and the citation occurrence it belongs to.' },
   { id: 'pdf', label: 'An embedded source PDF', body: 'A source PDF can travel inside the document, base64-encoded, so the evidence is in hand and links never rot. Exports can strip these or gzip the whole file for email.' },
   { id: 'receipts', label: 'Signed session receipts', body: 'The writing session is a hash chain of receipts, each signed with a private key. Every receipt carries only hashes of the content and the constraints — never your text or identity.' },
@@ -150,33 +134,25 @@ const TOY_PARTS = [
 
 // ── Example 2: a real file (an excerpt of the author's actual honours proposal) ──────────────────────
 const REAL_BLOCKS = [
-  { id: 'rheader', text: `Honours Proposal                  Peter Gibson
-
-Disclaimer: Claude Opus 4.8 and GPT 5.5 (High) were used
-collaboratively as dialog partners, for deep web research, and to
-pressure test ideas throughout the formulation of this proposal.
-Models were instructed to avoid giving direct writes or rewrites,
-and the final prose and intention are my own.
-
-Philosophical Question:
-
-Very broadly, the philosophical question I will be addressing is
-whether a universal constructed language of the type the early
-modern philosophers envisaged is possible, and why or why not with
-reference to the nature of language and how it comes to be.
-
-I will be focussing specifically on a revisionary reading of
-Leibniz, and his philosophical answer to this question. [see:
-leibniz-new-essays, bk. III]
-
-  … (the full proposal continues in the header) …` },
-  { text: DIVIDER },
-  { text: `{
-  "studio": 1,
-  "title": "Honours Proposal",
-  "author": "Peter Gibson",
-  "markdownHeader": true,
-  "scasMode": "server",` },
+  { id: 'rheader', text: `{
+  "v": 1,
+  "summary": {
+    "title": "Honours Proposal",
+    "author": "Peter Gibson",
+    "verifyAt": "https://iwzero.me/verify"
+  },
+  "text": "Honours Proposal\\n\\nDisclaimer: AI models were used as dialogue partners for research and pressure-testing. The final prose and intention are my own.\\n\\nPhilosophical Question:\\n\\nIs a universal constructed language of the kind early modern philosophers envisaged possible? This proposal develops a revisionary reading of Leibniz. (leibniz-new-essays, bk. III)",` },
+  { id: 'rdoc', text: `
+  "document": {
+    "id": "honours-proposal-01",
+    "title": "Honours Proposal",
+    "schemaVersion": "1",
+    "scasMode": "server",
+    "contentJson": {
+      "type": "doc",
+      "content": [/* full editable proposal tree */]
+    }
+  },` },
   { id: 'rbib', text: `
   "bibliography": [
     {
@@ -225,7 +201,8 @@ leibniz-new-essays, bk. III]
 ` },
 ]
 const REAL_PARTS = [
-  { id: 'rheader', label: 'A real proposal, readable', body: 'This is an excerpt of the author’s actual honours proposal — a revisionary reading of Leibniz on the precise way he conceived of language in light of his theories of combinatorics, compossibility, and the “petites perceptions.” The whole argument sits in the plain-Markdown header, disclaimer and all, readable with no tooling.' },
+  { id: 'rheader', label: 'A real proposal, readable', body: 'This is an excerpt of the author’s honours proposal: a revisionary reading of Leibniz on language, combinatorics, compossibility and petites perceptions. Its summary and plain-text projection remain inspectable without Studio software.' },
+  { id: 'rdoc', label: 'The editable proposal', body: 'The document field contains the complete versioned rich-text tree. The readable projection is derived from that tree rather than maintained as a competing copy.' },
   { id: 'rbib', label: 'The reading list, pinpointed', body: 'The real sources travel with the document as CSL records. Leibniz’s New Essays — his reply to Locke — is pinned here to a passage on page 3, tied to the fourth in-text citation occurrence. It’s marked publiclyAvailable, so a "strip public PDFs" export can drop it.' },
   { id: 'rpdf', label: 'One source left embedded', body: 'To keep the file small enough to share, only one source PDF is embedded — Leibniz’s New Essays (the reply to Locke). The rest of the reading list is stripped; the citations and page pins remain, and the PDFs can be re-fetched from their origins.' },
   { id: 'rprov', label: 'Signed and anchored', body: 'The same provenance machinery as the toy file, over real work: hash-chained signed receipts for each writing period, and snapshots whose hashes are timestamped to Bitcoin — so the composition of this proposal can be dated and verified by anyone.' },
@@ -233,22 +210,14 @@ const REAL_PARTS = [
 
 // ── Example 3: an original night-watch email with an illustrative voice edition ─────────────────────
 const EMAIL_VOICE_BLOCKS = [
-  { id: 'eheader', text: `To: Horatio Vale <horatio@elsinore.example>
-From: Marcellus Reed <marcellus@elsinore.example>
-Subject: Please attend the north watch
-
-Horatio,
-
-At the second bell, Bernardo and I saw the armoured figure again.
-It crossed the northern platform without speaking, then vanished
-at the sea wall. Francisco is frightened, though he will not say so.
-
-Come before midnight. Bring a clear head and no certainty.
-
-— Marcellus` },
-  { text: DIVIDER },
-  { id: 'email', text: `{
+  { id: 'eheader', text: `{
   "v": 1,
+  "summary": {
+    "title": "Please attend the north watch",
+    "what": "Studio email with voice edition"
+  },
+  "text": "To: Horatio Vale\\nFrom: Marcellus Reed\\nSubject: Please attend the north watch\\n\\nAt the second bell, Bernardo and I saw the armoured figure again. Come before midnight.",` },
+  { id: 'email', text: `
   "document": {
     "id": "north-watch-email-01",
     "docType": "email",
@@ -292,7 +261,7 @@ Come before midnight. Bring a clear head and no certainty.
 ` },
 ]
 const EMAIL_VOICE_PARTS = [
-  { id: 'eheader', label: 'An email is a Studio document', body: 'The message has normal email headers and an editable body, but it remains part of the Studio rather than becoming a separate opaque provider record.' },
+  { id: 'eheader', label: 'Readable email record', body: 'The summary and plain-text projection make the message inspectable before any provider or voice payload loads.' },
   { id: 'email', label: 'Structured email metadata', body: 'The document declares its email type and carries its To, From and Subject fields beside the editable body. This example uses fictional addresses.' },
   { id: 'scene', label: 'A voice edition with a cast', body: 'The short original night-watch scene is deliberately Hamlet-like without reproducing the play. A voice edition names its source, source revision, title, cast and script.' },
   { id: 'audio', label: 'Fake audio bytes and timing', body: 'The audio string is a deliberately fake Base64 placeholder. It demonstrates where a real rendered part, duration and word timings would live without pretending the page contains playable audio.' },
@@ -315,20 +284,20 @@ function Explorer({ filename, blocks, parts, firstId }) {
           <span style={{ marginLeft: '0.25rem' }}>{filename}</span>
         </div>
         <div className="studio-explorer__scroll" ref={scrollRef}>
-          <pre>
+          <div className="studio-explorer__code">
             {blocks.map((b, i) => (
-              <div key={i} ref={el => { if (b.id) blockRefs.current[b.id] = el }}
+              <button type="button" key={b.id ?? i} ref={el => { if (b.id) blockRefs.current[b.id] = el }}
                 className={'studio-block' + (b.id && b.id === active ? ' is-active' : '')}
-                onClick={b.id ? () => setActive(b.id) : undefined}
-                style={b.id ? { cursor: 'pointer' } : undefined}>
+                onClick={() => { if (b.id) setActive(b.id) }}
+                disabled={!b.id}>
                 <HL text={b.text} />
-              </div>
+              </button>
             ))}
-          </pre>
+          </div>
         </div>
       </div>
       <aside className="studio-explorer__panel">
-        <p className="section-label" style={{ marginTop: 0 }}>Interesting parts</p>
+        <p className="section-label studio-explorer__label">Interesting parts</p>
         <ul className="studio-explorer__links">
           {parts.map(p => (
             <li key={p.id}>
@@ -359,13 +328,12 @@ export default function Examples() {
           <p className="page-hero__kicker">Worked examples</p>
           <h1 className="page-hero__title">Three <code className="tag">.studio</code> files, annotated</h1>
           <p className="page-hero__lead">
-            Scroll each file on the left; select a part on the right to jump to it and read what it does.
-            Syntax-highlighted exactly as your editor would show it.
+            Inspect each record on the left; select a labelled part on the right to see its role in the
+            portable document contract.
           </p>
           <p className="page-hero__lead" style={{ marginTop: '0.9rem', fontSize: '0.98rem', color: 'var(--slate)' }}>
-            All three files here are heavily stripped down. In practice, a <code className="tag">.studio</code> made
-            in Inkwave Writing Studio ranges from a few MB to a hundred or so MB unzipped (much less when
-            zipped) — though active engineering work is bringing those sizes down.
+            The examples elide large payloads. Indexed implementations reveal the compact document core
+            first and load PDF, media and voice bytes only when their modules request them.
           </p>
         </div>
       </div>
