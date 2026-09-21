@@ -32,7 +32,7 @@
   --page-gutter:  clamp(2rem, calc(1rem + 4.5vw), 8rem);
   --content-rail: 1180px;
   --nav-column:   22rem;
-  --content-reserve: clamp(0rem, calc(70.4vw - 26.4rem), var(--nav-column));
+  --content-reserve: clamp(0rem, calc(117.333vw - 66rem), var(--nav-column));
 
   --font-serif:  'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
   --font-body:   'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
