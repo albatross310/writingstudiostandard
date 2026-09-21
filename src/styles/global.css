@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Inkwave Roman';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/eb-garamond-400-700-normal-latin.woff2') format('woff2');
+}
+
 /* ─── Design tokens ─────────────────────────────────────────────── */
 :root {
   --paper:        #fafafa;
