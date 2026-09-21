@@ -21,7 +21,8 @@ export default function Footer() {
         </div>
         <div className="footer__copy">
           <p className="footer__credit">
-            By Peter Gibson — philosophy student, math graduate, and product designer.
+            By Peter Gibson — philosophy student,<br />
+            math graduate, and product designer.
           </p>
           <div className="footer__contact">
             <a href="mailto:petergibson127@gmail.com">petergibson127@gmail.com</a>.<br />
