@@ -312,3 +312,5 @@ Writing Studio Standard, Studio Document and Inkwave are names used to identify 
 ## 17. Maintenance
 
 This document is bundled into the website and is downloaded by the **Download engineering spec** button. It is the complete engineer-formatted counterpart to the public pages. Every public terminology, capability, model, FAQ, example, contact or conformance change MUST update this document in the same commit.
+
+The website-generated download inserts the reader's local download date into the specification header and appends the ISO date to the Markdown filename.
