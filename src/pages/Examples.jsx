@@ -264,7 +264,7 @@ const EMAIL_VOICE_PARTS = [
   { id: 'eheader', label: 'Readable email record', body: 'The summary and plain-text projection make the message inspectable before any provider or voice payload loads.' },
   { id: 'email', label: 'Structured email metadata', body: 'The document declares its email type and carries its To, From and Subject fields beside the editable body. This example uses fictional addresses.' },
   { id: 'scene', label: 'A voice edition with a cast', body: 'The short original night-watch scene is deliberately Hamlet-like without reproducing the play. A voice edition names its source, source revision, title, cast and script.' },
-  { id: 'audio', label: 'Fake audio bytes and timing', body: 'The audio string is a deliberately fake Base64 placeholder. It demonstrates where a real rendered part, duration and word timings would live without pretending the page contains playable audio.' },
+  { id: 'audio', label: 'Audio bytes and timing', body: 'The audio string is an illustrative Base64 placeholder. It demonstrates where a real rendered part, duration and word timings would live without pretending the page contains playable audio.' },
 ]
 
 function Explorer({ filename, blocks, parts, firstId }) {
@@ -367,7 +367,7 @@ export default function Examples() {
           <hr className="divider" />
           <p style={{ marginBottom: '0.5rem', color: 'var(--quiet)', fontSize: '0.95rem', maxWidth: '68ch' }}>
             A fictional message about a night watch, followed by an original, Hamlet-like scene and a
-            clearly labelled fake audio payload. It shows how email and a voice edition stay connected
+            clearly labelled illustrative audio payload. It shows how email and a voice edition stay connected
             without making the audio part of the source email itself.
           </p>
           <Explorer filename="north-watch-email.studio" blocks={EMAIL_VOICE_BLOCKS} parts={EMAIL_VOICE_PARTS} firstId="eheader" />
