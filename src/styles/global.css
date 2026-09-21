@@ -1,33 +1,17 @@
-@font-face {
-  font-family: 'Inkwave Roman';
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url('/fonts/eb-garamond-400-700-normal-latin.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Inkwave Roman';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/eb-garamond-400-italic-latin.woff2') format('woff2');
-}
-
 /* ─── Design tokens ─────────────────────────────────────────────── */
 :root {
-  --paper:        #f2f2f0;
-  --rule:         #d3d4d2;
-  --rule-strong:  #b5b7b6;
-  --ink:          #1d1e1f;
-  --text:         #343536;
-  --text-muted:   #575a5c;
-  --quiet:        #696c6e;
-  --panel:        rgba(250, 250, 248, 0.92);
-  --accent:       #4b4e50;
-  --accent-light: #8b8e90;
-  --accent-pale:  #e3e4e2;
-  --surface-muted:#e9e9e7;
+  --paper:        #f4f6f7;
+  --rule:         #d5dde2;
+  --rule-strong:  #adb9c1;
+  --ink:          #17232d;
+  --text:         #2d3a44;
+  --text-muted:   #52616c;
+  --quiet:        #6a7882;
+  --panel:        #ffffff;
+  --accent:       #365c76;
+  --accent-light: #7894a7;
+  --accent-pale:  #e4ebef;
+  --surface-muted:#e9eef1;
   --white:        #ffffff;
   --page-gutter:  clamp(2rem, calc(1rem + 4.5vw), 8rem);
   --content-rail: 1180px;
@@ -36,10 +20,10 @@
   --font-serif:  'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
   --font-body:   'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
   --font-sans:   'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
-  --font-detail: 'Inkwave Roman', Georgia, serif;
-  --font-mono:   'JetBrains Mono', 'Fira Code', monospace;
+  --font-detail: ui-monospace, 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --font-mono:   ui-monospace, 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
 
-  --radius:      4px;
+  --radius:      2px;
   --shadow-card: none;
 }
 
@@ -50,7 +34,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  background: #1d1e1f;
+  background: #17232d;
 }
 
 body {
@@ -87,8 +71,8 @@ code, pre {
 }
 
 pre {
-  background: var(--ink);
-  color: #e7eaeb;
+  background: #111a22;
+  color: #dfe7ec;
   padding: 1rem 1.1rem;
   border-radius: var(--radius);
   overflow-x: auto;
@@ -144,8 +128,8 @@ section + section {
   border: 1px solid var(--ink);
 }
 .btn--primary:hover {
-  background: #383b3f;
-  border-color: #383b3f;
+  background: #294b62;
+  border-color: #294b62;
   text-decoration: none;
 }
 
@@ -351,14 +335,14 @@ section + section {
   border-radius: var(--radius) var(--radius) 0 0;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
-  color: #c7cccd;
+  color: #cbd6dc;
 }
 
 .file-example__dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #5a5a5c;
+  background: #6f818d;
 }
 
 .file-example pre {
@@ -512,7 +496,7 @@ section + section {
 .studio-explorer__scroll {
   max-height: 68vh;
   overflow-y: auto;
-  background: #1c1c1e;
+  background: #111a22;
   scroll-behavior: smooth;
 }
 .studio-explorer__code {
@@ -532,7 +516,7 @@ section + section {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   line-height: 1.55;
-  color: #c9c6bf;
+  color: #cbd6dc;
   text-align: left;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
@@ -543,9 +527,9 @@ section + section {
 .studio-block:disabled { cursor: default; }
 .studio-block:focus-visible { outline: 2px solid #fff; outline-offset: -3px; }
 .studio-block.is-active {
-  background: rgba(255, 255, 255, 0.1);
-  border-left-color: #d5d7d8;
-  color: #f2f3f3;
+  background: rgba(120, 148, 167, 0.18);
+  border-left-color: #91adbf;
+  color: #f4f7f8;
 }
 .studio-explorer__panel { display: flex; flex-direction: column; gap: 0.75rem; }
 .studio-explorer__label { margin: 0; }
@@ -615,7 +599,7 @@ section + section {
 .arch-card__tagline {
   margin-bottom: 0.45rem;
   color: var(--quiet);
-  font-family: var(--font-detail);
+  font-family: var(--font-body);
   font-size: 0.92rem;
   font-style: italic;
 }
@@ -642,23 +626,23 @@ section + section {
   padding: 0.2em 0.6em; border-radius: 3px; border: 1px solid var(--rule-strong);
   color: var(--quiet); background: var(--surface-muted);
 }
-.arch-badge[data-req="1"] { color: var(--ink); background: #dedfdd; border-color: #aeb0af; }
+.arch-badge[data-req="1"] { color: var(--ink); background: #dce6eb; border-color: #9eafb9; }
 .arch-sub {
   font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600;
   text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.45rem;
 }
 .arch-brief {
   border-radius: 4px 4px 0 0; overflow: hidden;
-  border: 1px solid #2a2a2e; box-shadow: var(--shadow-card);
+  border: 1px solid #273844; box-shadow: var(--shadow-card);
   display: flex; flex-direction: column; min-height: 0;
 }
 .arch-brief__head {
   flex-shrink: 0;
-  padding: 0.36rem 0.85rem; background: #61676a; color: #eef1f2;
+  padding: 0.36rem 0.85rem; background: #4e6879; color: #f1f5f7;
   font-family: var(--font-sans); font-size: 0.78rem; letter-spacing: 0.02em;
 }
 .arch-brief__code {
-  margin: 0; padding: 0.9rem 1rem; border-radius: 0; background: #1c1d1f; color: #d6dadd;
+  margin: 0; padding: 0.9rem 1rem; border-radius: 0; background: #111a22; color: #d7e0e5;
   font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.55;
   /* Vertical scroll only (matches the card's height); long lines wrap — no horizontal scroll. */
   flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden;
@@ -674,8 +658,8 @@ section + section {
   max-width: 18rem;
   text-align: right;
   line-height: 1.25;
-  background: #dedfdd;
-  border-color: #aeb0af;
+  background: #dce6eb;
+  border-color: #9eafb9;
   color: var(--ink);
 }
 .arch-badge[data-req="0"] {
