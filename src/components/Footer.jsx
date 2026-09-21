@@ -15,9 +15,8 @@ export default function Footer() {
             </p>
           </div>
           <p className="footer__privacy">
-            Privacy: this site uses no analytics, cookies or advertising trackers. Feedback submissions are
-            processed by Formspree only when you send them. Fonts are served from this domain; Vercel keeps
-            standard server request logs.
+            Privacy: no analytics, cookies or advertising trackers. Formspree handles feedback only when
+            submitted; Vercel keeps request logs. Fonts are self-hosted.
           </p>
         </div>
         <div className="footer__copy">
