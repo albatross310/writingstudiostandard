@@ -11,8 +11,9 @@
 .hero__title {
   margin-top: 0.15rem;
   margin-bottom: 0.55rem;
-  font-size: clamp(1.4rem, 1.8vw, 1.75rem);
-  letter-spacing: -0.02em;
+  font-size: var(--title-size);
+  font-weight: 560;
+  letter-spacing: 0.005em;
   line-height: 1.15;
 }
 

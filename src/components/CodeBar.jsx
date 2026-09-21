@@ -7,7 +7,7 @@ export function CodeBar({ filename, language, symbol, lines }) {
     <div className="code-bar">
       <span className="code-bar__language" aria-label={`${language} code`}>{symbol}</span>
       <span className="code-bar__filename">{filename}</span>
-      <span className="code-bar__meta">{lines} {lines === 1 ? 'line' : 'lines'}</span>
+      <span className="code-bar__meta">{lines === 1 ? 'Line 1' : `Lines 1–${lines}`}</span>
     </div>
   )
 }
