@@ -160,7 +160,7 @@ export default function Architecture() {
       <div className="container container--prose">
         <div className="page-hero">
           <p className="page-hero__kicker">The file</p>
-          <h1 className="page-hero__title">Anatomy of a <code className="tag">.studio</code> file</h1>
+          <h1 className="page-hero__title">Anatomy of a<code className="tag">.studio</code> file</h1>
           <p className="page-hero__lead">
             A versioned record with a readable projection, structured document and explicit optional
             capabilities. A reader can determine which layers are present before loading their payloads.

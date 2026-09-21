@@ -281,7 +281,7 @@ export default function Examples() {
       <div className="container container--prose">
         <div className="page-hero">
           <p className="page-hero__kicker">Worked examples</p>
-          <h1 className="page-hero__title">Three <code className="tag">.studio</code> files, annotated</h1>
+          <h1 className="page-hero__title">Three<code className="tag">.studio</code> files, annotated</h1>
           <p className="page-hero__lead">
             Inspect each record on the left; select a labelled part on the right to see its role in the
             portable document contract.
