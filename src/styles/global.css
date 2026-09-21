@@ -664,7 +664,7 @@ section + section {
   flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden;
   white-space: pre-wrap; overflow-wrap: anywhere; word-break: normal;
 }
-@media (max-width: 1100px) {
+@media (max-width: 700px) {
   .arch-row { grid-template-columns: 1fr; }
   .arch-brief { max-height: 55vh; }
 }

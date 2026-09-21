@@ -75,7 +75,7 @@
   }
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 700px) {
   .nav__inner {
     height: auto;
     min-height: 52px;
