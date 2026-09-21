@@ -29,9 +29,10 @@
   --accent-pale:  #e3e4e2;
   --surface-muted:#e9e9e7;
   --white:        #ffffff;
-  --page-gutter:  clamp(1.75rem, calc(0.5rem + 3vw), 6rem);
+  --page-gutter:  clamp(2rem, calc(1rem + 4.5vw), 8rem);
   --content-rail: 1180px;
   --nav-column:   22rem;
+  --content-reserve: clamp(0rem, calc(70.4vw - 26.4rem), var(--nav-column));
 
   --font-serif:  'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
   --font-body:   'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
@@ -117,18 +118,10 @@ code:not(pre code) {
   max-width: var(--content-rail);
 }
 
-/* Main content stops at the navigation column once the two-column header is active. */
-@media (min-width: 701px) {
-  main .container {
-    padding-right: calc(var(--page-gutter) + var(--nav-column));
-  }
-}
-
-/* Keep desktop footer endnotes on the same right rail; stacked footers use the full width. */
-@media (min-width: 901px) {
-  .footer .footer__inner {
-    padding-right: calc(var(--page-gutter) + var(--nav-column));
-  }
+/* The right reserve tapers continuously from the full navigation column to zero. */
+main .container,
+.footer .footer__inner {
+  padding-right: calc(var(--page-gutter) + var(--content-reserve));
 }
 
 section {
