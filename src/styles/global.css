@@ -124,13 +124,6 @@ code:not(pre code) {
   }
 }
 
-/* Keep desktop footer endnotes on the same right rail; stacked footers use the full width. */
-@media (min-width: 901px) {
-  .footer .footer__inner {
-    padding-right: calc(var(--page-gutter) + var(--nav-column));
-  }
-}
-
 section {
   padding: clamp(1.65rem, 2.5vw, 2.2rem) 0;
 }

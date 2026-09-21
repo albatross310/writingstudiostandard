@@ -14,6 +14,7 @@
   justify-content: space-between;
   height: 54px;
   gap: clamp(0.5rem, 1.5vw, 1.25rem);
+  min-width: 0;
 }
 
 .nav__wordmark {
@@ -31,6 +32,7 @@
   align-items: center;
   gap: 0.15rem;
   flex-wrap: nowrap;
+  min-width: 0;
 }
 
 .nav__link {
@@ -80,14 +82,28 @@
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 700px) {
   .nav__inner {
-    height: 52px;
+    height: auto;
+    min-height: 52px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.3rem;
+    padding-block: 0.5rem 0.4rem;
+  }
+
+  .nav__links {
+    width: 100%;
+    justify-content: flex-start;
     overflow-x: auto;
     scrollbar-width: none;
   }
-  .nav__inner::-webkit-scrollbar { display: none; }
 
+  .nav__links::-webkit-scrollbar { display: none; }
+}
+
+@media (max-width: 520px) {
   .nav__links {
     gap: 0.1rem;
   }
