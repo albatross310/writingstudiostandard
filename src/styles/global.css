@@ -433,7 +433,7 @@ section + section {
 .hero__title .tag {
   font-size: 0.68em;
   vertical-align: 0.1em;
-  margin-left: 0.3em;
+  margin-left: 0.55em;
   padding: 0.16em 0.38em 0.16em 0.22em;
 }
 
@@ -466,6 +466,7 @@ section + section {
 /* ─── Inline tag ─────────────────────────────────────────────────── */
 .tag {
   display: inline-block;
+  margin-left: 0.22em;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   color: var(--ink);
