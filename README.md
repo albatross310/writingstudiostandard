@@ -14,7 +14,7 @@ pnpm build
 
 [`src/content/engineering-spec.md`](src/content/engineering-spec.md) is the source for the **Download engineering spec** control on the Standard page. Vite bundles that Markdown directly into the client, and the browser creates the downloaded file from those exact bytes. There is no separately uploaded static export that can drift from the deployed website.
 
-When changing public terminology, capability status, data-model details, conformance requirements or privacy/provenance claims, update `engineering-spec.md` in the same pull request. The public pages are the concise introduction; the Markdown is the formal engineer-facing companion.
+When changing any public-page content, update `engineering-spec.md` in the same pull request. That includes terminology, capability status, data-model details, conformance requirements, privacy/provenance claims, FAQ answers, worked examples and contact information. The Markdown is the complete engineer-formatted counterpart to the public site, not a shorter technical summary.
 
 ## Release check
 

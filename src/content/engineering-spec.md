@@ -194,14 +194,58 @@ A conforming reader:
 
 ## 13. Examples
 
-The website's Examples page includes a toy essay, an annotated excerpt from Peter Gibson's Leibniz honours proposal, and a fictional email with an original night-watch scene plus an illustrative multi-voice recording edition. Together they demonstrate readable text, a rich document model, CSL bibliography records, pinpointed source passages, selected embedded PDFs, signed receipts, timestamped snapshots, email metadata, source-linked voice casts, part coverage and word timings. The email example's audio string is explicitly fake placeholder data and is not playable.
+### 13.1 Toy essay: On Artificial Languages
 
-## 14. Licensing and naming
+The first interactive example is a compact essay record. It demonstrates readable document text, a rich document tree, a CSL bibliographic entry, a pinpoint citation, an optional embedded PDF, signed receipt-chain data and a Bitcoin-anchored snapshot.
+
+### 13.2 Honours proposal: Leibniz and universal constructed language
+
+The second example is an annotated excerpt from Peter Gibson's honours proposal. It shows that a real long-form argument can remain readable without Studio software while preserving its source records. The example carries a pinned passage from Leibniz's New Essays on Human Understanding, one deliberately embedded PDF and provenance data. Other source PDFs are intentionally stripped for size; their citation data and pinpoints remain.
+
+### 13.3 Email and voice edition: The First Watch
+
+The third example is a fictional email about a north-wall night watch. It demonstrates structured email headers, an editable email body and an original small scene written in the spirit of a Shakespearean watch scene. The associated voice edition has a stable email source ID and revision, named narrator and character voices, a short script, coverage information, timing entries and one audio part.
+
+The audio string in this example is explicit fake Base64 placeholder data. It is not playable. Its only purpose is to show the shape of a rendered part without pretending the page contains real recording bytes.
+
+## 14. Frequently asked implementation questions
+
+### Why not use only DOCX or PDF?
+
+DOCX focuses on editable presentation and PDF on fixed presentation. A Studio Document can retain the readable projection, editable structure, sources, working context and optional verification evidence together. It can still export a standard PDF when that is the correct delivery format.
+
+### Is a Studio file readable without Inkwave?
+
+Yes. It is versioned JSON with a summary and plain-text representation near the beginning. A person can inspect the writing with ordinary tools; a compatible reader can restore the richer document and the capabilities it supports.
+
+### What source types can it represent?
+
+The current and specified vocabulary covers PDFs, EPUBs, Markdown and text files, immutable webpage snapshots, email, pictures, movies, isolated audio and readalong editions. Citation records carry standard bibliographic metadata. A master item can move between the reference and document classifications without changing its stable identity.
+
+### Does ordinary provenance record keystrokes?
+
+No. Ordinary Inkwave provenance uses content hashes, snapshots and signed receipts rather than a surveillance log of every keypress. The future Verified Capture mode is separate and must label its specific evidence without claiming that a person conceived every sentence alone.
+
+### What does verification prove?
+
+Where the relevant fields are present, a verifier can check that content hashes, signed receipts and timestamp proofs agree with the exported record. It can establish technical integrity and bounded dating claims. It cannot establish legal identity, detect every form of AI assistance or certify the origin of every idea.
+
+## 15. Portability and planned visual layer
+
+An implementation may export a fixed-layout PDF, a source-stripped Studio copy, or a gzip-compressed Studio file for transfer. View settings may travel with the document but must not affect the readable text or verification record.
+
+Mnemonic tiles are a planned, provisional visual layer. A tile may link to a word, phrase or passage as a visual memory anchor. The underlying word list is intended to be open; the tile artwork itself is made by the implementing Writing Studio. This layer is not yet required for conformance.
+
+## 16. Participation and contact
+
+The Writing Studio Standard develops in public. Feedback on the specification, implementations, terminology, compatibility and corrections is welcome. Contact Peter Gibson at petergibson127@gmail.com. Related work is published at MnemonicEcologies.com.
+
+## 17. Licensing and naming
 
 This specification is available under CC BY 4.0. Implementations may build on it for commercial or non-commercial purposes with attribution.
 
 “Writing Studio Standard”, “Studio Document” and “Inkwave” are names used to identify the format and its implementation. An implementation must not use those names in a way that falsely implies compatibility or endorsement.
 
-## 15. Maintenance
+## 18. Maintenance
 
-This document is bundled into the website and is downloaded by the **Download engineering spec** button. It is the engineer-facing companion to the public pages. Any change to the public model, terminology, capability status or conformance claim must update this document in the same commit.
+This document is bundled into the website and is downloaded by the **Download engineering spec** button. It is the engineer-facing companion to the public pages. Every change to public terminology, capability status, data-model details, FAQ material, examples, contact information or conformance claims must update this document in the same commit.
