@@ -1,6 +1,6 @@
 .footer {
   background: var(--purple);
-  color: #d8d3da;
+  color: #e7e0e4;
   padding: 4.5rem 0;
   margin-top: 0;
 }
@@ -27,7 +27,7 @@
 
 .footer__tagline {
   font-size: 0.875rem;
-  color: #d8d3da;
+  color: #e1dadd;
   max-width: 36ch;
   line-height: 1.55;
 }
@@ -42,7 +42,7 @@
 
 .footer__nav a {
   font-size: 0.875rem;
-  color: #d8d3da;
+  color: #e5dfe3;
   text-decoration: none;
   transition: color 0.12s;
 }
@@ -55,7 +55,7 @@
 .footer__copy {
   grid-column: 2;            /* same top line as the brand (not a full-width row below) */
   font-size: 0.8125rem;
-  color: #b9b1bc;
+  color: #d4cdd2;
   max-width: none;
   line-height: 1.6;
 }
