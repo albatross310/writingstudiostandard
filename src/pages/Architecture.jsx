@@ -8,18 +8,18 @@ const layers = [
     desc: 'The document’s full prose, in plain Markdown at the top of the file. Legible in any editor, by any person, and more easily by a language model than a .docx or PDF. A file with only this layer is a conformant minimum.',
     contains: ['The complete document text', 'Headings and structure', 'Emphasis and inline marks'],
     conformance: 'Required. Every Studio Document must be readable from its header alone.',
-    brief: `// A .studio file is:  Markdown header  +  a divider  +  JSON body.
-file =
-  markdownHeader(doc)
-  + "\\n\\n" + RECORD_DIVIDER + "\\n\\n"   // a clear, fixed separator
-  + JSON.stringify(body, null, 2)
+    brief: `// A portable record carries readable text
+// and structured data in one document.
 
-// markdownHeader(doc): render the document to Markdown —
-//   headings → #, ##, ###      emphasis → *…*, **…**
-//   lists, tables, blockquotes, math as usual
-// RULE: the header is DERIVED from the document model, never edited by
-//       hand, so the two can never diverge. Everything above the
-//       divider is readable with no tooling at all.`,
+record = {
+  summary: makeSummary(doc),
+  text: toPlainText(doc),
+  document: toStructuredDoc(doc),
+}
+
+// text is derived from document.
+// A reader can inspect it without
+// rebuilding the editing interface.`,
   },
   {
     index: '02', name: 'Document model', required: false, tagline: 'The structured, editable body',
@@ -28,67 +28,64 @@ file =
     conformance: 'Optional. Implement when the tool edits rich structure, not just plain text.',
     brief: `content: {
   type: "doc",
-  content: Node[]                 // a rich-text node tree
+  content: Node[],
 }
 
 type Node = {
-  type: "paragraph" | "heading" | "list"
-      | "table" | "math" | "blockquote" | ...,
-  attrs?: { level?: 1|2|3, align?: "left"|"center", ... },
-  content?: Node[],              // child nodes (block → inline)
-  text?: string,                 // text leaves only
-  marks?: Mark[]                 // on text leaves
+  type: "paragraph" | "heading"
+      | "list" | "table" | "math",
+  attrs?: Record<string, unknown>,
+  content?: Node[],
+  text?: string,
+  marks?: Mark[],
 }
 
-type Mark =
-  | { type: "emphasis" | "strong" | "code" }
-  | { type: "link", attrs: { href } }
-  | { type: "citation", attrs: { citekey, locator? } }
-
-// The Markdown header is a lossless projection of this tree.`,
+// Marks hold emphasis, links,
+// code and citation references.`,
   },
   {
     index: '03', name: 'Sources & citations', required: false, tagline: 'The bibliography and its evidence',
     desc: 'Real bibliographic records with formatted in-text citations, each pinnable to an exact page and passage of its source. Source files may be embedded in the document or linked, and highlights bind to the citation occurrence they belong to.',
     contains: ['CSL bibliography entries', 'Pinpointed in-text citations', 'Embedded or linked sources + highlights'],
     conformance: 'Optional. Implement when the document cites sources.',
-    brief: `bibliography: CSLItem[]      // Citation Style Language JSON — a real standard
+    brief: `bibliography: CSLItem[]
 
 type CSLItem = {
-  id: string,                 // citekey — referenced by citation marks
-  type: "book" | "article-journal" | ...,
-  title, author, issued, ...  // standard CSL fields
-  // A studio may add a namespaced extension for, e.g.:
-  //   · an attached / embedded source file
-  //   · highlights pinned to a page + rectangle
-  //   · a link from one citation use to a specific passage
+  id: string,       // stable citekey
+  type: string,
+  title: string,
+  author?: Name[],
+  issued?: DateInfo,
 }
 
-sources?: { [citekey]: { name, data } }   // optional embedded files
-// Pinpoints let a single source be cited at different
-// pages or passages from different points in the text.`,
+source?: {
+  file?: Attachment,
+  highlights?: Highlight[],
+}
+
+// A citation can name a page,
+// a passage and its highlight.`,
   },
   {
     index: '04', name: 'Provenance record', required: false, tagline: 'Signed, without surveillance',
     desc: 'A tamper-evident trace of a genuine writing session: a hash-chained set of signed receipts, plus content snapshots. The signer receives only cryptographic hashes — never the writer’s text, keystrokes, or identity.',
     contains: ['Hash-chained signed receipts', 'Content snapshots with hashes', 'An authorship signal'],
     conformance: 'Optional. Required if the implementation claims to preserve provenance.',
-    brief: `receipts: Receipt[]          // one per writing period — a hash chain
+    brief: `receipts: Receipt[]
 
 type Receipt = {
   period: number,
-  prevHash: string | null,   // = the previous receipt's content hash
-  contentHash: string,       // hash of the canonical-JSON content
+  prevHash: string | null,
+  contentHash: string,
   keyId: string,
-  signature: string          // over the fields above
+  signature: string,
 }
 
-snapshots: Snapshot[]        // { createdAt, wordCount, contentHash, ... }
+snapshots: Snapshot[]
 
-// PRINCIPLE: the signer sees only HASHES — never the text, the
-// keystrokes, or the writer's identity. Publish the signing key's
-// PUBLIC half INDEPENDENTLY; a verifier checks against THAT, not
-// against the key the file claims.`,
+// The signer receives hashes only.
+// It never receives text, keystrokes
+// or the writer's identity.`,
   },
   {
     index: '05', name: 'Anchoring', required: false, tagline: 'Independently dateable',
@@ -97,56 +94,52 @@ snapshots: Snapshot[]        // { createdAt, wordCount, contentHash, ... }
     conformance: 'Optional. Requires the provenance layer.',
     brief: `snapshot.anchor: {
   status: "pending" | "confirmed",
-  block?: number,            // the block it was committed in
-  proof: ...                 // hash → Merkle path → chain transaction
+  block?: number,
+  proof: TimestampProof,
 }
 
-// Aggregate many document hashes into one Merkle tree and commit only
-// the ROOT to a public blockchain (e.g. via OpenTimestamps → Bitcoin),
-// so many documents share a single on-chain footprint.
+// Many document hashes share one
+// Merkle-tree commitment.
 //
-// A "pending" proof can be upgraded to "confirmed" by anyone, later.
-// Verify = recompute the hash, walk the proof, check the named block.`,
+// Verification recomputes the hash,
+// follows the proof, then checks the
+// named public-chain commitment.`,
   },
   {
     index: '06', name: 'Portability & export', required: false, tagline: 'Cross-tool and cross-format travel',
     desc: 'How a document is packaged to move between tools and how it exports: a rendered PDF, a source-stripped copy, or a gzip-compressed .studio for email. Exports may carry the provenance record or a link back to the verified original.',
     contains: ['Rendered PDF export', 'Source-stripped and gzip variants', 'View settings and version records'],
     conformance: 'Optional. Implement when producing exports or packages.',
-    brief: `// Export modes a studio may offer
-render : a fixed-layout PDF of the document
-strip  : a copy with embedded source files removed
-         (e.g. keep only those marked publicly available)
-gzip   : a gzip-compressed .studio. Readers should detect the
-         gzip magic bytes (1f 8b) and inflate transparently on open.
+    brief: `export = {
+  render: "pdf",
+  sources: "all" | "public" | "none",
+  compression: "gzip" | "none",
+}
 
-// A studio may store view settings (page style, zoom, …) so the
-// document re-opens looking the same. These never affect the text or
-// the verifiable record.
+// View settings may travel with a
+// document. They do not affect its
+// text or verification record.
 
-// Recommended invariants
-// · text extraction is deterministic, so a verifier and the editor
-//   agree byte-for-byte on what was written
-// · provenance / snapshot history is append-only — a merge unions,
-//   and never truncates, the existing record`,
+// Text extraction stays deterministic.
+// Snapshot history is append-only.`,
   },
   {
     index: '07', name: 'Mnemonic tiles', required: false, tagline: 'Artwork linked to text — in development',
     desc: 'A studio is a place for drafting and artwork together. This planned layer carries mnemonic tiles, each linkable to words, phrases, or sentences as visual memory anchors. The underlying word list is planned to be open source, but the tiles themselves must be custom-built by each Writing Studio. Still in development and not yet part of a conformant implementation.',
     contains: ['Tile references (studio-built) keyed to an open word list', 'Word / phrase / sentence link targets', 'Placement and attribution records'],
     conformance: 'Optional, and provisional — the layer is not yet finalised.',
-    brief: `// PLANNED — not yet part of a conformant implementation.
+    brief: `// Planned; not yet a conformant layer.
 tiles?: {
-  ref: string,               // id into an open word list
-  target: { from, to },      // the passage it anchors to
-  placement?: "margin" | "inline"
+  ref: string,
+  target: { from, to },
+  placement?: "margin" | "inline",
 }[]
 
-// Direction of travel:
-//  · bring up OTHER .studio files from within a document
-//  · hyperlink between documents so a reader can navigate a body of
-//    work — and its sources — as one connected space
-//  · tiles as visual memory anchors keyed to specific passages`,
+// A tile links visual memory support
+// to a word, phrase or passage.
+//
+// Future readers may also navigate
+// between related Studio Documents.`,
   },
 ]
 
