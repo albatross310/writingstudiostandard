@@ -1,17 +1,17 @@
 /* ─── Design tokens ─────────────────────────────────────────────── */
 :root {
-  --paper:        #f4f6f7;
-  --rule:         #d5dde2;
-  --rule-strong:  #adb9c1;
-  --ink:          #17232d;
-  --text:         #2d3a44;
-  --text-muted:   #52616c;
-  --quiet:        #6a7882;
+  --paper:        #f5f4f3;
+  --rule:         #dcd7da;
+  --rule-strong:  #b9b0b6;
+  --ink:          #181d2b;
+  --text:         #333541;
+  --text-muted:   #585963;
+  --quiet:        #716c73;
   --panel:        #ffffff;
-  --accent:       #365c76;
-  --accent-light: #7894a7;
-  --accent-pale:  #e4ebef;
-  --surface-muted:#e9eef1;
+  --accent:       #50394f;
+  --accent-light: #8c748a;
+  --accent-pale:  #ede7ec;
+  --surface-muted:#eeeaec;
   --white:        #ffffff;
   --page-gutter:  clamp(2rem, calc(1rem + 4.5vw), 8rem);
   --content-rail: 1180px;
@@ -34,7 +34,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  background: #17232d;
+  background: #181b29;
 }
 
 body {
@@ -71,8 +71,8 @@ code, pre {
 }
 
 pre {
-  background: #111a22;
-  color: #dfe7ec;
+  background: #121521;
+  color: #e1dee4;
   padding: 1rem 1.1rem;
   border-radius: var(--radius);
   overflow-x: auto;
@@ -128,8 +128,8 @@ section + section {
   border: 1px solid var(--ink);
 }
 .btn--primary:hover {
-  background: #294b62;
-  border-color: #294b62;
+  background: #2c3144;
+  border-color: #2c3144;
   text-decoration: none;
 }
 
@@ -335,14 +335,14 @@ section + section {
   border-radius: var(--radius) var(--radius) 0 0;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
-  color: #cbd6dc;
+  color: #d8d4da;
 }
 
 .file-example__dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #6f818d;
+  background: #766e77;
 }
 
 .file-example pre {
@@ -496,7 +496,7 @@ section + section {
 .studio-explorer__scroll {
   max-height: 68vh;
   overflow-y: auto;
-  background: #111a22;
+  background: #121521;
   scroll-behavior: smooth;
 }
 .studio-explorer__code {
@@ -516,7 +516,7 @@ section + section {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   line-height: 1.55;
-  color: #cbd6dc;
+  color: #d8d4da;
   text-align: left;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
@@ -527,8 +527,8 @@ section + section {
 .studio-block:disabled { cursor: default; }
 .studio-block:focus-visible { outline: 2px solid #fff; outline-offset: -3px; }
 .studio-block.is-active {
-  background: rgba(120, 148, 167, 0.18);
-  border-left-color: #91adbf;
+  background: rgba(140, 116, 138, 0.18);
+  border-left-color: #9d8399;
   color: #f4f7f8;
 }
 .studio-explorer__panel { display: flex; flex-direction: column; gap: 0.75rem; }
@@ -626,23 +626,23 @@ section + section {
   padding: 0.2em 0.6em; border-radius: 3px; border: 1px solid var(--rule-strong);
   color: var(--quiet); background: var(--surface-muted);
 }
-.arch-badge[data-req="1"] { color: var(--ink); background: #dce6eb; border-color: #9eafb9; }
+.arch-badge[data-req="1"] { color: var(--ink); background: #e7dfe6; border-color: #b6a5b2; }
 .arch-sub {
   font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600;
   text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.45rem;
 }
 .arch-brief {
   border-radius: 4px 4px 0 0; overflow: hidden;
-  border: 1px solid #273844; box-shadow: var(--shadow-card);
+  border: 1px solid #2a2d3f; box-shadow: var(--shadow-card);
   display: flex; flex-direction: column; min-height: 0;
 }
 .arch-brief__head {
   flex-shrink: 0;
-  padding: 0.36rem 0.85rem; background: #4e6879; color: #f1f5f7;
+  padding: 0.36rem 0.85rem; background: #4a4e68; color: #f3f1f4;
   font-family: var(--font-sans); font-size: 0.78rem; letter-spacing: 0.02em;
 }
 .arch-brief__code {
-  margin: 0; padding: 0.9rem 1rem; border-radius: 0; background: #111a22; color: #d7e0e5;
+  margin: 0; padding: 0.9rem 1rem; border-radius: 0; background: #121521; color: #dedbe1;
   font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.55;
   /* Vertical scroll only (matches the card's height); long lines wrap — no horizontal scroll. */
   flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden;
@@ -658,8 +658,8 @@ section + section {
   max-width: 18rem;
   text-align: right;
   line-height: 1.25;
-  background: #dce6eb;
-  border-color: #9eafb9;
+  background: #e7dfe6;
+  border-color: #b6a5b2;
   color: var(--ink);
 }
 .arch-badge[data-req="0"] {
