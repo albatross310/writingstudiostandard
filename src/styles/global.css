@@ -249,6 +249,19 @@ section + section {
   margin-top: 1rem;
 }
 
+/* Storage cards need room for technical prose; move the third card down before it becomes cramped. */
+@media (max-width: 1080px) {
+  .trio-grid--storage {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .trio-grid--storage {
+    grid-template-columns: 1fr;
+  }
+}
+
 .trio-card {
   background: var(--panel);
   border: 1px solid var(--rule);
@@ -589,7 +602,7 @@ section + section {
   font-style: italic;
 }
 .arch-card__description {
-  max-width: 60ch;
+  max-width: 50ch;
   margin-bottom: 0.7rem;
   color: var(--text-muted);
   font-size: 0.92rem;
@@ -598,6 +611,7 @@ section + section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem 1rem;
+  max-width: 44rem;
 }
 .arch-card__list { margin: 0; }
 .arch-card__list li,
@@ -632,7 +646,7 @@ section + section {
   flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden;
   white-space: pre-wrap; overflow-wrap: anywhere; word-break: normal;
 }
-@media (max-width: 820px) {
+@media (max-width: 1100px) {
   .arch-row { grid-template-columns: 1fr; }
   .arch-brief { max-height: 55vh; }
 }
