@@ -231,6 +231,73 @@ const REAL_PARTS = [
   { id: 'rprov', label: 'Signed and anchored', body: 'The same provenance machinery as the toy file, over real work: hash-chained signed receipts for each writing period, and snapshots whose hashes are timestamped to Bitcoin — so the composition of this proposal can be dated and verified by anyone.' },
 ]
 
+// ── Example 3: an original night-watch email with an illustrative voice edition ─────────────────────
+const EMAIL_VOICE_BLOCKS = [
+  { id: 'eheader', text: `To: Horatio Vale <horatio@elsinore.example>
+From: Marcellus Reed <marcellus@elsinore.example>
+Subject: Please attend the north watch
+
+Horatio,
+
+At the second bell, Bernardo and I saw the armoured figure again.
+It crossed the northern platform without speaking, then vanished
+at the sea wall. Francisco is frightened, though he will not say so.
+
+Come before midnight. Bring a clear head and no certainty.
+
+— Marcellus` },
+  { text: DIVIDER },
+  { id: 'email', text: `{
+  "v": 1,
+  "document": {
+    "id": "north-watch-email-01",
+    "docType": "email",
+    "email": {
+      "to": ["horatio@elsinore.example"],
+      "from": "marcellus@elsinore.example",
+      "subject": "Please attend the north watch"
+    },
+    "contentJson": { "type": "doc", "content": [] }
+  },` },
+  { id: 'scene', text: `  "voiceEdition": {
+    "editionId": "north-platform-scene-v1",
+    "sourceKind": "email",
+    "sourceId": "north-watch-email-01",
+    "sourceRevision": "sha256:FAKE_EMAIL_REVISION",
+    "title": "The First Watch",
+    "cast": [
+      { "role": "Narrator", "voice": "grey-harbour" },
+      { "role": "Bernardo", "voice": "north-wind" },
+      { "role": "Francisco", "voice": "low-lantern" }
+    ],
+    "script": [
+      "NARRATOR: Wind crosses the north wall.",
+      "BERNARDO: Who keeps the watch?",
+      "FRANCISCO: Name yourself before you come closer."
+    ],` },
+  { id: 'audio', text: `    "parts": [{
+      "id": "north-platform-01",
+      "status": "recorded",
+      "durationMs": 18400,
+      "audio": "RkFLRV9BVURJT19CWVRFU19OT1RfUExBWUFCTEU=",
+      "audioNote": "Illustrative placeholder; not playable.",
+      "timing": [
+        { "text": "Wind", "startMs": 0, "endMs": 340 },
+        { "text": "crosses", "startMs": 360, "endMs": 820 },
+        { "text": "the north wall", "startMs": 850, "endMs": 1410 }
+      ]
+    }]
+  }
+}
+` },
+]
+const EMAIL_VOICE_PARTS = [
+  { id: 'eheader', label: 'An email is a Studio document', body: 'The message has normal email headers and an editable body, but it remains part of the Studio rather than becoming a separate opaque provider record.' },
+  { id: 'email', label: 'Structured email metadata', body: 'The document declares its email type and carries its To, From and Subject fields beside the editable body. This example uses fictional addresses.' },
+  { id: 'scene', label: 'A voice edition with a cast', body: 'The short original night-watch scene is deliberately Hamlet-like without reproducing the play. A voice edition names its source, source revision, title, cast and script.' },
+  { id: 'audio', label: 'Fake audio bytes and timing', body: 'The audio string is a deliberately fake Base64 placeholder. It demonstrates where a real rendered part, duration and word timings would live without pretending the page contains playable audio.' },
+]
+
 function Explorer({ filename, blocks, parts, firstId }) {
   const [active, setActive] = useState(firstId)
   const scrollRef = useRef(null)
@@ -282,7 +349,7 @@ function Explorer({ filename, blocks, parts, firstId }) {
 export default function Examples() {
   useMeta({
     title: 'Worked examples',
-    description: 'Two annotated .studio files — a toy example and an excerpt of a real honours proposal — scroll the structure and click through the parts: readable text, sources, embedded PDF, signed receipts, and Bitcoin-anchored snapshots.',
+    description: 'Three annotated .studio files: a toy essay, an honours proposal and an email with a multi-voice recording edition.',
     path: '/examples',
   })
   return (
@@ -290,13 +357,13 @@ export default function Examples() {
       <div className="container">
         <div className="page-hero">
           <p className="page-hero__kicker">Worked examples</p>
-          <h1 className="page-hero__title">Two <code className="tag">.studio</code> files, annotated</h1>
+          <h1 className="page-hero__title">Three <code className="tag">.studio</code> files, annotated</h1>
           <p className="page-hero__lead">
             Scroll each file on the left; select a part on the right to jump to it and read what it does.
             Syntax-highlighted exactly as your editor would show it.
           </p>
           <p className="page-hero__lead" style={{ marginTop: '0.9rem', fontSize: '0.98rem', color: 'var(--slate)' }}>
-            Both files here are heavily stripped down. In practice, a <code className="tag">.studio</code> made
+            All three files here are heavily stripped down. In practice, a <code className="tag">.studio</code> made
             in Inkwave Writing Studio ranges from a few MB to a hundred or so MB unzipped (much less when
             zipped) — though active engineering work is bringing those sizes down.
           </p>
@@ -322,6 +389,20 @@ export default function Examples() {
             Essays</em>, his reply to Locke.
           </p>
           <Explorer filename="honours-proposal.studio" blocks={REAL_BLOCKS} parts={REAL_PARTS} firstId="rheader" />
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <p className="section-label">Example three</p>
+          <h2>A Toy Email and a Voice Recording</h2>
+          <hr className="divider" />
+          <p style={{ marginBottom: '0.5rem', color: 'var(--slate)', fontSize: '0.95rem', maxWidth: '68ch' }}>
+            A fictional message about a night watch, followed by an original, Hamlet-like scene and a
+            clearly labelled fake audio payload. It shows how email and a voice edition stay connected
+            without making the audio part of the source email itself.
+          </p>
+          <Explorer filename="north-watch-email.studio" blocks={EMAIL_VOICE_BLOCKS} parts={EMAIL_VOICE_PARTS} firstId="eheader" />
         </div>
       </section>
     </main>
