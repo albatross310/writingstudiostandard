@@ -23,8 +23,7 @@ export default function Footer() {
           <p className="footer__credit">By Peter Gibson — philosopher, creator and developer.</p>
           <div className="footer__contact">
             <a href="mailto:petergibson127@gmail.com">petergibson127@gmail.com</a>.<br />
-            Other projects at <a href="https://mnemonicecologies.com" target="_blank" rel="noopener noreferrer">MnemonicEcologies.com</a>.<br />
-            <a href="https://github.com/albatross310/writingstudiostandard" target="_blank" rel="noopener noreferrer">Source repository on GitHub</a>.
+            Other projects at <a href="https://mnemonicecologies.com" target="_blank" rel="noopener noreferrer">MnemonicEcologies.com</a>.
           </div>
           <p className="footer__licence">An open specification, published under CC BY 4.0.</p>
         </div>

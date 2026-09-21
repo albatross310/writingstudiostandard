@@ -294,7 +294,6 @@ The Writing Studio Standard develops in public. Feedback on the specification, i
 
 Contact: petergibson127@gmail.com
 Related work: MnemonicEcologies.com
-Source repository: https://github.com/albatross310/writingstudiostandard
 
 ## 16. Licensing and naming
 
