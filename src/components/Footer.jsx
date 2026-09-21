@@ -20,7 +20,7 @@ export default function Footer() {
           </p>
         </div>
         <div className="footer__copy">
-          <p className="footer__credit">By Peter Gibson — philosopher, creator and developer.</p>
+          <p className="footer__credit">By Peter Gibson — philosophy student, math graduate, and product designer.</p>
           <div className="footer__contact">
             <a href="mailto:petergibson127@gmail.com">petergibson127@gmail.com</a>.<br />
             Other projects at <a href="https://mnemonicecologies.com" target="_blank" rel="noopener noreferrer">MnemonicEcologies.com</a>.
