@@ -208,14 +208,16 @@ section + section {
 }
 
 .definition-table__row {
-  display: grid;
-  grid-template-columns: minmax(9.5rem, 11.5rem) minmax(0, 1fr);
-  gap: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.55rem;
   padding: 1rem 0;
   border-bottom: 1px solid var(--rule);
 }
 
 .definition-table dt {
+  flex: 0 0 auto;
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 0.94rem;
@@ -224,6 +226,8 @@ section + section {
 }
 
 .definition-table dd {
+  flex: 1 1 30rem;
+  max-width: 68ch;
   color: var(--text-muted);
   line-height: 1.5;
 }
@@ -257,19 +261,15 @@ section + section {
 }
 
 .trio-grid--principles {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
-@media (max-width: 900px) {
-  .trio-grid--principles {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 780px) {
-  .trio-grid--principles {
-    grid-template-columns: 1fr;
-  }
+.trio-grid--principles > .card {
+  flex: 0 1 15rem;
+  width: min(100%, 15rem);
 }
 
 /* Storage cards need room for technical prose; move the third card down before it becomes cramped. */
@@ -487,16 +487,20 @@ section + section {
     gap: 0.5rem;
   }
 
-  .definition-table__row {
-    grid-template-columns: 1fr;
-    gap: 0.35rem;
-    padding: 0.85rem 0;
-  }
 }
 
 @media (max-width: 700px) {
   section { padding: 1.5rem 0; }
   .page-hero { padding: 1.6rem 0 1rem; }
+
+  .definition-table__row {
+    display: block;
+    padding: 0.85rem 0;
+  }
+
+  .definition-table dd {
+    margin-top: 0.35rem;
+  }
 }
 
 /* ── Interactive .studio explorer (Examples) ─────────────────────────────── */
