@@ -1,5 +1,6 @@
-import { CodeBar, countLines } from '../components/CodeBar'
+import { CodeBar, sourceLineRange } from '../components/CodeBar'
 import { SyntaxHighlight } from '../components/SyntaxHighlight'
+import engineeringSpec from '../content/engineering-spec.md?raw'
 import { useMeta } from '../useMeta'
 
 // The briefs describe the STANDARD (the shape a conformant file takes), not any one implementation's
@@ -149,6 +150,17 @@ function briefFilename(name) {
   return `${name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}.ts`
 }
 
+function BriefCodeBar({ layer }) {
+  const range = sourceLineRange(engineeringSpec, layer.brief)
+  return <CodeBar
+    filename={briefFilename(layer.name)}
+    language="TypeScript"
+    symbol="TS"
+    lineStart={range.start}
+    lineEnd={range.end}
+  />
+}
+
 export default function Architecture() {
   useMeta({
     title: 'Architecture',
@@ -235,12 +247,7 @@ export default function Architecture() {
                 </div>
 
                 <aside className="arch-brief">
-                  <CodeBar
-                    filename={briefFilename(layer.name)}
-                    language="TypeScript"
-                    symbol="TS"
-                    lines={countLines(layer.brief)}
-                  />
+                  <BriefCodeBar layer={layer} />
                   <pre className="arch-brief__code"><SyntaxHighlight text={layer.brief} /></pre>
                 </aside>
               </div>

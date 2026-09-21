@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
-import { CodeBar, countLines } from '../components/CodeBar'
+import { CodeBar, fencedSourceLineRange } from '../components/CodeBar'
 import { SyntaxHighlight } from '../components/SyntaxHighlight'
+import engineeringSpec from '../content/engineering-spec.md?raw'
 import { useMeta } from '../useMeta'
 
 // ── Example 1: a toy file ──────────────────────────────────────────────────────────────────────────
@@ -234,11 +235,17 @@ function Explorer({ filename, blocks, parts, firstId, fillPanel = false }) {
     if (el && scroller) scroller.scrollTo({ top: el.offsetTop - 14, behavior: 'smooth' })
   }, [active])
   const activePart = parts.find(p => p.id === active)
-  const lineCount = countLines(blocks.map(block => block.text).join(''))
+  const sourceRange = fencedSourceLineRange(engineeringSpec, filename)
   return (
     <div className={`studio-explorer${fillPanel ? ' studio-explorer--fill' : ''}`}>
       <div className="studio-explorer__file">
-        <CodeBar filename={filename} language="JSON" symbol="{}" lines={lineCount} />
+        <CodeBar
+          filename={filename}
+          language="JSON"
+          symbol="{}"
+          lineStart={sourceRange.start}
+          lineEnd={sourceRange.end}
+        />
         <div className="studio-explorer__scroll" ref={scrollRef}>
           <div className="studio-explorer__code">
             {blocks.map((b, i) => (
