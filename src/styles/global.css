@@ -117,11 +117,9 @@ code:not(pre code) {
   max-width: var(--content-rail);
 }
 
-/* On desktop, the main content and footer end where the navigation-link column begins. The nav's
-   Standard item and every page's rightmost object therefore share the same vertical guide. */
+/* On desktop, main content ends where the navigation-link column begins. */
 @media (min-width: 701px) {
-  main .container,
-  .footer .footer__inner {
+  main .container {
     padding-right: calc(var(--page-gutter) + var(--nav-column));
   }
 }
