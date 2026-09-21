@@ -1,6 +1,6 @@
 .hero {
   padding: clamp(1.25rem, 2vw, 1.7rem) 0 clamp(1rem, 1.5vw, 1.25rem);
-  background: #e7e7e5;
+  background: #e8edf0;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -74,8 +74,8 @@
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: var(--ink);
-  outline: 2px solid rgba(29, 30, 31, 0.14);
+  border-color: var(--accent);
+  outline: 2px solid rgba(54, 92, 118, 0.16);
   outline-offset: 1px;
 }
 

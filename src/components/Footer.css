@@ -1,6 +1,6 @@
 .footer {
-  background: #222427;
-  color: #e5e8e9;
+  background: #17232d;
+  color: #e3eaee;
   padding: 2rem 0;
   margin-top: 0;
 }
@@ -42,7 +42,7 @@
 
 .footer__tagline {
   font-size: 0.875rem;
-  color: #dce1e2;
+  color: #d7e0e5;
   max-width: 36ch;
   line-height: 1.55;
 }
@@ -52,7 +52,7 @@
 .footer__privacy {
   max-width: 44ch;
   margin-top: auto;
-  color: #cbd1d3;
+  color: #c5d0d6;
   font-size: 0.8125rem;
   line-height: 1.55;
   opacity: 0.8;
@@ -67,7 +67,7 @@
   min-height: 170px;
   min-width: 0;
   font-size: 0.8125rem;
-  color: #cfd5d6;
+  color: #cad5db;
   text-align: right;
 }
 
@@ -75,7 +75,7 @@
 .footer__licence {
   width: 100%;
   max-width: none;
-  color: #e2e6e7;
+  color: #dde5e9;
 }
 
 .footer__credit {
@@ -89,7 +89,7 @@
   width: 100%;
   margin-top: auto;
   line-height: 1.8;
-  color: #e2e6e7;
+  color: #dde5e9;
   text-align: right;
 }
 
