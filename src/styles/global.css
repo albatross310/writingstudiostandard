@@ -407,7 +407,7 @@ section + section {
 
 /* ─── Page hero (inner pages) ────────────────────────────────────── */
 .page-hero {
-  padding: clamp(1.1rem, 1.7vw, 1.4rem) 0 clamp(0.85rem, 1.25vw, 1.1rem);
+  padding: clamp(0.65rem, 1vw, 0.85rem) 0 clamp(0.75rem, 1vw, 0.9rem);
   border-bottom: 1px solid var(--rule);
 }
 /* The inline .studio tag inside a hero title should read at title scale, not tiny inline-code size. */

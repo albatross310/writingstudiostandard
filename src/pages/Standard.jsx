@@ -10,7 +10,7 @@ const terms = [
 ]
 
 export default function Standard() {
-  useMeta({ title: 'The Standard', description: 'The Writing Studio Standard defines portable Studio Documents, source-aware writing, contextual modules and optional provenance.', path: '/standard' })
+  useMeta({ title: null, description: 'The Writing Studio Standard defines portable Studio Documents, source-aware writing, contextual modules and optional provenance.', path: '/' })
   return (
     <main>
       <div className="container container--prose"><div className="page-hero"><p className="page-hero__kicker">Specification</p><h1 className="page-hero__title">The Writing Studio Standard</h1><p className="page-hero__lead">A practical definition of a document that can preserve its writing, sources, working context and optional proof without being trapped inside a single product.</p><div className="btn-group"><DownloadSpecButton /></div></div></div>

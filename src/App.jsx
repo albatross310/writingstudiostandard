@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
-import Home from './pages/Home'
 import Standard from './pages/Standard'
 import Architecture from './pages/Architecture'
 import Examples from './pages/Examples'
@@ -14,8 +13,8 @@ export default function App() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/"             element={<Home />} />
-        <Route path="/standard"     element={<Standard />} />
+        <Route path="/"             element={<Standard />} />
+        <Route path="/standard"     element={<Navigate to="/" replace />} />
         <Route path="/architecture" element={<Architecture />} />
         <Route path="/examples"     element={<Examples />} />
         <Route path="/faq"          element={<FAQ />} />

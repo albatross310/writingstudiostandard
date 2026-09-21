@@ -1,4 +1,8 @@
 {
+  "redirects": [
+    { "source": "/standard", "destination": "/", "permanent": true },
+    { "source": "/documents", "destination": "/architecture", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]

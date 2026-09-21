@@ -1,4 +1,5 @@
 import { useMeta } from '../useMeta'
+import './Contact.css'
 
 export default function Contact() {
   useMeta({
