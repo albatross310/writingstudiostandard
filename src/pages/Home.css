@@ -1,63 +1,57 @@
 .hero {
-  padding: clamp(3.25rem, 6vw, 4.75rem) 0 clamp(2.25rem, 4vw, 3rem);
-  background:
-    radial-gradient(circle at 84% 8%, rgba(106,143,147,.2), transparent 24rem),
-    linear-gradient(155deg, #fbfbfb 0%, #f3f5f5 58%, #e5eeee 100%);
-  border-bottom: 1px solid rgba(203,196,198,.68);
+  padding: 2rem 0 1.4rem;
+  background: #eef0f0;
+  border-bottom: 1px solid var(--ivory-mid);
 }
 
 .hero__inner {
-  max-width: 1200px;
+  max-width: 1180px;
 }
 
 .hero__title {
-  margin-top: 0.25rem;
-  margin-bottom: 0.85rem;
-  font-size: clamp(2.15rem, 4.2vw, 3.25rem);
-  letter-spacing: -0.035em;
-  line-height: 1.08;
-}
-
-.hero__title em {
-  font-style: normal;
-  color: var(--teal);
+  margin-top: 0.15rem;
+  margin-bottom: 0.55rem;
+  font-size: clamp(1.7rem, 2.7vw, 2.25rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 .hero__lead {
-  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  font-size: 1rem;
   color: var(--charcoal-mid);
   max-width: 56ch;
-  line-height: 1.65;
+  line-height: 1.52;
 }
 
 .home-doc-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-  margin-top: 1.5rem;
+  gap: 1rem;
+  margin-top: 1rem;
   align-items: start;
 }
 
 .cta-section {
-  background: linear-gradient(145deg, #222427, #343a3e 58%, var(--teal));
+  background: #e8ebeb;
 }
 
 .cta-inner {
-  max-width: 1200px;
+  max-width: 1180px;
 }
 
-.cta-inner h2, .cta-inner p { color: #fff; }
+.cta-inner h2 { color: var(--purple); }
+.cta-inner p { color: var(--charcoal-mid); }
 .cta-inner h2 { margin-bottom: 0.75rem; }
 .cta-inner p { font-size: 1rem; }
-.cta-inner .btn--primary { background: #fff; border-color: #fff; color: var(--purple); }
-.cta-inner .btn--outline { background: transparent; border-color: rgba(255,255,255,.62); color: #fff; }
+.cta-inner .btn--primary { background: var(--purple); border-color: var(--purple); color: #fff; }
+.cta-inner .btn--outline { background: transparent; border-color: var(--ivory-dark); color: var(--purple); }
 
 /* Contact has one primary action and then its detail section. It uses the shared hero treatment
    without carrying the landing page’s long closing cushion below that action. */
-.contact-hero { padding-bottom: 2.5rem; }
+.contact-hero { padding-bottom: 1.25rem; }
 
 @media (max-width: 700px) {
-  .hero { padding: 3rem 0 2.25rem; }
+  .hero { padding: 1.6rem 0 1.15rem; }
 
   .home-doc-grid {
     grid-template-columns: 1fr;

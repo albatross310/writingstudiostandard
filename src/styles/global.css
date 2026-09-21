@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'Inkwave Roman';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/eb-garamond-400-700-normal-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inkwave Roman';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/eb-garamond-400-italic-latin.woff2') format('woff2');
+}
+
 /* ─── Design tokens ─────────────────────────────────────────────── */
 :root {
   --ivory:        #f2f3f3;
@@ -17,10 +33,11 @@
   --font-serif:  'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
   --font-body:   'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
   --font-sans:   'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
+  --font-detail: 'Inkwave Roman', Georgia, serif;
   --font-mono:   'JetBrains Mono', 'Fira Code', monospace;
 
-  --radius:      16px;
-  --shadow-card: 0 1px 1px rgba(48,36,56,0.06), 0 10px 30px rgba(48,36,56,0.06);
+  --radius:      4px;
+  --shadow-card: none;
 }
 
 /* ─── Reset ─────────────────────────────────────────────────────── */
@@ -35,9 +52,7 @@ html {
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 10% -20%, rgba(255,255,255,.98), transparent 36rem),
-    linear-gradient(180deg, #fafbfb 0%, var(--ivory) 64%, #eaedee 100%);
+  background: #f4f5f5;
   color: var(--charcoal);
   font-family: var(--font-body);
   font-size: 1rem;
@@ -47,15 +62,15 @@ body {
 /* ─── Typography ─────────────────────────────────────────────────── */
 h1, h2, h3, h4 {
   font-family: var(--font-serif);
-  line-height: 1.08;
-  font-weight: 650;
+  line-height: 1.18;
+  font-weight: 640;
   color: var(--purple);
 }
 
-h1 { font-size: clamp(1.9rem, 3.2vw, 2.65rem); letter-spacing: -0.03em; }
-h2 { font-size: clamp(1.22rem, 1.85vw, 1.58rem); letter-spacing: -0.016em; }
-h3 { font-size: clamp(0.98rem, 1.3vw, 1.1rem); letter-spacing: -0.006em; }
-h4 { font-size: 0.88rem; font-family: var(--font-sans); font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--teal); }
+h1 { font-size: clamp(1.65rem, 2.4vw, 2.15rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.13rem, 1.45vw, 1.38rem); letter-spacing: -0.01em; }
+h3 { font-size: 1rem; letter-spacing: 0; }
+h4 { font-size: 0.92rem; font-family: var(--font-detail); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); }
 
 p { color: var(--charcoal-mid); max-width: 68ch; }
 p + p { margin-top: 1em; }
@@ -71,7 +86,7 @@ code, pre {
 pre {
   background: var(--charcoal);
   color: #e7eaeb;
-  padding: 1.5rem 1.75rem;
+  padding: 1rem 1.1rem;
   border-radius: var(--radius);
   overflow-x: auto;
   line-height: 1.65;
@@ -88,7 +103,7 @@ code:not(pre code) {
 /* ─── Layout ─────────────────────────────────────────────────────── */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 0 clamp(1rem, 2.5vw, 2rem);
 }
@@ -96,24 +111,24 @@ code:not(pre code) {
 .container--narrow {
   /* Sections share the page gutter. Individual paragraphs can still keep a readable line length
      without the whole section stepping inward from its heading. */
-  max-width: 1200px;
+  max-width: 1180px;
 }
 
 section {
-  padding: clamp(2.75rem, 4.5vw, 3.75rem) 0;
+  padding: clamp(1.65rem, 2.5vw, 2.2rem) 0;
 }
 
 section + section {
-  border-top: 1px solid rgba(203,196,198,.68);
+  border-top: 1px solid var(--ivory-mid);
 }
 
 /* ─── Buttons ────────────────────────────────────────────────────── */
 .btn {
   display: inline-block;
-  padding: 0.58rem 1.2rem;
-  border-radius: 999px;
+  padding: 0.48rem 0.8rem;
+  border-radius: var(--radius);
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   font-weight: 620;
   cursor: pointer;
   transition: background 0.15s, color 0.15s, box-shadow 0.15s;
@@ -123,7 +138,7 @@ section + section {
 .btn--primary {
   background: var(--purple);
   color: var(--white);
-  border: 2px solid var(--purple);
+  border: 1px solid var(--purple);
 }
 .btn--primary:hover {
   background: #383b3f;
@@ -145,7 +160,7 @@ section + section {
   display: flex;
   gap: 0.875rem;
   flex-wrap: wrap;
-  margin-top: 1.35rem;
+  margin-top: 0.9rem;
 }
 
 /* ─── Cards ──────────────────────────────────────────────────────── */
@@ -153,32 +168,24 @@ section + section {
   background: var(--card-bg);
   border: 1px solid rgba(203,196,198,.82);
   border-radius: var(--radius);
-  padding: 1.3rem;
+  padding: 0.95rem 1rem;
   box-shadow: var(--shadow-card);
 }
 
 .card__label {
-  font-family: var(--font-sans);
-  font-size: 0.92rem;
+  font-family: var(--font-detail);
+  font-size: 0.94rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--teal);
   margin-bottom: 0.5rem;
-}
-
-.card__title {
-  font-family: var(--font-serif);
-  font-size: 1.08rem;
-  font-weight: 650;
-  color: var(--purple);
-  margin-bottom: 0.625rem;
 }
 
 .card__body {
   font-size: 0.96rem;
   color: var(--slate);
-  line-height: 1.65;
+  line-height: 1.52;
   max-width: none;
 }
 
@@ -211,19 +218,19 @@ section + section {
 
 /* ─── Section label ──────────────────────────────────────────────── */
 .section-label {
-  font-family: var(--font-sans);
-  font-size: 0.98rem;
+  font-family: var(--font-detail);
+  font-size: 0.96rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--teal);
   margin-bottom: 0.55rem;
 }
 
 /* ─── Divider ─────────────────────────────────────────────────────── */
 .divider {
-  width: 2.5rem;
-  height: 3px;
+  width: 2rem;
+  height: 2px;
   background: var(--purple);
   margin: 1rem 0;
   border: none;
@@ -233,21 +240,22 @@ section + section {
 .trio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: 0.75rem;
+  margin-top: 1rem;
 }
 
 .trio-card {
   background: var(--card-bg);
   border: 1px solid rgba(203,196,198,.82);
   border-radius: var(--radius);
-  padding: 1.3rem;
+  padding: 0.95rem 1rem;
   box-shadow: var(--shadow-card);
 }
 
 .trio-card--highlight {
-  border-color: #c8dbdd;
-  background: linear-gradient(145deg, rgba(255,255,255,.96), var(--teal-pale));
+  border-color: var(--teal-light);
+  border-left-width: 3px;
+  background: var(--card-bg);
 }
 
 .trio-card__stores {
@@ -266,8 +274,8 @@ section + section {
 .layer-stack {
   display: flex;
   flex-direction: column;
-  gap: 0.875rem;
-  margin-top: 1.5rem;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .layer-card {
@@ -275,7 +283,7 @@ section + section {
   border: 1px solid rgba(203,196,198,.82);
   border-left: 4px solid var(--teal-light);
   border-radius: var(--radius);
-  padding: 1.2rem 1.35rem;
+  padding: 0.75rem 0.9rem;
   box-shadow: var(--shadow-card);
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -311,7 +319,7 @@ section + section {
   border-radius: var(--radius) var(--radius) 0 0;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
-  color: #b0a898;
+  color: #c7cccd;
 }
 
 .file-example__dot {
@@ -358,8 +366,8 @@ section + section {
 
 /* ─── Page hero (inner pages) ────────────────────────────────────── */
 .page-hero {
-  padding: clamp(3rem, 5vw, 4rem) 0 2rem;
-  border-bottom: 1px solid rgba(203,196,198,.68);
+  padding: 1.9rem 0 1.2rem;
+  border-bottom: 1px solid var(--ivory-mid);
 }
 /* The inline .studio tag inside a hero title should read at title scale, not tiny inline-code size. */
 .page-hero__title .tag,
@@ -370,21 +378,21 @@ section + section {
 }
 
 .page-hero__kicker {
-  font-family: var(--font-sans);
-  font-size: 0.98rem;
+  font-family: var(--font-detail);
+  font-size: 0.96rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--teal);
   margin-bottom: 0.6rem;
 }
 
 .page-hero__title {
   font-family: var(--font-serif);
-  font-size: clamp(1.9rem, 3vw, 2.55rem);
+  font-size: clamp(1.55rem, 2.2vw, 2rem);
   font-weight: 650;
   color: var(--purple);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.55rem;
 }
 
 .page-hero__lead {
@@ -402,7 +410,7 @@ section + section {
   color: var(--purple);
   background: var(--lavender-pale);
   border: 1px solid #d8d0de;
-  border-radius: 6px;
+  border-radius: 2px;
   padding: 0.2em 0.55em;
   line-height: 1.4;
 }
@@ -431,55 +439,16 @@ section + section {
   font-weight: 400;
 }
 
-/* ─── Implementations box ────────────────────────────────────────── */
-.impl-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.impl-card {
-  background: var(--card-bg);
-  border: 1px solid rgba(203,196,198,.82);
-  border-radius: var(--radius);
-  padding: 1.3rem;
-  box-shadow: var(--shadow-card);
-}
-
-.impl-card__name {
-  font-family: var(--font-serif);
-  font-weight: 650;
-  font-size: 0.98rem;
-  margin-bottom: 0.5rem;
-  color: var(--charcoal);
-}
-
-.impl-card__status {
-  font-size: 0.88rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--teal-light);
-  margin-bottom: 0.625rem;
-}
-
-.impl-card__desc {
-  font-size: 0.9rem;
-  color: var(--slate);
-  max-width: none;
-}
-
 /* ─── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 700px) {
-  section { padding: 2.5rem 0; }
+  section { padding: 1.5rem 0; }
 
   .layer-card {
     grid-template-columns: 1fr;
     gap: 0.5rem;
   }
 
-  .page-hero { padding: 2.75rem 0 1.75rem; }
+  .page-hero { padding: 1.6rem 0 1rem; }
 
   .definition-table__row {
     grid-template-columns: 1fr;
@@ -500,7 +469,7 @@ section + section {
   border: 1px solid var(--ivory-dark);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: var(--shadow-card);
+  box-shadow: none;
   position: sticky;
   top: 1.5rem;
 }
@@ -510,7 +479,7 @@ section + section {
   background: #1c1c1e;
   scroll-behavior: smooth;
 }
-.studio-explorer__scroll pre {
+.studio-explorer__code {
   margin: 0;
   padding: 0;
   background: transparent;
@@ -519,21 +488,31 @@ section + section {
 }
 .studio-block {
   display: block;
+  width: 100%;
   padding: 0.15rem 1.1rem;
+  border: 0;
+  border-left: 3px solid transparent;
+  background: transparent;
   font-family: var(--font-mono);
   font-size: 0.8rem;
   line-height: 1.55;
   color: #c9c6bf;
+  text-align: left;
   white-space: pre-wrap;
-  border-left: 3px solid transparent;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  cursor: pointer;
   transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 }
+.studio-block:disabled { cursor: default; }
+.studio-block:focus-visible { outline: 2px solid #fff; outline-offset: -3px; }
 .studio-block.is-active {
   background: rgba(90, 138, 124, 0.18);
   border-left-color: var(--teal-light);
   color: #eef2f0;
 }
 .studio-explorer__panel { display: flex; flex-direction: column; gap: 1.25rem; }
+.studio-explorer__label { margin-top: 0; }
 .studio-explorer__links { list-style: none; margin: 0.5rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
 .studio-explorer__link {
   width: 100%;
@@ -543,10 +522,10 @@ section + section {
   color: var(--charcoal-mid);
   background: var(--card-bg);
   border: 1px solid var(--ivory-dark);
-  border-radius: var(--radius);
+  border-radius: 3px;
   padding: 0.55rem 0.85rem;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 .studio-explorer__link:hover { border-color: var(--teal-light); color: var(--teal); }
 .studio-explorer__link.is-active {
@@ -568,20 +547,58 @@ section + section {
 }
 
 /* ─── Architecture capability cards ─────────────────────────────────────── */
-.arch-rows { display: flex; flex-direction: column; gap: 1.75rem; }
+.arch-rows { display: flex; flex-direction: column; gap: 0.85rem; }
 .arch-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
-  gap: 1.25rem;
+  gap: 0.8rem;
   align-items: stretch;             /* brief matches its card's height */
 }
 .arch-card {
   background: var(--card-bg);
   border: 1px solid var(--ivory-mid);
+  border-left: 4px solid var(--teal);
   border-radius: var(--radius);
-  padding: 1.5rem 1.6rem;
+  padding: 0.95rem 1rem;
   box-shadow: var(--shadow-card);
 }
+.arch-card__top {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.65rem;
+  margin-bottom: 0.25rem;
+}
+.arch-card__top h3 { margin: 0; }
+.arch-card__number {
+  color: var(--teal);
+  font-family: var(--font-detail);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.arch-card__tagline {
+  margin-bottom: 0.45rem;
+  color: var(--slate);
+  font-family: var(--font-detail);
+  font-size: 0.92rem;
+  font-style: italic;
+}
+.arch-card__description {
+  max-width: 60ch;
+  margin-bottom: 0.7rem;
+  color: var(--charcoal-mid);
+  font-size: 0.92rem;
+}
+.arch-card__meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1rem;
+}
+.arch-card__list { margin: 0; }
+.arch-card__list li,
+.arch-card__conformance { font-size: 0.84rem; }
+.arch-card__conformance { max-width: 34ch; color: var(--slate); }
+.arch-scope-note { margin-top: 1rem; }
 .arch-badge {
   font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600;
   text-transform: uppercase; letter-spacing: 0.08em;
@@ -594,7 +611,7 @@ section + section {
   text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 0.45rem;
 }
 .arch-brief {
-  border-radius: 12px 12px 0 0; overflow: hidden;
+  border-radius: 4px 4px 0 0; overflow: hidden;
   border: 1px solid #2a2a2e; box-shadow: var(--shadow-card);
   display: flex; flex-direction: column; min-height: 0;
 }
@@ -615,39 +632,6 @@ section + section {
   .arch-brief { max-height: 55vh; }
 }
 
-/* Architecture keeps its detailed implementation brief beside each layer on a wide screen. */
-.arch-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
-}
-.arch-card {
-  border-left: 4px solid var(--teal);
-  background: rgba(255, 255, 255, 0.76);
-}
-.arch-card__head {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: 0.75rem 1rem;
-  align-items: start;
-}
-.arch-card__head h3 { margin: 0; }
-.arch-index {
-  display: inline-grid;
-  width: 2.35rem;
-  height: 2.35rem;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--lavender-pale);
-  color: var(--purple);
-  font-size: 0.78rem;
-  font-weight: 700;
-}
-.arch-tagline {
-  margin-top: 0.25rem;
-  color: var(--slate);
-  font-size: 0.93rem;
-}
-.arch-desc { margin-top: 1.15rem; max-width: 72ch; }
 .arch-card .checklist { margin-top: 1rem; }
 .arch-badge {
   max-width: 18rem;
@@ -662,10 +646,8 @@ section + section {
   border-color: #ddd5e3;
   color: var(--purple);
 }
-.studio-code { color: #e9e5e8; }
-
 @media (max-width: 640px) {
   .arch-row { grid-template-columns: 1fr; }
-  .arch-card__head { grid-template-columns: auto minmax(0, 1fr); }
+  .arch-card__meta { grid-template-columns: 1fr; }
   .arch-badge { grid-column: 1 / -1; max-width: none; text-align: left; justify-self: start; }
 }

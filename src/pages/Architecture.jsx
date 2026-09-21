@@ -4,10 +4,10 @@ import { useMeta } from '../useMeta'
 // internals — kept deliberately general.
 const layers = [
   {
-    index: '01', name: 'Readable text', required: true, tagline: 'The Markdown header',
-    desc: 'The document’s full prose, in plain Markdown at the top of the file. Legible in any editor, by any person, and more easily by a language model than a .docx or PDF. A file with only this layer is a conformant minimum.',
-    contains: ['The complete document text', 'Headings and structure', 'Emphasis and inline marks'],
-    conformance: 'Required. Every Studio Document must be readable from its header alone.',
+    index: '01', name: 'Readable record', required: true, tagline: 'Summary and plain-text projection',
+    desc: 'A short summary and deterministic plain-text projection appear near the beginning of the versioned record. A person or language model can inspect the writing without reconstructing the editing interface.',
+    contains: ['Human-facing summary', 'Complete readable text projection', 'Verifier and capability metadata'],
+    conformance: 'Required. Every reader must expose the readable projection even when richer structure is unsupported.',
     brief: `// A portable record carries readable text
 // and structured data in one document.
 
@@ -22,10 +22,10 @@ record = {
 // rebuilding the editing interface.`,
   },
   {
-    index: '02', name: 'Document model', required: false, tagline: 'The structured, editable body',
-    desc: 'Below the header, the same content as a structured tree — blocks, headings, lists, tables, mathematics, inline formatting. This is the faithful editable form; the header is generated from it, so the two never disagree.',
+    index: '02', name: 'Document model', required: true, tagline: 'The structured, editable source',
+    desc: 'The editable representation is a versioned structured tree of blocks, headings, lists, tables, mathematics and inline formatting. The readable text is generated from this source of truth so the two representations cannot silently diverge.',
     contains: ['Block and inline node tree', 'Tables, lists, math', 'Figures and captions'],
-    conformance: 'Optional. Implement when the tool edits rich structure, not just plain text.',
+    conformance: 'Required for a conforming writer. A read-only implementation may expose only the readable projection.',
     brief: `content: {
   type: "doc",
   content: Node[],
@@ -69,7 +69,7 @@ source?: {
   {
     index: '04', name: 'Provenance record', required: false, tagline: 'Signed, without surveillance',
     desc: 'A tamper-evident trace of a genuine writing session: a hash-chained set of signed receipts, plus content snapshots. The signer receives only cryptographic hashes — never the writer’s text, keystrokes, or identity.',
-    contains: ['Hash-chained signed receipts', 'Content snapshots with hashes', 'An authorship signal'],
+    contains: ['Hash-chained signed receipts', 'Content snapshots with hashes', 'Bounded composition evidence'],
     conformance: 'Optional. Required if the implementation claims to preserve provenance.',
     brief: `receipts: Receipt[]
 
@@ -146,7 +146,7 @@ tiles?: {
 export default function Architecture() {
   useMeta({
     title: 'Architecture',
-    description: 'The anatomy of a .studio file — a Markdown header over a JSON body — and its layers: readable text, document model, sources, provenance, anchoring, portability, and the in-development mnemonic tiles.',
+    description: 'The anatomy of a versioned .studio record: readable projection, structured document, sources, provenance, anchoring, portability, and planned mnemonic tiles.',
     path: '/architecture',
   })
   return (
@@ -156,8 +156,8 @@ export default function Architecture() {
           <p className="page-hero__kicker">The file</p>
           <h1 className="page-hero__title">Anatomy of a <code className="tag">.studio</code> file</h1>
           <p className="page-hero__lead">
-            A human-readable header over a machine-readable body, in composable layers. An implementation
-            adopts only the layers it claims — and a reader can see exactly which ones a file carries.
+            A versioned record with a readable projection, structured document and explicit optional
+            capabilities. A reader can determine which layers are present before loading their payloads.
           </p>
         </div>
       </div>
@@ -165,18 +165,17 @@ export default function Architecture() {
       <section>
         <div className="container container--narrow">
           <p className="section-label">The shape</p>
-          <h2>Header, then body</h2>
+          <h2>One record, two core representations</h2>
           <hr className="divider" />
           <p>
-            A <code className="tag">.studio</code> file is a single JSON document that opens with a
-            Markdown header holding the entire text. Open it in any editor and you can read the document
-            straight through; the structured body beneath carries everything a Writing Studio adds — sources,
-            the signed session, the anchor — and is never needed simply to read the work.
+            A <code className="tag">.studio</code> file is a versioned JSON record. Its summary and
+            plain-text projection make the writing directly inspectable; its structured document field is
+            the editable source of truth. Optional manifests declare sources, media, voice and provenance.
           </p>
           <p>
-            Because the text lives in a plain header, a <code className="tag">.studio</code> file is easier
-            for both a person and a language model to read than a <code className="tag">.docx</code> or PDF,
-            and it never locks the writing behind proprietary machinery.
+            Implementations load the compact document core first. Large attachments are indexed separately
+            and requested only by the reader or player that needs them, so portability does not require a
+            slow initial open.
           </p>
         </div>
       </section>
@@ -205,26 +204,26 @@ export default function Architecture() {
           </p>
 
           <div className="arch-rows">
-            {layers.map((layer, i) => (
+            {layers.map((layer) => (
               <div className="arch-row" key={layer.name}>
-                <div className="arch-card" style={{ borderLeft: `5px solid hsl(${170 - i * 8}, ${36 - i * 2}%, ${50 - i}%)` }}>
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem', marginBottom: '0.4rem', flexWrap: 'wrap' }}>
-                    <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.55rem', fontWeight: 700, color: 'var(--teal-light)', lineHeight: 1 }}>{parseInt(layer.index, 10)}</span>
-                    <h3 style={{ margin: 0 }}>{layer.name}</h3>
+                <div className="arch-card">
+                  <div className="arch-card__top">
+                    <span className="arch-card__number">{parseInt(layer.index, 10)}</span>
+                    <h3>{layer.name}</h3>
                     <span className="arch-badge" data-req={layer.required ? '1' : '0'}>{layer.required ? 'Required' : 'Optional'}</span>
                   </div>
-                  <p style={{ fontStyle: 'italic', color: 'var(--slate)', marginBottom: '0.7rem', fontSize: '0.92rem' }}>{layer.tagline}</p>
-                  <p style={{ fontSize: '0.94rem', color: 'var(--charcoal-mid)', marginBottom: '1rem', maxWidth: '60ch' }}>{layer.desc}</p>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.6rem 1.5rem' }}>
+                  <p className="arch-card__tagline">{layer.tagline}</p>
+                  <p className="arch-card__description">{layer.desc}</p>
+                  <div className="arch-card__meta">
                     <div>
                       <p className="arch-sub">Carries</p>
-                      <ul className="checklist" style={{ margin: 0 }}>
-                        {layer.contains.map(c => <li key={c} style={{ fontSize: '0.85rem' }}>{c}</li>)}
+                      <ul className="checklist arch-card__list">
+                        {layer.contains.map(c => <li key={c}>{c}</li>)}
                       </ul>
                     </div>
                     <div>
                       <p className="arch-sub">Conformance</p>
-                      <p style={{ fontSize: '0.85rem', color: 'var(--slate)', maxWidth: '34ch' }}>{layer.conformance}</p>
+                      <p className="arch-card__conformance">{layer.conformance}</p>
                     </div>
                   </div>
                 </div>
@@ -237,15 +236,11 @@ export default function Architecture() {
             ))}
           </div>
 
-          <div className="card" style={{ marginTop: '2rem' }}>
+          <div className="card arch-scope-note">
             <p className="card__label">A note on scope</p>
             <p className="card__body">
-              This site is under active development. A more rigorous standard for precisely how each
-              optional layer of a Studio Document should be structured — to maximise cross-compatibility
-              between tools — is a continually evolving process. We welcome all feedback on how to balance
-              the necessary technical detail against the understandability of the Writing Studio Standard as
-              set out here, and warmly invite you to{' '}
-              <a href="/contact">get in touch</a>.
+              Optional-layer schemas remain draft where marked. Compatibility reports and implementation
+              feedback are welcome; <a href="/contact">contact the maintainer</a> with concrete cases.
             </p>
           </div>
         </div>

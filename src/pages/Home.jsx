@@ -20,11 +20,10 @@ export default function Home() {
       <section className="hero">
         <div className="container hero__inner">
           <p className="section-label">Writing Studio Standard</p>
-          <h1 className="hero__title">Documents that carry<br /><em>the work around them.</em></h1>
+          <h1 className="hero__title">Portable documents for writing, sources and provenance</h1>
           <p className="hero__lead">
-            An open format for writing that keeps prose, sources, useful context and optional proof in a
-            portable <code className="tag">.studio</code> document. It is designed for serious work that
-            should outlast one app, one device, or one company.
+            An open format that keeps readable text, editable structure, sources, working context and
+            optional verification evidence in a portable <code className="tag">.studio</code> record.
           </p>
           <div className="btn-group">
             <Link to="/standard" className="btn btn--primary">Read the standard</Link>
@@ -35,8 +34,8 @@ export default function Home() {
 
       <section>
         <div className="container">
-          <p className="section-label">More than a word processor</p>
-          <h2>A place for the writing and its working life</h2>
+          <p className="section-label">Scope</p>
+          <h2>Writing, evidence and working context</h2>
           <div className="trio-grid">
             {capabilities.map(({ label, title, body }, index) => (
               <article className={'trio-card' + (index === 2 ? ' trio-card--highlight' : '')} key={label}>
@@ -125,7 +124,7 @@ export default function Home() {
                 verification material. Large master files and generated audio can remain in the writer’s
                 own library, while each Studio carries the frozen subset it needs to stay meaningful.
               </p>
-              <div className="btn-group" style={{ marginTop: '1.5rem' }}>
+              <div className="btn-group">
                 <Link to="/examples" className="btn btn--outline">See an annotated record</Link>
               </div>
             </div>
@@ -160,7 +159,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="btn-group" style={{ marginTop: '1.75rem' }}>
+          <div className="btn-group">
             <Link to="/architecture" className="btn btn--outline">Full architecture</Link>
           </div>
         </div>
@@ -170,7 +169,7 @@ export default function Home() {
         <div className="container">
           <p className="section-label">Privacy and provenance</p>
           <h2>Evidence without a surveillance product</h2>
-          <div className="trio-grid" style={{ marginTop: '1.75rem' }}>
+          <div className="trio-grid">
             <div className="card"><p className="card__label">Snapshots, not keylogs</p><p className="card__body">A writer can keep a grow-only history of document states and changes without handing over their text or a log of every keystroke.</p></div>
             <div className="card"><p className="card__label">Signed, hash-only receipts</p><p className="card__body">Inkwave’s existing provenance chain signs cryptographic hashes. The signing service need not receive the document or the writer’s identity.</p></div>
             <div className="card"><p className="card__label">Honest verification</p><p className="card__body">A valid record can show that a particular state existed and that a chain is intact. It must never be presented as proof that a biological human conceived every word.</p></div>
@@ -181,8 +180,8 @@ export default function Home() {
       <section className="cta-section">
         <div className="container cta-inner">
           <p className="section-label">Open by design</p>
-          <h2>Build on the record, not a silo.</h2>
-          <p>The format is published under CC BY 4.0. Inkwave is one implementation; any compatible reader or editor can take part.</p>
+          <h2>Open format and independent implementations</h2>
+          <p>The format is published under CC BY 4.0. Inkwave is one implementation; compatible readers and editors can implement the same document contract.</p>
           <div className="btn-group">
             <Link to="/standard" className="btn btn--primary">The Writing Studio Standard</Link>
             <Link to="/faq" className="btn btn--outline">Common questions</Link>
