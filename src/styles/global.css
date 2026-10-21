@@ -24,7 +24,6 @@
   --white:        #ffffff;
   --page-gutter:  clamp(2rem, calc(1rem + 4.5vw), 8rem);
   --content-rail: 1180px;
-  --nav-column:   22rem;
   --title-size:   clamp(1.13rem, 1.45vw, 1.38rem);
 
   --font-serif:  'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
